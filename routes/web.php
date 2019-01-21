@@ -28,6 +28,10 @@ Route::get('/', 'HomeController@index')->name('home');
 /* group for link admin user  */
 Route::group(['prefix' =>'admin'  ,'middleware'=> 'admin'],function()
 {
-Route::get('/', 'AdminController@index')->name('admin');
+    Route::get('/','AdminController@index')->name('tableaudebord');
 Route::get('/addNewUser', 'AdminController@addNewUser')->name('addNewUser');
+Route::get('/comptelabo','AdminController@comptelabo')->name('comptelabo');
+Route::get('/compteadmin','AdminController@compteadmin')->name('compteadmin');
 });
+
+
