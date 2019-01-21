@@ -1,0 +1,225 @@
+html {
+    scroll-behavior: smooth;
+    }
+
+   /*Navbar style*/
+    #menu-home-page a.btn-outline-primary{
+        border-color :#2DD393 !important;
+        color : #2DD393 !important;
+        padding: 6px 30px;
+    }
+
+    #menu-home-page a.btn-outline-primary:hover{
+        border-color :#2DD393 !important;
+       background-color: #2DD393 !important;
+        color : #fff !important;
+       
+    }
+
+    #menu-home-page {
+        border: none !important;
+        padding: 31px 134px 0 78px!important;
+    }
+    #menu-home-page nav {
+        margin-right: 100px !important;
+    }
+
+    #menu-home-page nav a {
+        margin-right: 20px !important;
+        color: #7f7f7f !important;
+    }
+    #menu-home-page .logo-fsm{
+        width: 317px;
+    }
+
+    /*Home style*/
+
+    #home{
+        width:100%;
+        height: 100vh;
+   
+    }
+    #home .content {
+        padding: 30px 0 0 0px;
+    }
+    #home .content h1{
+        font-size:30px;
+    }
+
+    #home .content p{
+        font-size:20px;
+        margin-top:30px;
+        color:#7f7f7f;
+    }
+
+    #home .content a{
+        margin-top: 30px;
+        background-color: #2DD393 !important;
+        border-color: #2DD393 !important;
+        color: #fff;
+        border-radius: 8px;
+        padding: 10px 68px;
+        font-weight: 700;
+        font-size: 25px;
+        box-shadow: 0px 3px 13px 3px #0000002b;
+    }
+
+    #home .content a:hover{
+         box-shadow: 0px 0px 0px 0px #0000002b;
+    }
+
+    #home .img-container img{
+        width:100%;
+        margin-right:-25px;
+    }
+
+
+   /*Service style*/
+
+    #service{
+        width:100%;
+        height: 570px;
+        padding: 50px 130px;
+        text-align: center;  
+    }
+   
+    #service h1{
+     font-size: 30px;
+     font-weight: bold;
+     font-family: Montserrat;
+    }
+    #service img{
+        margin-top:35px;
+        width: 150px;
+        height: 150px;
+    }
+    #service h2{
+        margin-top:20px;
+        font-size: 24px;
+
+    }
+
+    #service p{
+        margin-top:20px;
+     font-size: 17px;
+     color:#7f7f7f;
+    }
+   
+    #apropos{
+        width:100%;
+        height: 400px;
+        padding: 50px 130px;
+    } 
+    
+ 
+    #apropos img{
+        width: 60%;
+        position: relative;
+        bottom: 20px;
+        left: 116px; 
+    } 
+    #apropos h2{
+        font-size: 24px;
+    } 
+
+     #apropos p{
+        margin-top:20px;
+     font-size: 17px;
+     color:#7f7f7f;
+     text-align: justify;
+    }   
+
+    #apropos a{
+        margin-top:30px;
+         color:#2DD393;
+    }   
+
+    #contact{
+        width:100%;
+        height: 650px;
+        padding: 50px 130px;
+      
+    }
+
+    #contact h1{
+     font-size: 25px;
+     font-weight: bold;
+     font-family: Montserrat;
+     text-align: center;
+    
+    }
+    #contact p{
+    
+        margin-top: 25px;
+    }
+    #contact textarea,input.form-control{
+        background-color: #F2F2F2 !important;
+         border: none;
+    }
+
+    #contact label{
+     color: #9B9898 !important;
+
+    }
+
+    #contact button{
+
+        background-color: #2DD393 !important;
+        border: none;
+    }
+    #contact .container-form{
+        padding:0 40px;
+    }
+    
+    #contact .form-cadre{
+
+        padding: 23px;
+        box-shadow: 0px 3px 20px 0px #0000002b;
+        border-radius: 7px;
+    }
+
+    #footer {
+        width:100%;
+        height: 250px;
+        background-color: #142535;
+      box-sizing: border-box;
+    }
+
+    #footer .links{
+        width: 100%;
+        height: 200px;
+        background-color: #142535;
+        color: #BBBBBB;
+        padding: 42px 0 0 42px;
+    }
+
+    #footer .links .row{
+       padding:0;
+       margin: 0;   
+     
+        
+    }
+    #footer .links ul>li{
+        list-style-type: none;
+        font-size: 14px;
+        line-height:25px;
+    }
+
+    #footer .copyright{
+        width:100%;
+        height: 50px;
+        background-color: #101D2A;
+      color:#707070;
+    }
+    #footer .copyright .row{
+       padding:0;
+       margin: 0;   
+       text-align: center; 
+        
+    }
+
+    #footer .copyright .row p{
+       padding-top:12px;
+     font-size: 12px;
+    }
+
