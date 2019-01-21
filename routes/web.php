@@ -13,8 +13,21 @@
 
 Route::get('/', function () {
     return view('welcome');
+})->middleware('guest');
+
+
+
+Auth::routes();
+
+/* group for link simple user  */
+Route::group(['prefix' =>'labo'  ,'middleware'=> 'labo'],function()
+{
+Route::get('/', 'HomeController@index')->name('home');
 });
 
-Route::get('/crud', function () {
-    return view('crud');
+/* group for link admin user  */
+Route::group(['prefix' =>'admin'  ,'middleware'=> 'admin'],function()
+{
+Route::get('/', 'AdminController@index')->name('admin');
+Route::get('/addNewUser', 'AdminController@addNewUser')->name('addNewUser');
 });
