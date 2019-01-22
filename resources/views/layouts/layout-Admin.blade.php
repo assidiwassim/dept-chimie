@@ -220,8 +220,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="{{ route('tableaudebord') }}"><i class="fa fa-home"></i> <span>Tableau de bord</span></a></li>
-        <li><a href="{{ route('comptelabo') }}"><i class="fa fa-user"></i> <span>Compte Labo</span></a></li>
-        <li><a href="{{ route('compteadmin') }}"><i class="fa fa-user"></i> <span>Compte Admin</span></a></li>
+    <li class="treeview active">
+            <a href="#">
+                <i class="fa fa-user"></i> <span>Compte Admin</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu menu-open" style="display: block;">
+              <li><a href="{{ route('compteadmin') }}"><i class="fa fa-link"></i> <span> Liste de comptes </span></a></li>
+              <li><a href="{{ route('addNewUser') }}"><i class="fa fa-link"></i> <span> Ajouter un compte</span></a></li>
+          </ul>
+          </li>
+          <li class="treeview active">
+              <a href="#">
+                  <i class="fa fa-user"></i> <span>Compte Labo</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu menu-open" style="display: block;">
+                <li><a href="{{ route('comptelabo') }}"><i class="fa fa-link"></i> <span> Liste de comptes </span></a></li>
+                <li><a href="{{ route('addNewUser') }}"><i class="fa fa-link"></i> <span> Ajouter un compte</span></a></li>
+            </ul>
+            </li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>

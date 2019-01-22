@@ -7,27 +7,7 @@
     
     </h1>
     <ol class="breadcrumb">
-        <button type="button" class="btn btn-block btn-primary btn-flat btn-add-vip" style="position: relative;bottom: 14px;padding:6px 30px;" data-toggle="modal" data-target="#modal-default-Add">Ajouter un compte</button>
-        <div class="modal fade " id="modal-default-Add" >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close button-close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                  </button>
-                  <h4 class="modal-title">Ajouter un nouveau compte</h4>
-                </div>
-                <div class="modal-body">
-               
-  
-         
-                 
-                </div>
-              </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-          </div>
+
     </ol>
 </section>
 <section class="content">
@@ -77,7 +57,9 @@
               <a href="#tab_1" data-toggle="tab" aria-expanded="true">Clients</a>
             </li>
            
-      
+            <li class="pull-right">
+              <input type="text" id="Recherche" class="form-control input-sm mainLoginInput " placeholder="">
+            </li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab_1">
@@ -148,6 +130,6 @@
         <!-- /.box -->
       </div>
     </div>
- 
+ <a href="/admin/addNewUser">adduser</a>
   </section>
 @endsection
