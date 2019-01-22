@@ -95,12 +95,22 @@
                         <td> {{ $admin->name}}</td>
                         <td> {{ $admin->email}}</td>
                         <td>
+                        @if($admin->block=="false")
                                 <form method="post"   action="{{ route('block') }}" >
                                         @csrf
                                         <input  name="admin" type="hidden" value="{{$admin->id}}">         
                               
                                 <button  type="submit" class="btn btn-sm btn-danger " >Bloquer</button>
                             </form>
+                          @else
+                            <form method="post"   action="{{ route('deblockadmin') }}" >
+                                        @csrf
+                                        <input  name="admin" type="hidden" value="{{$admin->id}}">         
+                              
+                                <button  type="submit" class="btn btn-sm btn-primary " >Débloquer</button>
+                            </form>
+
+                            @endif
                             </td>
                                
                             </tr>
@@ -121,6 +131,6 @@
         <!-- /.box -->
       </div>
     </div>
- 
+ <a href="/admin/addNewUser">adduser</a>
   </section>
 @endsection

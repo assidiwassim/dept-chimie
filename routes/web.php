@@ -32,9 +32,15 @@ Route::group(['prefix' =>'admin'  ,'middleware'=> 'admin'],function()
 Route::get('/addNewUser', 'AdminController@addNewUser')->name('addNewUser');
 Route::get('/comptelabo','AdminController@comptelabo')->name('comptelabo');
 Route::get('/compteadmin','AdminController@compteadmin')->name('compteadmin');
-
+//delete end block admin 
 Route::post('/compteadmin/delete','AdminController@deleteadmin')->name('delete');
-Route::post('/compteadmin','AdminController@blockadmin')->name('block');
+Route::post('/compteadmin/block','AdminController@blockadmin')->name('block');
+Route::post('/compteadmin/deblockadmin','AdminController@deblockadmin')->name('deblockadmin');
+//delete end block labo
+Route::post('/compteadmin/deleteLabo','AdminController@deletelabo')->name('deletelabo');
+Route::post('/compteLabo/blocklabo','AdminController@blocklabo')->name('blocklabo');
+Route::post('/compteLabo/deblocklabo','AdminController@deblocklabo')->name('deblocklabo');
+
 
 
 
