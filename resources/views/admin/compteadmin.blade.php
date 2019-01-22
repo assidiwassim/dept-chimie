@@ -20,8 +20,7 @@
                 <div class="modal-body">
                
   
-               @yield('auth/register')
-                   
+         
                  
                 </div>
               </div>

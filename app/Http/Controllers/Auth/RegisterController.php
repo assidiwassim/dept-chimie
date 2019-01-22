@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Image;
 class RegisterController extends Controller
 {
     /*
@@ -52,6 +52,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'tel'  => ['nullable', 'string', 'min:8','max:8'],
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     }
 
@@ -62,12 +64,28 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    {  
+        $old_avatar= Auth::user()->avatar;
+        if($request->hasFile('avatar')){
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(250, 250)->save( public_path('/uploads/avatars/' . $filename ) );
+            $user = Auth::user();
+            $user->avatar = $filename;
+       $user->cin =$request->cin;
+            $user->save();
+        }
+
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'logo' => $data['logo'],
+            'tel' => $data['tel'],
         ]);
+
+
     }
 
     public function register(\Illuminate\Http\Request $request)
