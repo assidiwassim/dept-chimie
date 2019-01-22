@@ -149,6 +149,6 @@
         <!-- /.box -->
       </div>
     </div>
- <a href="/admin/addNewUser">adduser</a>
+ 
   </section>
 @endsection
