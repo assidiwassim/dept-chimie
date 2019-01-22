@@ -81,7 +81,7 @@
                        
                       <tr>
                             @foreach ($admins as $admin)
-                        <td></td>
+                        <td>
                                 <form method="post"   action="{{ route('delete') }}" >
                                         @csrf
                                         <input  name="admindel" type="hidden" value="{{$admin->id}}">
@@ -90,6 +90,8 @@
                                     
                                 </form>
                         </td>
+                              
+                     
                         <td> {{ $admin->name}}</td>
                         <td> {{ $admin->email}}</td>
                         <td>
