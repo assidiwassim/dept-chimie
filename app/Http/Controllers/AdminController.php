@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use Auth;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Redirect;
 class AdminController extends Controller
 {
      /**
@@ -25,7 +26,7 @@ class AdminController extends Controller
     public function index()
     {  
         $nbadmin=User::where('role','admin')->count();
-        $nblabo=User::where('role','labo')->count();
+        $nblabo=User::where('role','user')->count();
         return view('admin/tableaudebord')->with('nblabo',$nblabo)->with('nbadmin',$nbadmin);
     }
 
@@ -34,8 +35,11 @@ class AdminController extends Controller
   
 
     public function compteadmin()
-    {   $administrateur=User::where('role','admin');
-        return view('admin/compteadmin')->with('admin',$administrateur);
+    {   $administrateur=User::select('id','email', 'name' )
+        ->where('role','admin')
+        ->get();
+        $nbadmin=User::where('role','admin')->count();
+        return view('admin/compteadmin')->with('admins',$administrateur)->with('nbadmin',$nbadmin);
     }
 
 
@@ -49,5 +53,51 @@ class AdminController extends Controller
         return view('auth/register');
     }
 
+
+    public function deleteadmin(Request $request)
+    {
+        
+        if($request->input('admindel') == Auth::user()->id)
+        {
+            session()->flash('message-error', " opération non autorisé ");
+     
+        }
+       
+        else
+        {
+            
+            $user = User::find($request->input('admindel'));    
+            $user->delete();
+            session()->flash('message-success', " Administrateur supprimer avec succées");
+
+        }
+        
+        return Redirect()->route('compteadmin');
+    }
+
+
+    
+    public function blockadmin(Request $request)
+    {
+        
+        if($request->input('admin')==Auth::user()->id)
+        {
+            session()->flash('message-error', " opération non autorisé ");
+
+        }
+        else
+        {
+            session()->flash('message-success', " Administrateur est bloqué avec succées");
+            $user = User::find($request->input('admin'));  
+            $user->block="true" ; 
+            $user->save();
+
+
+        }
+        
+        return Redirect()->route('compteadmin');
+    }
+
+    
     
 }

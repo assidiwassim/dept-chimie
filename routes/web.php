@@ -32,6 +32,12 @@ Route::group(['prefix' =>'admin'  ,'middleware'=> 'admin'],function()
 Route::get('/addNewUser', 'AdminController@addNewUser')->name('addNewUser');
 Route::get('/comptelabo','AdminController@comptelabo')->name('comptelabo');
 Route::get('/compteadmin','AdminController@compteadmin')->name('compteadmin');
+
+Route::post('/compteadmin/delete','AdminController@deleteadmin')->name('delete');
+Route::post('/compteadmin','AdminController@blockadmin')->name('block');
+
+
+
 });
 
 

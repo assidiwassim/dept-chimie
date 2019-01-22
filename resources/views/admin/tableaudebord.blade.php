@@ -3,12 +3,12 @@
 @section('content')
 <section class="content-header">
         <h1>
-          Dashboard
-          <small>Version 2.0</small>
+          TABLEAU DE BORD
+        
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active">Dashboard</li>
+          <li><a href="#"><i class="fa fa-dashboard"></i> Menu</a></li>
+          <li class="active"> Tableau de bord</li>
         </ol>
 </section>
 <section class="content">
@@ -19,8 +19,8 @@
               <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
   
               <div class="info-box-content">
-                <span class="info-box-text">CPU Traffic</span>
-                <span class="info-box-number">90<small>%</small></span>
+                <span class="info-box-text">Utilisateurs</span>
+                <span class="info-box-number">{{$nblabo + $nbadmin}} </span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -36,8 +36,8 @@
               <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
   
               <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
-                <span class="info-box-number">760</span>
+                <span class="info-box-text">Laboratoires</span>
+                <span class="info-box-number">{{$nblabo}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -49,8 +49,8 @@
               <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
   
               <div class="info-box-content">
-                <span class="info-box-text">New Members</span>
-                <span class="info-box-number">2,000</span>
+                <span class="info-box-text">Administrateurs</span>
+                <span class="info-box-number">{{$nbadmin}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -64,39 +64,14 @@
           <div class="col-md-12">
             <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Monthly Recap Report</h3>
+                <h3 class="box-title">Statistique</h3>
   
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
-                      <i class="fa fa-wrench"></i></button>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
-                    </ul>
-                  </div>
-                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                </div>
+             
               </div>
               <!-- /.box-header -->
               <div class="box-body">
                 <div class="row">
-                  <div class="col-md-8">
-                    <p class="text-center">
-                      <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                    </p>
-  
-                    <div class="chart">
-                      <!-- Sales Chart Canvas -->
-                      <canvas id="salesChart" style="height: 147px; width: 878px;" width="878" height="147"></canvas>
-                    </div>
-                    <!-- /.chart-responsive -->
-                  </div>
+              
                   <!-- /.col -->
                   <div class="col-md-4">
                     <p class="text-center">
