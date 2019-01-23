@@ -29,6 +29,9 @@ Route::get('/magasin', 'HomeController@magasin_labo')->name('magasin_labo');
 Route::get('/magasin/ajouter-produit', 'HomeController@ajouter_produit_magasin_labo')->name('ajouter_produit_magasin_labo');
 Route::post('/magasin/ajouter-produit', 'ProduitController@addproduit')->name('addproduit');
 
+Route::get('/magasin/supprimer-produit', 'ProduitController@deleteproduit')->name('delete-produit');
+
+
 Route::get('/discussion', 'HomeController@discussion_labo')->name('discussion_labo');
 Route::get('/aide', 'HomeController@aide_labo')->name('aide_labo');
 Route::get('/parametre', 'HomeController@parametre_labo')->name('parametre_labo');

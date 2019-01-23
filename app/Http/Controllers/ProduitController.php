@@ -37,9 +37,21 @@ class ProduitController extends Controller
             $porduit->unite = $request->input('unite');
             $porduit->save();
       
-           session()->flash('message-success','la nouvelle produit a été enregistrer correctement!');
+           session()->flash('message-success-ajout-produit','la nouvelle produit a été enregistrer correctement!');
             return view('user/ajouter_produit_magasin_labo');
           }
+
+
+
+          public function  deleteproduit(Request $request)
+          {
+           
+           $produit = Produit::find($request->input('idproduit'));  
+           $produit->delete();
+           session()->flash('message-success-produit',"la  produit  été supprimer correctement!");
+            return redirect()->route('magasin_labo');
+
+        }
       
     }
 

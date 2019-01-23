@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Produit;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -35,7 +36,8 @@ class HomeController extends Controller
     }
     public function magasin_labo()
     {
-        return view('user/magasin_labo');
+        $produits=Produit::where('user_id',Auth::user()->id)->get();
+        return view('user/magasin_labo')->with('produits',$produits);
     }
     public function discussion_labo()
     {

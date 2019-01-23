@@ -66,7 +66,22 @@
     </ol>
   </section>
   <section class="content">
-  
+  @if (Session::has('message-success'))
+    <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i> alerte !</h4>
+            {{ Session::get('message-success') }}
+    </div>
+    @endif
+    @if (Session::has('message-success-produit'))
+    <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i> alerte !</h4>
+            {{ Session::get('message-success-produit') }}
+    </div>
+    @endif
+    
+    
 
     <div class="row">
       <div class="col-md-12">
@@ -113,6 +128,7 @@
                         <div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                                 <thead>
                                 <tr role="row">
+                                <th>N°</th>
                                     <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Référence</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Désignation</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Formule chimique</th>
@@ -125,80 +141,26 @@
                                 <tbody>
                      
                                 <tr role="row" class="even">
-                                  <td class="sorting_1">Gecko</td>
-                                  <td>Firefox 1.5</td>
-                                  <td>Win 98+ / OSX.2+</td>
-                                  <td>1.8</td>
-                                  <td>A</td>
-                                  <td  style="width: 50px"><button class="btn btn-primary btn-sm btn-block">Modifier</button></td>
-                                  <td style="width: 50px"><button class="btn btn-danger btn-sm ">Supprimer</button></td>
+                               @foreach($produits as $produits)
+                                <td>{{$loop->index+1}}</td>
+                                  <td class="sorting_1">{{$produits->reference}}</td>
+                                  <td>{{$produits->designation}}</td>
+                                  <td>{{$produits->formule}}</td>
+                                  <td>{{$produits->qte}}</td>
+                                  <td>{{$produits->unite}}</td>
+                                  <td  style="width: 50px">
+                                  <button class="btn btn-primary btn-sm btn-block">Modifier</button></td>
+                                  <td style="width: 50px">
+                                  <form method="get"  action="magasin/supprimer-produit"   >
+                                        @csrf
+                                        <input  name="idproduit" type="hidden" value="{{$produits->id}}">
+                                         <button type="submit" class="btn btn-danger btn-sm "  style="border-radius: 50%;">supprimer</button>
+                                    <i class="fa fa-times"></i>
+                                    </form>
+                                    </td>
                                 </tr>
-                                <tr role="row" class="odd">
-                                  <td class="sorting_1">Gecko</td>
-                                  <td>Firefox 2.0</td>
-                                  <td>Win 98+ / OSX.2+</td>
-                                  <td>1.8</td>
-                                  <td>A</td>
-                                  <td  style="width: 50px"><button class="btn btn-primary btn-sm btn-block">Modifier</button></td>
-                                  <td style="width: 50px"><button class="btn btn-danger btn-sm ">Supprimer</button></td>
-                                 </tr>
-                                 <tr role="row" class="even">
-                                  <td class="sorting_1">Gecko</td>
-                                  <td>Firefox 3.0</td>
-                                  <td>Win 2k+ / OSX.3+</td>
-                                  <td>1.9</td>
-                                  <td>A</td>
-                                  <td  style="width: 50px"><button class="btn btn-primary btn-sm btn-block">Modifier</button></td>
-                                  <td style="width: 50px"><button class="btn btn-danger btn-sm ">Supprimer</button></td>
-                                 </tr><tr role="row" class="odd">
-                                  <td class="sorting_1">Gecko</td>
-                                  <td>Camino 1.0</td>
-                                  <td>OSX.2+</td>
-                                  <td>1.8</td>
-                                  <td>A</td>
-                                  <td  style="width: 50px"><button class="btn btn-primary btn-sm btn-block">Modifier</button></td>
-                                  <td style="width: 50px"><button class="btn btn-danger btn-sm ">Supprimer</button></td>
-                                 </tr><tr role="row" class="even">
-                                  <td class="sorting_1">Gecko</td>
-                                  <td>Camino 1.5</td>
-                                  <td>OSX.3+</td>
-                                  <td>1.8</td>
-                                  <td>A</td>
-                                  <td  style="width: 50px"><button class="btn btn-primary btn-sm btn-block">Modifier</button></td>
-                                  <td style="width: 50px"><button class="btn btn-danger btn-sm ">Supprimer</button></td>
-                                </tr><tr role="row" class="odd">
-                                  <td class="sorting_1">Gecko</td>
-                                  <td>Netscape 7.2</td>
-                                  <td>Win 95+ / Mac OS 8.6-9.2</td>
-                                  <td>1.7</td>
-                                  <td>A</td>
-                                  <td  style="width: 50px"><button class="btn btn-primary btn-sm btn-block">Modifier</button></td>
-                                  <td style="width: 50px"><button class="btn btn-danger btn-sm ">Supprimer</button></td>
-                               </tr><tr role="row" class="even">
-                                  <td class="sorting_1">Gecko</td>
-                                  <td>Netscape Browser 8</td>
-                                  <td>Win 98SE+</td>
-                                  <td>1.7</td>
-                                  <td>A</td>
-                                  <td  style="width: 50px"><button class="btn btn-primary btn-sm btn-block">Modifier</button></td>
-                                  <td style="width: 50px"><button class="btn btn-danger btn-sm ">Supprimer</button></td>
-                                </tr><tr role="row" class="odd">
-                                  <td class="sorting_1">Gecko</td>
-                                  <td>Netscape Navigator 9</td>
-                                  <td>Win 98+ / OSX.2+</td>
-                                  <td>1.8</td>
-                                  <td>A</td>
-                                  <td  style="width: 50px"><button class="btn btn-primary btn-sm btn-block">Modifier</button></td>
-                                  <td style="width: 50px"><button class="btn btn-danger btn-sm ">Supprimer</button></td>
-                                </tr><tr role="row" class="even">
-                                  <td class="sorting_1">Gecko</td>
-                                  <td>Mozilla 1.0</td>
-                                  <td>Win 95+ / OSX.1+</td>
-                                  <td>1</td>
-                                  <td>A</td>
-                                  <td  style="width: 50px"><button class="btn btn-primary btn-sm btn-block">Modifier</button></td>
-                                  <td style="width: 50px"><button class="btn btn-danger btn-sm ">Supprimer</button></td>
-                                </tr></tbody>
+                                @endforeach
+                               </tbody>
                             </table></div>
                   </div>
                 </div>
