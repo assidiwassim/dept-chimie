@@ -116,21 +116,13 @@
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Désignation</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Formule chimique</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Quantité</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Unité</th></tr>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"></th></tr>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Unité</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"></th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr role="row" class="odd">
-                                  <td class="sorting_1">Gecko</td>
-                                  <td>Firefox 1.0</td>
-                                  <td>Win 98+ / OSX.2+</td>
-                                  <td>1.7</td>
-                                  <td>A</td>
-                                  <td  style="width: 50px"><button class="btn btn-primary btn-sm btn-block">Modifier</button></td>
-                                  <td style="width: 50px"><button class="btn btn-danger btn-sm ">Supprimer</button></td>
-                                </tr>
+                     
                                 <tr role="row" class="even">
                                   <td class="sorting_1">Gecko</td>
                                   <td>Firefox 1.5</td>

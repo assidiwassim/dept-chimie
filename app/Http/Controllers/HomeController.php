@@ -49,5 +49,9 @@ class HomeController extends Controller
     {
         return view('user/parametre_labo');
     }
+    public function ajouter_produit_magasin_labo()
+    {
+        return view('user/ajouter_produit_magasin_labo');
+    }
     
 }
