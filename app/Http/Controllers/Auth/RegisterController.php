@@ -52,8 +52,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'tel'  => ['nullable', 'string', 'min:8','max:8'],
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+           // 'role' => ['required', 'string', 'min:4','max:5', 'confirmed'],
+            'tel'  => ['required','string', 'min:8'],
+            
         ]);
     }
 
@@ -65,25 +66,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {  
-        $old_avatar= Auth::user()->avatar;
-        if($request->hasFile('avatar')){
-            $avatar = $request->file('avatar');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(250, 250)->save( public_path('/uploads/avatars/' . $filename ) );
-            $user = Auth::user();
-            $user->avatar = $filename;
-       $user->cin =$request->cin;
-            $user->save();
-        }
-
-
+     
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'logo' => $data['logo'],
+             // 'role' => $data['role'],
             'tel' => $data['tel'],
         ]);
+
+        
 
 
     }
@@ -96,8 +88,8 @@ class RegisterController extends Controller
 
         // add the user
         $this->create($request->all());
-
-        
+     
+        dump($request);
         return redirect("/admin/addNewUser");
 
     }

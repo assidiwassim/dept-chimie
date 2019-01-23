@@ -33,7 +33,7 @@
                             <div class="form-group">
                                         <label for="type" class="col-sm-4 control-label">Type de compte</label>
                                         <div class="col-sm-8">
-                                            <select class="form-control" name="type" required="" aria-required="true">
+                                            <select class="form-control" name="role" required="" aria-required="true">
                                                 <option value="" disabled="" selected="1">Sélectionnez un type</option>
                                                 <option value="user">Laboratoire</option>
                                                 <option value="admin">Administrateur</option>
@@ -73,7 +73,7 @@
                     
                                             <div class="col-sm-8">
 
-                                                    <input id="tel" type="tel" class="form-control{{ $errors->has('tel') ? ' is-invalid' : '' }}" name="tel" required>
+                                                    <input id="tel" type="tel" name="tel" class="form-control{{ $errors->has('tel') ? ' is-invalid' : '' }}"  required>
 
                                                     @if ($errors->has('tel'))
                                                         <span class="invalid-feedback" role="alert">
@@ -107,7 +107,7 @@
                                             <label for="fileInput" class="col-sm-4 control-label"> Logo </label>
                                             
                                             <div class="col-sm-8">
-                                              <input id="fileInput" type="file" class="form-control">
+                                              <input id="fileInput"  name="logo" type="file" class="form-control">
                                               <p>
                                                 <small>
                                                   <code>jpeg</code> ,
