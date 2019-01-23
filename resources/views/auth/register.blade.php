@@ -27,7 +27,7 @@
                         
                         
                         
-                        <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('register') }}" enctype=”multipart/form-data”>
                                 @csrf
                             <br>      
                             <div class="form-group">
