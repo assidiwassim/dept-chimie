@@ -208,13 +208,13 @@ width: 190px;
         <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="{{ route('tableaudebord_labo') }}"><i class="fa fa-home"></i> <span>Tableau de bord</span></a></li>
-        <li class="active"><a href="{{ route('tableaudebord') }}"><i class="fa fa-shopping-basket"></i> <span>Annonce</span></a></li>
-        <li class="active"><a href="{{ route('tableaudebord') }}"><i class="fa fa-shopping-basket"></i> <span>Mes annonces</span></a></li>
-        <li class="active"><a href="{{ route('tableaudebord') }}"><i class="fa fa-product-hunt"></i> <span>Magasin</span></a></li>
-        <li class="active"><a href="{{ route('tableaudebord') }}"><i class="fa fa-envelope"></i> <span>Discussion</span></a></li>
-        <li class="active"><a href="{{ route('tableaudebord') }}"><i class="fa fa-question-circle"></i> <span>Centre d'aide</span></a></li>
-        <li class="active"><a href="{{ route('tableaudebord') }}"><i class="fa fa-cog"></i> <span>Paramètres</span></a></li>
-   
+        <li class="active"><a href="{{ route('Annonces_labo') }}"><i class="fa fa-shopping-basket"></i> <span>Annonce</span></a></li>
+        <li class="active"><a href="{{ route('MesAnnonces_labo') }}"><i class="fa fa-shopping-basket"></i> <span>Mes annonces</span></a></li>
+        <li class="active"><a href="{{ route('magasin_labo') }}"><i class="fa fa-product-hunt"></i> <span>Magasin</span></a></li>
+        <li class="active"><a href="{{ route('discussion_labo') }}"><i class="fa fa-envelope"></i> <span>Discussion</span></a></li>
+        <li class="active"><a href="{{ route('aide_labo') }}"><i class="fa fa-question-circle"></i> <span>Centre d'aide</span></a></li>
+        <li class="active"><a href="{{ route('parametre_labo') }}"><i class="fa fa-cog"></i> <span>Paramètres</span></a></li>
+        
         
       </ul>
       <!-- /.sidebar-menu -->
@@ -239,11 +239,9 @@ width: 190px;
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->
-    <div class="pull-right hidden-xs">
-      Anything you want
-    </div>
+  
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2019 <a href="#">FSM</a>.</strong> Tous droits réservés.
   </footer>
 
   <!-- Control Sidebar -->

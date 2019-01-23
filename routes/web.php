@@ -22,7 +22,13 @@ Auth::routes();
 /* group for link simple user  */
 Route::group(['prefix' =>'labo'  ,'middleware'=> 'labo'],function()
 {
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('tableaudebord_labo');
+Route::get('/annonces', 'HomeController@Annonces_labo')->name('Annonces_labo');
+Route::get('/mesannonces', 'HomeController@MesAnnonces_labo')->name('MesAnnonces_labo');
+Route::get('/magasin', 'HomeController@magasin_labo')->name('magasin_labo');
+Route::get('/discussion', 'HomeController@discussion_labo')->name('discussion_labo');
+Route::get('/aide', 'HomeController@aide_labo')->name('aide_labo');
+Route::get('/parametre', 'HomeController@parametre_labo')->name('parametre_labo');
 });
 
 /* group for link admin user  */

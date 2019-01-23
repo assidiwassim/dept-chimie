@@ -23,6 +23,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user/home');
+        return view('user/tableaudebord_labo');
     }
+    public function Annonces_labo()
+    {
+        return view('user/Annonces_labo');
+    }
+    public function MesAnnonces_labo()
+    {
+        return view('user/MesAnnonces_labo');
+    }
+    public function magasin_labo()
+    {
+        return view('user/magasin_labo');
+    }
+    public function discussion_labo()
+    {
+        return view('user/discussion_labo');
+    }
+    public function aide_labo()
+    {
+        return view('user/aide_labo');
+    }
+    public function parametre_labo()
+    {
+        return view('user/parametre_labo');
+    }
+    
 }
