@@ -12,6 +12,14 @@
       <li class="active"> Compte administrateur</li>
     </ol>
 </section>
+@if (Session::has('message-success'))
+    <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i> alerte !</h4>
+            {{ Session::get('message-success') }}
+    </div>
+    @endif
+
 <section class="content">
 
 
@@ -27,7 +35,7 @@
                         
                         
                         
-                        <form class="form-horizontal" method="POST" action="{{ route('register') }}" enctype=”multipart/form-data”>
+                        <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="{{ route('register') }}">
                                 @csrf
                             <br>      
                             <div class="form-group">
@@ -107,7 +115,7 @@
                                             <label for="fileInput" class="col-sm-4 control-label"> Logo </label>
                                             
                                             <div class="col-sm-8">
-                                              <input id="fileInput"  name="logo" type="file" class="form-control">
+                                              <input   type ="file" name="logo"  class="form-control">
                                               <p>
                                                 <small>
                                                   <code>jpeg</code> ,

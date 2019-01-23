@@ -53,11 +53,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'role' => ['required', 'string', 'min:4'],
+            'role' => ['required', 'string', 'min:4','max:5'],
             'tel'  => ['required', 'min:8','numeric'],
-            //'logo' => ['required','image','mimes:jpeg,png,jpg,tiff|max:2048'],
-           
-            
+            'logo' => ['required','image','mimes:jpeg,png,jpg,tiff|max:2048'],      
         ]);
     }
 
@@ -67,10 +65,10 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(\Illuminate\Http\Request $data)
     {     
-        if($data->hasFile('logo'))
-            {
+       if($data->hasFile('logo')){
+            
                     $logo = $data->file('logo');
                     $filename = time() . '.' . $logo->getClientOriginalExtension();
                     Image::make($logo)->resize(50,50)->save( public_path('/upload/logo/' . $filename ) );
@@ -78,7 +76,8 @@ class RegisterController extends Controller
                     'name' => $data['name'],
                     'email' => $data['email'],
                     'password' => Hash::make($data['password']),
-                     'role' => $data['role'],
+                 
+                    'role' => $data['role'],
                     'tel' => $data['tel'],
                     'logo' => $filename,
                 ]);
@@ -96,7 +95,7 @@ class RegisterController extends Controller
                     'tel' => $data['tel'],
                 ]);
         
-            }
+            }   
 
         
 
@@ -110,7 +109,16 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         // add the user
-        $this->create($request->all());
+        $this->create($request);
+        if($request->input('role')=="admin")
+        {
+            session()->flash('message-success', " l'ajout de l'adminstrateur fait avec succées");
+        }
+        else
+        {
+            session()->flash('message-success', "l'ajout de utilisateur fait avec succées");
+        }
+        
         return redirect("/admin/addNewUser");
 
     }
