@@ -84,6 +84,11 @@ width: 190px;
     border-radius: 3px;
 }
 
+.skin-blue .sidebar-menu>li>.treeview-menu {
+    margin: 0 1px;
+     background: transparent;
+}
+
 </style>
 
 </head>
@@ -210,7 +215,18 @@ width: 190px;
         <li class="active"><a href="{{ route('tableaudebord_labo') }}"><i class="fa fa-home"></i> <span>Tableau de bord</span></a></li>
         <li class="active"><a href="{{ route('Annonces_labo') }}"><i class="fa fa-shopping-basket"></i> <span>Annonce</span></a></li>
         <li class="active"><a href="{{ route('MesAnnonces_labo') }}"><i class="fa fa-shopping-basket"></i> <span>Mes annonces</span></a></li>
-        <li class="active"><a href="{{ route('magasin_labo') }}"><i class="fa fa-product-hunt"></i> <span>Magasin</span></a></li>
+       <li class="treeview active">
+          <a href="{{ route('magasin_labo') }}">
+              <i class="fa fa-product-hunt"></i> <span>Magasin</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu menu-open" style="display: block;">
+            <li><a href="{{ route('magasin_labo') }}"><i class="fa fa-link"></i> <span> Liste des produits </span></a></li>
+            <li><a href="{{ route('ajouter_produit_magasin_labo') }}"><i class="fa fa-link"></i> <span> Ajouter un produit</span></a></li>
+        </ul>
+        </li>
         <li class="active"><a href="{{ route('discussion_labo') }}"><i class="fa fa-envelope"></i> <span>Discussion</span></a></li>
         <li class="active"><a href="{{ route('aide_labo') }}"><i class="fa fa-question-circle"></i> <span>Centre d'aide</span></a></li>
         <li class="active"><a href="{{ route('parametre_labo') }}"><i class="fa fa-cog"></i> <span>Paramètres</span></a></li>
