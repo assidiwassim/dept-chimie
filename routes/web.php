@@ -50,7 +50,7 @@ Route::post('/compteadmin/deblockadmin','AdminController@deblockadmin')->name('d
 Route::post('/compteadmin/deleteLabo','AdminController@deletelabo')->name('deletelabo');
 Route::post('/compteLabo/blocklabo','AdminController@blocklabo')->name('blocklabo');
 Route::post('/compteLabo/deblocklabo','AdminController@deblocklabo')->name('deblocklabo');
-}
+});
 
 
 
