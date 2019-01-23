@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Image;
+use File;
 class RegisterController extends Controller
 {
     /*
@@ -52,8 +53,10 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-           // 'role' => ['required', 'string', 'min:4','max:5', 'confirmed'],
-            'tel'  => ['required','string', 'min:8'],
+            'role' => ['required', 'string', 'min:4'],
+            'tel'  => ['required', 'min:8','numeric'],
+            //'logo' => ['required','image','mimes:jpeg,png,jpg,tiff|max:2048'],
+           
             
         ]);
     }
@@ -65,15 +68,35 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {  
-     
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-             // 'role' => $data['role'],
-            'tel' => $data['tel'],
-        ]);
+    {     
+        if($data->hasFile('logo'))
+            {
+                    $logo = $data->file('logo');
+                    $filename = time() . '.' . $logo->getClientOriginalExtension();
+                    Image::make($logo)->resize(50,50)->save( public_path('/upload/logo/' . $filename ) );
+                    return User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => Hash::make($data['password']),
+                     'role' => $data['role'],
+                    'tel' => $data['tel'],
+                    'logo' => $filename,
+                ]);
+        
+      
+            }
+            else
+            {
+
+                return User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => Hash::make($data['password']),
+                     'role' => $data['role'],
+                    'tel' => $data['tel'],
+                ]);
+        
+            }
 
         
 
@@ -88,8 +111,6 @@ class RegisterController extends Controller
 
         // add the user
         $this->create($request->all());
-     
-        dump($request);
         return redirect("/admin/addNewUser");
 
     }
