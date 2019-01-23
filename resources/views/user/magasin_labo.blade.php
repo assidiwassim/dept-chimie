@@ -60,8 +60,9 @@
       <small>labshare</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Magasin </a></li>
-      <li class="active">Menu</li>
+
+      <li class="active"><i class="fa fa-dashboard"></i> Menu</li>
+      <li><a href="#"> Magasin </a></li>
     </ol>
   </section>
   <section class="content">
