@@ -27,4 +27,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($user) { // before delete() method call this
+             $user->post()->delete();           
+        });
+    }
 }
+
