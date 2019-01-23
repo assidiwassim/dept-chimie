@@ -120,13 +120,7 @@
                                         <input type="text" class="form-control" name="categorie" id="categorie" placeholder="Catégorie exemple: gaz">
                                       </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="file" class="col-sm-2 control-label">photos </label>
-                      
-                                        <div class="col-sm-10">
-                                          <input type="file" class="form-control" name="file" id="file" >
-                                        </div>
-                                      </div>
+                                  
                           </div>
                           <!-- /.box-body -->
                           <div class="box-footer">
