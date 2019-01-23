@@ -1,5 +1,4 @@
 
-
 @extends('layouts.layout-Admin')
 @section('content')
 <section class="content-header">
@@ -147,7 +146,6 @@
                 </div>
 
             </section>
-
 
 @endsection
 

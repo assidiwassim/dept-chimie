@@ -31,11 +31,12 @@ Route::get('/aide', 'HomeController@aide_labo')->name('aide_labo');
 Route::get('/parametre', 'HomeController@parametre_labo')->name('parametre_labo');
 });
 
+
 /* group for link admin user  */
 Route::group(['prefix' =>'admin'  ,'middleware'=> 'admin'],function()
 {
     Route::get('/','AdminController@index')->name('tableaudebord');
-Route::get('/addNewUser', 'AdminController@addNewUser')->name('addNewUser');
+    Route::get('/addNewUser', 'AdminController@addNewUser')->name('addNewUser');
 Route::get('/comptelabo','AdminController@comptelabo')->name('comptelabo');
 Route::get('/compteadmin','AdminController@compteadmin')->name('compteadmin');
 //delete end block admin 
