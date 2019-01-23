@@ -104,7 +104,7 @@ width: 190px;
     <a href="index2.html" class="logo">
 
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg pull-left " style="margin-left:10px;"><b>Labo 1</b></span>
+      <span class="logo-lg pull-left " style="margin-left:10px;"><b>Labo {{Auth::user()->id}}</b></span>
     </a>
 
     <!-- Header Navbar -->

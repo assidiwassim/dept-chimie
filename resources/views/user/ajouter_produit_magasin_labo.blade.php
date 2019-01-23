@@ -75,14 +75,27 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-body">
+                @if (Session::has('message-success'))
+    <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i> alerte !</h4>
+            {{ Session::get('message-success') }}
+    </div>
+    @endif
                   <div class="row">
-                      <form class="form-horizontal">
+                      <form class="form-horizontal" method="post"   action="{{ route('addproduit') }}">
+                      @csrf
                           <div class="box-body">
                             <div class="form-group">
                               <label for="reference" class="col-sm-2 control-label">Référence</label>
             
                               <div class="col-sm-10">
-                                <input type="text" class="form-control" name="reference" id="reference" placeholder="Référence">
+                                <input type="text" class="form-control" name="reference" id="reference" placeholder="Référence" required>
+                                @if ($errors->has('reference'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('reference') }}</strong>
+                                    </span>
+                                @endif
                               </div>
                             </div>
                             <div class="form-group">
@@ -90,34 +103,60 @@
             
                               <div class="col-sm-10">
                                   <textarea class="form-control" name="designation" id="designation" rows="3" placeholder="Enter ..."></textarea>
+                                  @if ($errors->has('designation'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('designation') }}</strong>
+                                    </span>
+                                @endif
                               </div>
                             </div>
                             <div class="form-group">
-                                <label for="formule" class="col-sm-2 control-label">Formule</label>
+                                <label for="formule" class="col-sm-2 control-label" >Formule</label>
               
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="formule" id="formule" placeholder="Formule chimique exemple: h2o">
+                                  <input type="text" class="form-control" name="formule" id="formule" placeholder="Formule chimique exemple: h2o" required>
+                                  @if ($errors->has('formule'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('formule') }}</strong>
+                                    </span>
+                                  @endif
                                 </div>
                               </div>
                               <div class="form-group">
-                                  <label for="unite" class="col-sm-2 control-label">Unité</label>
+                                  <label for="unite" class="col-sm-2 control-label" >Unité</label>
                 
                                   <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="unite" id="unite" placeholder="Unité exemple: Litre">
+                                    <input type="text" class="form-control" name="unite" id="unite" placeholder="Unité exemple: Litre" required>
+                                    
+                                    @if ($errors->has('unite'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('unite') }}</strong>
+                                    </span>
+                                  @endif
                                   </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="qte" class="col-sm-2 control-label">Quantité</label>
+                                    <label for="qte" class="col-sm-2 control-label" >Quantité</label>
                   
                                     <div class="col-sm-10">
-                                      <input type="number" class="form-control" name="qte" id="qte" placeholder="Quantité exemple: 10">
+                                      <input type="number" class="form-control" name="qte" id="qte" placeholder="Quantité exemple: 10" required>
+                                      @if ($errors->has('qte'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('qte') }}</strong>
+                                    </span>
+                                      @endif
                                     </div>
                                   </div>
                                   <div class="form-group">
-                                      <label for="categorie" class="col-sm-2 control-label">Catégorie</label>
+                                      <label for="categorie" class="col-sm-2 control-label" >Catégorie</label>
                     
                                       <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="categorie" id="categorie" placeholder="Catégorie exemple: gaz">
+                                        <input type="text" class="form-control" name="categorie" id="categorie" placeholder="Catégorie exemple: gaz" required>
+                                        @if ($errors->has('categorie'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('categorie') }}</strong>
+                                    </span>
+                                        @endif
                                       </div>
                                     </div>
                                   

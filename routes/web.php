@@ -27,6 +27,7 @@ Route::get('/annonces', 'HomeController@Annonces_labo')->name('Annonces_labo');
 Route::get('/mesannonces', 'HomeController@MesAnnonces_labo')->name('MesAnnonces_labo');
 Route::get('/magasin', 'HomeController@magasin_labo')->name('magasin_labo');
 Route::get('/magasin/ajouter-produit', 'HomeController@ajouter_produit_magasin_labo')->name('ajouter_produit_magasin_labo');
+Route::post('/magasin/ajouter-produit', 'ProduitController@addproduit')->name('addproduit');
 
 Route::get('/discussion', 'HomeController@discussion_labo')->name('discussion_labo');
 Route::get('/aide', 'HomeController@aide_labo')->name('aide_labo');
@@ -38,8 +39,8 @@ Route::get('/parametre', 'HomeController@parametre_labo')->name('parametre_labo'
 Route::group(['prefix' =>'admin'  ,'middleware'=> 'admin'],function()
 {
 
-    Route::get('/','AdminController@index')->name('tableaudebord');
-    Route::get('/addNewUser', 'AdminController@addNewUser')->name('addNewUser');
+Route::get('/','AdminController@index')->name('tableaudebord');
+Route::get('/addNewUser', 'AdminController@addNewUser')->name('addNewUser');
 Route::get('/comptelabo','AdminController@comptelabo')->name('comptelabo');
 Route::get('/compteadmin','AdminController@compteadmin')->name('compteadmin');
 //delete end block admin 
