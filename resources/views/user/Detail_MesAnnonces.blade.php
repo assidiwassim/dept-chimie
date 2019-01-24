@@ -143,53 +143,17 @@
 </style>
 <section class="content-header">
     <h1>
-        Annonces 
+        Détail
       <small>labshare</small>
     </h1>
     <ol class="breadcrumb">
       <li class="active"><i class="fa fa-dashboard"></i> Menu</li>
-      <li><a href="#"> Annonces </a></li>
+      <li><a href="#"> Mes annonces </a></li>
+      <li><a href="#"> Détail </a></li>
     </ol>
   </section>
   <section class="content">
   
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="box">
-          <div class="box-body">
-            <div class="row">
-                <form id="search-form">
-                    <div class="col-md-6 input-container ">
-                            <input type="text" name="designation" class="form-control" placeholder="Essayer, 'Une désignation' ou bien 'Une Formule chimique' " >
-                    </div>
-                    <div class="col-md-2">
-                            <select name="reference" class="form-control select1">
-                                    <option selected disabled>Catégorie</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                    <option>option 5</option>
-                                  </select>
-                     </div>
-                    <div class="col-md-2">
-                            <select name="formule" class="form-control select2">
-                                    <option selected disabled>Type d'annonce</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                    <option>option 5</option>
-                            </select>
-                    </div>
-                    <div class="col-md-2">
-                            <input type="submit" class="btn btn-primary btn-sm btn-block" value="Rechercher" >
-                    </div>
-                </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="row row_list_produit">
           
@@ -209,7 +173,7 @@
                   </p>
                 </div>
                 <div class="box-footer">
-                    <a class="btn btn-default btn-lg btn-block btn-repondre ">Répondre</a>
+                    <a class="btn btn-default btn-lg btn-block btn-repondre ">Consulté</a>
                 </div>
               </div>
             </div>
@@ -228,7 +192,7 @@
                   </p>
                 </div>
                 <div class="box-footer">
-                    <a class="btn btn-default btn-lg btn-block btn-repondre-Demande ">Répondre</a>
+                    <a class="btn btn-default btn-lg btn-block btn-repondre-Demande ">Consulté</a>
                 </div>
               </div>
             </div>
