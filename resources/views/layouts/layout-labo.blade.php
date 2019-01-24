@@ -212,24 +212,35 @@ width: 190px;
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="{{ route('tableaudebord_labo') }}"><i class="fa fa-home"></i> <span>Tableau de bord</span></a></li>
-        <li class="active"><a href="{{ route('Annonces_labo') }}"><i class="fa fa-shopping-basket"></i> <span>Annonce</span></a></li>
-        <li class="active"><a href="{{ route('MesAnnonces_labo') }}"><i class="fa fa-shopping-basket"></i> <span>Mes annonces</span></a></li>
-       <li class="treeview active">
+        <li class="active click"><a href="{{ route('tableaudebord_labo') }}"><i class="fa fa-home"></i> <span>Tableau de bord</span></a></li>
+        <li ><a href="{{ route('Annonces_labo') }}"><i class="fa fa-shopping-basket"></i> <span>Annonce</span></a></li>
+        <li class="treeview click">
+          <a href="{{ route('MesAnnonces_labo') }}">
+              <i class="fa fa-shopping-basket"></i> <span>Mes annonces</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu " >
+            <li><a href="{{ route('MesAnnonces_labo') }}"><i class="fa fa-link"></i> <span> Liste de mes annonces </span></a></li>
+            <li><a href="{{ route('ajouter_annonce') }}"><i class="fa fa-link"></i> <span> Ajouter une annonce</span></a></li>
+        </ul>
+        </li>
+       <li class="treeview click">
           <a href="{{ route('magasin_labo') }}">
               <i class="fa fa-product-hunt"></i> <span>Magasin</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu menu-open" style="display: block;">
+          <ul class="treeview-menu " >
             <li><a href="{{ route('magasin_labo') }}"><i class="fa fa-link"></i> <span> Liste des produits </span></a></li>
             <li><a href="{{ route('ajouter_produit_magasin_labo') }}"><i class="fa fa-link"></i> <span> Ajouter un produit</span></a></li>
         </ul>
         </li>
-        <li class="active"><a href="{{ route('discussion_labo') }}"><i class="fa fa-envelope"></i> <span>Discussion</span></a></li>
-        <li class="active"><a href="{{ route('aide_labo') }}"><i class="fa fa-question-circle"></i> <span>Centre d'aide</span></a></li>
-        <li class="active"><a href="{{ route('parametre_labo') }}"><i class="fa fa-cog"></i> <span>Paramètres</span></a></li>
+        <li class="click"><a href="{{ route('discussion_labo') }}"><i class="fa fa-envelope"></i> <span>Discussion</span></a></li>
+        <li class="click"><a href="{{ route('aide_labo') }}"><i class="fa fa-question-circle"></i> <span>Centre d'aide</span></a></li>
+        <li class="click"><a href="{{ route('parametre_labo') }}"><i class="fa fa-cog"></i> <span>Paramètres</span></a></li>
         
         
       </ul>
@@ -279,8 +290,18 @@ width: 190px;
 <!-- AdminLTE App -->
 <script src="{{ asset("bower_components/admin-lte/dist/js/adminlte.min.js")}}"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
+<script>
+  var url =window.location.href ;
+if (url.indexOf("/labo/annonces") >= 0){
+$('.click').add
+}else if (url.indexOf("/labo/annonces") >= 0){
+  alert("ko")
+}else if (url.indexOf("/labo/annonces") >= 0){
+
+}else if (url.indexOf("/labo/annonces") >= 0){
+
+}
+
+</script>
 </body>
 </html>
