@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produit;
+use App\Annonce;
 use Auth;
 class HomeController extends Controller
 {
@@ -26,14 +27,25 @@ class HomeController extends Controller
     {
         return view('user/tableaudebord_labo');
     }
+
+
+
     public function Annonces_labo()
-    {
-        return view('user/Annonces_labo');
+    {    $annonces=Annonce::all();
+        return view('user/Annonces_labo')->with('annonces',$annonces);
     }
+
+
     public function MesAnnonces_labo()
     {
-        return view('user/MesAnnonces_labo');
+
+        $annonces=Annonce::whereuser_id(Auth::user()->id)->get();
+        return view('user/MesAnnonces_labo')->with('annonces',$annonces);
+        
     }
+
+
+
     public function magasin_labo()
     {
         $produits=Produit::where('user_id',Auth::user()->id)->get();

@@ -192,45 +192,55 @@
     </div>
 
     <div class="row row_list_produit">
-          
+          @foreach($annonces as $annonce)
               <div class="col-md-3 col-sm-4  ">
               <div class="box box-animation" style="padding:0 !important;">
-               <div class="box-header boxImg" style="background-image:url('https://img.e-marketing.fr/Img/BREVE/2017/2/313628/Comment-optimiser-son-experience-utilisateur-mobile-F.jpg');">
+               <div class="box-header boxImg" style="background-image:url('/upload/PictureAnnonce/{{$annonce->file}}');">
                 <div class="box-header-cover">
-                   <a class="btn btn-default btn-success offre ">  Offre   <i class="fa fa-exchange " aria-hidden="true"> </i> </a>
-                 
-                    <h1>Nom de labo</h1>
+                @if($annonce->typeannonce=="Offre")
+                   <a class="btn btn-default btn-success offre "> 
+                    Offre 
+                    @if($annonce->natureannonce=="Changement")
+                      <i class="fa fa-exchange " aria-hidden="true"> </i>
+                      @endif
+                   </a>
+                 @else
+                 <a class="btn btn-default btn-success demande ">
+                 Demande
+                 @if($annonce->natureannonce=="Changement")
+                      <i class="fa fa-exchange " aria-hidden="true"> </i>
+                      @endif
+                 </a>
+                 @endif
+                    <h1>{{DB::table('users')->select('name')->where('id','=',$annonce->user_id)->value('name')}}</h1>
                 </div>
                </div>
                 <div class="box-body" >
-                  <h2>Titre de l'annonce</h2>
+                  <h2>
+                  @if($annonce->typeannonce=="Offre")
+                       {{DB::table('produits')->select('reference')->where('id','=',$annonce->refproduit)->value('reference')}}  
+                  @else
+                       {{DB::table('produits')->select('reference')->where('id','=',$annonce->refproduitEchange)->value('reference')}} 
+                  @endif
+                  </h2>
                   <p>
-                        Lorem ipsum dolor sit amet, ut graece omnesque assentior sit, quo eu tota scripserit cotidieque
+                     {{$annonce->designation}}
                   </p>
                 </div>
                 <div class="box-footer">
-                    <a class="btn btn-default btn-lg btn-block btn-repondre ">Consulté</a>
+             
+                
+                        @if($annonce->typeannonce=="Offre")
+                            <a href="#" class="btn btn-default btn-lg btn-block btn-repondre ">Consulté</a>
+                        @else
+                            <a href="#" class="btn btn-default btn-lg btn-block btn-repondre-Demande ">Consulté</a>
+                        @endif
+        
                 </div>
               </div>
             </div>
-              <div class="col-md-3 col-sm-4 ">
-              <div class="box box-animation" style="padding:0 !important;">
-               <div class="box-header boxImg" style="background-image:url('https://img.e-marketing.fr/Img/BREVE/2017/2/313628/Comment-optimiser-son-experience-utilisateur-mobile-F.jpg');">
-                <div class="box-header-cover">
-                   <a class="btn btn-default btn-success demande ">Demande</a>
-                    <h1>Nom de labo</h1>
-                </div>
-               </div>
-                <div class="box-body" >
-                  <h2>Titre de l'annonce</h2>
-                  <p>
-                        Lorem ipsum dolor sit amet, ut graece omnesque assentior sit, quo eu tota scripserit cotidieque
-                  </p>
-                </div>
-                <div class="box-footer">
-                    <a class="btn btn-default btn-lg btn-block btn-repondre-Demande ">Consulté</a>
-                </div>
-              </div>
+            @endforeach
+              
             </div>
           </div>
    
