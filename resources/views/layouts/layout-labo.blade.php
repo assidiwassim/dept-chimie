@@ -212,9 +212,9 @@ width: 190px;
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active click"><a href="{{ route('tableaudebord_labo') }}"><i class="fa fa-home"></i> <span>Tableau de bord</span></a></li>
-        <li ><a href="{{ route('Annonces_labo') }}"><i class="fa fa-shopping-basket"></i> <span>Annonce</span></a></li>
-        <li class="treeview click">
+        <li class=" tableaudebord_labo"><a href="{{ route('tableaudebord_labo') }}"><i class="fa fa-home"></i> <span>Tableau de bord</span></a></li>
+        <li class=" Annonces_labo"><a href="{{ route('Annonces_labo') }}"><i class="fa fa-shopping-basket"></i> <span>Annonce</span></a></li>
+        <li class="treeview MesAnnonces_labo">
           <a href="{{ route('MesAnnonces_labo') }}">
               <i class="fa fa-shopping-basket"></i> <span>Mes annonces</span>
             <span class="pull-right-container">
@@ -226,7 +226,7 @@ width: 190px;
             <li><a href="{{ route('ajouter_annonce') }}"><i class="fa fa-link"></i> <span> Ajouter une annonce</span></a></li>
         </ul>
         </li>
-       <li class="treeview click">
+       <li class="treeview magasin_labo">
           <a href="{{ route('magasin_labo') }}">
               <i class="fa fa-product-hunt"></i> <span>Magasin</span>
             <span class="pull-right-container">
@@ -238,9 +238,9 @@ width: 190px;
             <li><a href="{{ route('ajouter_produit_magasin_labo') }}"><i class="fa fa-link"></i> <span> Ajouter un produit</span></a></li>
         </ul>
         </li>
-        <li class="click"><a href="{{ route('discussion_labo') }}"><i class="fa fa-envelope"></i> <span>Discussion</span></a></li>
-        <li class="click"><a href="{{ route('aide_labo') }}"><i class="fa fa-question-circle"></i> <span>Centre d'aide</span></a></li>
-        <li class="click"><a href="{{ route('parametre_labo') }}"><i class="fa fa-cog"></i> <span>Paramètres</span></a></li>
+        <li class="discussion_labo"><a href="{{ route('discussion_labo') }}"><i class="fa fa-envelope"></i> <span>Discussion</span></a></li>
+        <li class="aide_labo"><a href="{{ route('aide_labo') }}"><i class="fa fa-question-circle"></i> <span>Centre d'aide</span></a></li>
+        <li class="parametre_labo"><a href="{{ route('parametre_labo') }}"><i class="fa fa-cog"></i> <span>Paramètres</span></a></li>
         
         
       </ul>
@@ -291,15 +291,23 @@ width: 190px;
 <script src="{{ asset("bower_components/admin-lte/dist/js/adminlte.min.js")}}"></script>
 
 <script>
+  
   var url =window.location.href ;
+  $('ul.active').removeClass("active");
 if (url.indexOf("/labo/annonces") >= 0){
-$('.click').add
-}else if (url.indexOf("/labo/annonces") >= 0){
-  alert("ko")
-}else if (url.indexOf("/labo/annonces") >= 0){
-
-}else if (url.indexOf("/labo/annonces") >= 0){
-
+  $('.Annonces_labo').addClass("active");
+}else if (url.indexOf("/labo/mesannonces") >= 0 ||url.indexOf("/labo/mesannonces/ajouter-annonce") >= 0 ){
+  $('.MesAnnonces_labo').addClass("active");
+}else if (url.indexOf("/labo/magasin") >= 0 ||url.indexOf("/labo/magasin/ajouter-produit") >= 0 ){
+  $('.magasin_labo').addClass("active");
+}else if (url.indexOf("/labo/discussion") >= 0){
+  $('.discussion_labo').addClass("active");
+}else if (url.indexOf("/labo/aide") >= 0){
+  $('.aide_labo').addClass("active");
+}else if (url.indexOf("/labo/parametre") >= 0){
+  $('.parametre_labo').addClass("active");
+}else{
+  $('.tableaudebord_labo').addClass("active");
 }
 
 </script>
