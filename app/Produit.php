@@ -15,13 +15,6 @@ class Produit extends Model
   public function user(){
      return $this->belongsTo('App\User');
      }
-     public function picture(){
-      return $this->hasMany('App\Picture');
-    }
-          protected static function boot() {
-            parent::boot();
-            static::deleting(function($produit) { // before delete() method call this
-                $produit->picture()->delete();         
-            });
-        }
+     
+          
 }

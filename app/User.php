@@ -28,12 +28,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
+    public function produit(){
+        return $this->hasMany('App\Produit');
+      }
+      public function annonce(){
+        return $this->hasMany('App\Annonce');
+      }
     protected static function boot() {
         parent::boot();
 
         static::deleting(function($user) { // before delete() method call this
-             $user->post()->delete();           
+            $user->produit()->delete();  
+            $user->annonce()->delete();           
         });
     }
 }
