@@ -36,7 +36,7 @@
 
           <div class="info-box-content">
             <span class="info-box-text">Produits magasin</span>
-            <span class="info-box-number">90</span>
+            <span class="info-box-number">{{DB::table('produits')->whereuser_id(Auth::user()->id)->count()}}</span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -48,8 +48,8 @@
           <span class="info-box-icon bg-red"><i class="fa fa-shopping-basket"></i></span>
 
           <div class="info-box-content">
-            <span class="info-box-text">Mes annonces</span>
-            <span class="info-box-number">41</span>
+            <span class="info-box-text">Mes offres</span>
+            <span class="info-box-number">{{DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce("Offre")->count()}}</span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -66,7 +66,7 @@
 
           <div class="info-box-content">
             <span class="info-box-text">Mes demandes</span>
-            <span class="info-box-number">760</span>
+            <span class="info-box-number">{{DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce("Demande")->count()}}</span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -151,21 +151,21 @@
               <!-- /.col -->
               <div class="col-md-6">
                 <p class="text-center">
-                  <strong>Goal Completion</strong>
+                  <strong>Réalisation de l'objectif</strong>
                 </p>
 
                 <div class="progress-group">
-                  <span class="progress-text">Add Products to Cart</span>
-                  <span class="progress-number"><b>160</b>/200</span>
+                  <span class="progress-text">Mes annonces / annonces de l'intranet</span>
+                  <span class="progress-number"><b>{{DB::table('annonces')->whereuser_id(Auth::user()->id)->count()}}</b>/{{DB::table('annonces')->count()}}</span>
 
                   <div class="progress sm">
-                    <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                    <div class="progress-bar progress-bar-aqua" style="width:{{((DB::table('annonces')->whereuser_id(Auth::user()->id)->count())*100)/(DB::table('annonces')->count())}}%"></div>
                   </div>
                 </div>
                 <!-- /.progress-group -->
                 <div class="progress-group">
-                  <span class="progress-text">Complete Purchase</span>
-                  <span class="progress-number"><b>310</b>/400</span>
+                  <span class="progress-text">Mes offres / Mes annonces </span>
+                  <span class="progress-number"><b>{{DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce("Offre")->count()}}</b>/{{DB::table('annonces')->whereuser_id(Auth::user()->id)->count()}}</span>
 
                   <div class="progress sm">
                     <div class="progress-bar progress-bar-red" style="width: 80%"></div>
@@ -173,8 +173,8 @@
                 </div>
                 <!-- /.progress-group -->
                 <div class="progress-group">
-                  <span class="progress-text">Visit Premium Page</span>
-                  <span class="progress-number"><b>480</b>/800</span>
+                  <span class="progress-text">Mes demandes /  Mes annonces</span>
+                  <span class="progress-number"><b>{{DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce("Demande")->count()}}</b>/ {{DB::table('annonces')->whereuser_id(Auth::user()->id)->count()}}</span>
 
                   <div class="progress sm">
                     <div class="progress-bar progress-bar-green" style="width: 80%"></div>
@@ -182,8 +182,8 @@
                 </div>
                 <!-- /.progress-group -->
                 <div class="progress-group">
-                  <span class="progress-text">Send Inquiries</span>
-                  <span class="progress-number"><b>250</b>/500</span>
+                  <span class="progress-text">Mes produits /  les produits de l'intranet</span>
+                  <span class="progress-number"><b>{{DB::table('produits')->whereuser_id(Auth::user()->id)->count()}}</b>/{{DB::table('produits')->count()}}</span>
 
                   <div class="progress sm">
                     <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
