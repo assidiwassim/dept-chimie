@@ -95,7 +95,8 @@ fieldset
                         </div>
                 @endif
                   <div class="row">
-                      <form class="form-horizontal form-submit-annonce" method="post"   action="">
+                  
+                      <form class="form-horizontal form-submit-annonce" method="post" enctype="multipart/form-data"   action="{{route('addannonce')}}">
                       @csrf
                           <div class="box-body ">
                             <div class="form-group typeannonce">
@@ -117,13 +118,13 @@ fieldset
                                     <label for="typeoffre"  class="col-sm-2 control-label">Nature d'annonce</label>
                   
                                     <div class="col-sm-10">
-                                          <select name="natureAnnonce" id="natureAnnonce" class="form-control">    
+                                          <select name="natureannonce" id="natureannonce" class="form-control" >    
                                                   <option value="Changement">Changement </option>
                                                   <option value="Don" >Don</option>
                                           </select>
-                                      @if ($errors->has('natureAnnonce'))
+                                      @if ($errors->has('natureannonce'))
                                           <span class="help-block">
-                                              <strong>{{ $errors->first('natureAnnonce') }}</strong>
+                                              <strong>{{ $errors->first('natureannonce') }}</strong>
                                           </span>
                                       @endif
                                     </div>
@@ -132,7 +133,7 @@ fieldset
                               <label for="designation" class="col-sm-2 control-label ">Désignation </label>
             
                               <div class="col-sm-10">
-                                  <textarea class="form-control" name="designation" id="designation" rows="3" placeholder="Enter ..."></textarea>
+                                  <textarea class="form-control" name="designation" id="designation" rows="3" placeholder="Enter ..." required></textarea>
                                   @if ($errors->has('designation'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('designation') }}</strong>
@@ -150,8 +151,10 @@ fieldset
                                                             <div class="col-sm-12">
                                                                       <select name="refproduit" id="refproduit" class="form-control">
                                                                                  <option value="id p1" selected disabled>Référence  </option> 
-                                                                                 <option value="id p1">ref p1 </option>
-                                                                                 <option value="id p2" >ref p2</option>
+                                                                                 @foreach($refuser as $ref)
+                                                                                 <option value="{{$ref->id}}">{{$ref->reference}} </option>
+                                                                                 @endforeach
+                                                                                 
                                                                       </select>
                                                                   @if ($errors->has('refproduit'))
                                                                       <span class="help-block">
@@ -188,8 +191,9 @@ fieldset
                                                         <div class="col-sm-12">
                                                                   <select name="refproduitEchange" id="refproduitEchange" class="form-control">
                                                                              <option value="id p1" selected disabled>Référence  </option> 
-                                                                             <option value="id p1">ref p1 </option>
-                                                                             <option value="id p2" >ref p2</option>
+                                                                             @foreach($reftotal as $ref)
+                                                                             <option value="{{$ref->id}}">{{$ref->reference}} </option>
+                                                                             @endforeach
                                                                   </select>
                                                               @if ($errors->has('refproduitEchange'))
                                                                   <span class="help-block">
@@ -235,7 +239,10 @@ fieldset
                           <!-- /.box-body -->
                           <div class="box-footer">
                             <button type="reset" class="btn btn-default">Annuler</button>
+
                             <button type="submit" class="btn btn-success pull-right">Publier</button>
+                            </form>
+                            
                           </div>
                           <!-- /.box-footer -->
                         </form>
