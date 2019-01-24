@@ -151,7 +151,7 @@
                                   <td  style="width: 50px">
                                   <button class="btn btn-primary btn-sm btn-block">Modifier</button></td>
                                   <td style="width: 50px">
-                                  <form method="get"  action="magasin/supprimer-produit"   >
+                                  <form method="post"  action="magasin/supprimer-produit"   >
                                         @csrf
                                         <input  name="idproduit" type="hidden" value="{{$produits->id}}">
                                          <button type="submit" class="btn btn-danger btn-sm "  style="border-radius: 50%;">supprimer</button>
