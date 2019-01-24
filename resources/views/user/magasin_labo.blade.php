@@ -80,6 +80,13 @@
             {{ Session::get('message-success-produit') }}
     </div>
     @endif
+    @if (Session::has('message-success-update-produit'))
+    <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i> alerte !</h4>
+            {{ Session::get('message-success-update-produit') }}
+    </div>
+    @endif
     
     
 
@@ -149,13 +156,18 @@
                                   <td>{{$produits->qte}}</td>
                                   <td>{{$produits->unite}}</td>
                                   <td  style="width: 50px">
-                                  <button class="btn btn-primary btn-sm btn-block">Modifier</button></td>
+                                  <form method="post"  action="{{route('form_modifer-produit')}}"   >
+                                        @csrf
+                                        <input  name="idproduit" type="hidden" value="{{$produits->id}}">   
+                                         <button class="btn btn-primary btn-sm btn-block" type="submit">Modifier</button>
+                                    </form>
+                                    </td> 
                                   <td style="width: 50px">
+
                                   <form method="post"  action="magasin/supprimer-produit"   >
                                         @csrf
                                         <input  name="idproduit" type="hidden" value="{{$produits->id}}">
-                                         <button type="submit" class="btn btn-danger btn-sm "  style="border-radius: 50%;">supprimer</button>
-                                    <i class="fa fa-times"></i>
+                                         <button class="btn btn-danger btn-sm btn-block" type="submit">supprimer</button>
                                     </form>
                                     </td>
                                 </tr>

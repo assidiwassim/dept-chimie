@@ -58,14 +58,14 @@
 </style>
 <section class="content-header">
     <h1>
-        Ajouter un produit 
+        Modifer un produit 
       <small>labshare</small>
     </h1>
     <ol class="breadcrumb">
        
       <li class="active"><i class="fa fa-dashboard"> </i> Menu</li>
       <li><a href="#"> Magasin </a></li>
-      <li><a href="#"> Ajouter un produit </a></li>
+      <li><a href="#"> Modifer un produit </a></li>
     </ol>
   </section>
   <section class="content">
@@ -75,16 +75,25 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-body">
-              
+                @if (Session::has('message-success--produit'))
+    <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i> alerte !</h4>
+            {{ Session::get('message-success-ajout-produit') }}
+    </div>
+    @endif
+    
                   <div class="row">
-                      <form class="form-horizontal" method="post"   action="{{ route('addproduit') }}">
+                      <form class="form-horizontal" method="post"   action="{{route('updateproduit')}}">
                       @csrf
+                      <input  name="idproduit" type="hidden" value="{{$produit->id}}">   
+
                           <div class="box-body">
                             <div class="form-group">
                               <label for="reference" class="col-sm-2 control-label">Référence</label>
             
                               <div class="col-sm-10">
-                                <input type="text" class="form-control" name="reference" id="reference" placeholder="Référence" required>
+                                <input type="text" class="form-control" name="reference" id="reference" placeholder="Référence"  value="{{$produit->reference}}" required>
                                 @if ($errors->has('reference'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('reference') }}</strong>
@@ -96,7 +105,7 @@
                               <label for="designation" class="col-sm-2 control-label">Désignation</label>
             
                               <div class="col-sm-10">
-                                  <textarea class="form-control" name="designation" id="designation" rows="3" placeholder="Enter ..."></textarea>
+                                  <textarea class="form-control" name="designation" id="designation" rows="3"  placeholder="Enter ...">{{$produit->designation}}</textarea>
                                   @if ($errors->has('designation'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('designation') }}</strong>
@@ -108,7 +117,7 @@
                                 <label for="formule" class="col-sm-2 control-label" >Formule</label>
               
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="formule" id="formule" placeholder="Formule chimique exemple: h2o" required>
+                                  <input type="text" class="form-control" name="formule" id="formule" value="{{$produit->formule}}" placeholder="Formule chimique exemple: h2o" required>
                                   @if ($errors->has('formule'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('formule') }}</strong>
@@ -120,7 +129,7 @@
                                   <label for="unite" class="col-sm-2 control-label" >Unité</label>
                 
                                   <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="unite" id="unite" placeholder="Unité exemple: Litre" required>
+                                    <input type="text" class="form-control" value="{{$produit->unite}}" name="unite" id="unite" placeholder="Unité exemple: Litre" required>
                                     
                                     @if ($errors->has('unite'))
                                     <span class="help-block">
@@ -133,7 +142,7 @@
                                     <label for="qte" class="col-sm-2 control-label" >Quantité</label>
                   
                                     <div class="col-sm-10">
-                                      <input type="number" class="form-control" name="qte" id="qte" placeholder="Quantité exemple: 10" required>
+                                      <input type="number" class="form-control" name="qte" id="qte"  value="{{$produit->qte}}" placeholder="Quantité exemple: 10" required>
                                       @if ($errors->has('qte'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('qte') }}</strong>
@@ -145,7 +154,7 @@
                                       <label for="categorie" class="col-sm-2 control-label" >Catégorie</label>
                     
                                       <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="categorie" id="categorie" placeholder="Catégorie exemple: gaz" required>
+                                        <input type="text" class="form-control" name="categorie" id="categorie"   value="{{$produit->categorie}}" value="{{$produit->unite}}" placeholder="Catégorie exemple: gaz" required>
                                         @if ($errors->has('categorie'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('categorie') }}</strong>
@@ -158,7 +167,7 @@
                           <!-- /.box-body -->
                           <div class="box-footer">
                             <button type="reset" class="btn btn-default">Annuler</button>
-                            <button type="submit" class="btn btn-primary pull-right">Ajouter</button>
+                            <button type="submit" class="btn btn-primary pull-right">modifer</button>
                           </div>
                           <!-- /.box-footer -->
                         </form>
