@@ -84,6 +84,7 @@
           <div class="box-header with-border">
             <h3 class="box-title">Rapport récapitulatif mensuel</h3>
           </div>
+          
           <!-- /.box-header -->
           <div class="box-body">
             <div class="row">
@@ -93,55 +94,37 @@
                       <table class="table no-margin">
                         <thead>
                         <tr>
-                          <th>Order ID</th>
-                          <th>Item</th>
+                           <th>n</th>
+                           <th>Type annonce</th>
+                          <th>Reference produit </th>
+                          <th>Nature annonce</th>
                           <th>Status</th>
                       
                         </tr>
                         </thead>
                         <tbody>
+                        @php
+                        $demande=DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce("Demande")->get();
+                        @endphp
+                        @if(!empty($demande))
+
+                        @foreach($demande as $demand)
                         <tr>
-                          <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                          <td>Call of Duty IV</td>
+                        
+                          <td><a href="#">1</a></td>
+                          <td>{{$demand->typeannonce}}</td>
+                          
+                          <td><a href="#">{{$demand->refproduit}}</a></td>
+                        
+                          <td>{{$demand->natureannonce}}</td>
                           <td><span class="label label-success">Shipped</span></td>
                          
                         </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                          <td>Samsung Smart TV</td>
-                          <td><span class="label label-warning">Pending</span></td>
-                          
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                          <td>iPhone 6 Plus</td>
-                          <td><span class="label label-danger">Delivered</span></td>
-                          
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                          <td>Samsung Smart TV</td>
-                          <td><span class="label label-info">Processing</span></td>
-                     
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                          <td>Samsung Smart TV</td>
-                          <td><span class="label label-warning">Pending</span></td>
-                         
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                          <td>iPhone 6 Plus</td>
-                          <td><span class="label label-danger">Delivered</span></td>
-                         
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                          <td>Call of Duty IV</td>
-                          <td><span class="label label-success">Shipped</span></td>
-                         
-                        </tr>
+                        @endforeach
+                        @else
+                        <p>aucun annonce a publié dans cette magasin</p>
+                        @endif
+                        
                         </tbody>
                       </table>
                     </div>
