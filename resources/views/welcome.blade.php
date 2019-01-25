@@ -21,6 +21,7 @@
           <link rel="stylesheet" type="text/css" href="{{ asset('css/welcome.css') }}">
       </head>
       <body>
+                <div class="se-pre-con"></div>
   <section id="home">
     <div id="menu-home-page" class=" d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
     <img src="{{ asset('img/logo.png') }}" class="my-0 mr-md-auto logo-fsm">
@@ -229,7 +230,29 @@
               </div>
   
           </footer>
-  
+          <style>
+          
+                .no-js #loader { display: none;  }
+                .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+                .se-pre-con {
+                        position: fixed;
+                        left: 0px;
+                        top: 0px;
+                        width: 100%;
+                        height: 100%;
+                        z-index: 9999;
+                        background: url("{{ asset('img/loader.gif') }}") center no-repeat #fff;
+                }
+          </style>
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+                <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+  <script>
+    
+  	$(window).load(function() {
+		// Animate loader off screen
+		$(".se-pre-con").fadeOut("slow");;
+	});
+  </script>
        </body>
   </html>
   
