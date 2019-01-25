@@ -17,12 +17,12 @@ class ProduitController extends Controller
     {      
         $this->validate($request, [
 
-            'reference' => 'required|string|bail|min:2|max:20|unique:produits',
-            'designation' => 'required|bail|string|min:5|max:300',
-            'formule' => 'required|bail|string|min:1|max:50',
-            'qte' => 'required|bail|numeric|min:0|max:3000',
-            'categorie' => 'required|string|bail|min:2|max:50',
-            'unite' => 'required|bail|string|min:1|max:20',
+            'reference' => 'required|string|unique:produits',
+            'designation' => 'required|string',
+            'formule' => 'required|string',
+            'qte' => 'required|numeric',
+            'categorie' => 'required|string',
+            'unite' => 'required|string',
             
           ]);
      
@@ -57,12 +57,12 @@ class ProduitController extends Controller
         {          
             $this->validate($request, [
 
-                'reference' => 'required|string|bail|min:2|max:20|unique:produits',
-                'designation' => 'required|bail|string|min:5|max:300',
-                'formule' => 'required|bail|string|min:1|max:50',
-                'qte' => 'required|bail|numeric|min:0|max:3000',
-                'categorie' => 'required|string|bail|min:2|max:50',
-                'unite' => 'required|bail|string|min:1|max:20',
+                'reference' => 'required|string|unique:produits',
+                'designation' => 'required|string',
+                'formule' => 'required|string',
+                'qte' => 'required|numeric',
+                'categorie' => 'required|string',
+                'unite' => 'required|string',
                 
               ]);
         
