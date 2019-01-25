@@ -160,19 +160,20 @@
           <div class="box-body">
             <div class="row">
                 <form id="search-form" method="post" action="{{route('serachannonce')}}">
+                @csrf 
                     <div class="col-md-6 input-container ">
-                            <input type="text" name="designation" class="form-control" placeholder="Essayer, 'Une désignation' ou bien 'Une Formule chimique' " >
+                            <input type="text" value="" name="designation" class="form-control" placeholder="Essayer, 'Une désignation' ou bien 'Une Formule chimique' " >
                     </div>
                     <div class="col-md-2">
-                    <select name="formule" class="form-control select2">
-                                    <option selected disabled>Type d'annonce</option>
+                    <select name="typeannonce" class="form-control select2" >
+                                    <option value="" >Type d'annonce</option>
                                     <option value="offre">Offre</option>
                                     <option value="demande">Demande</option>
                             </select>
                      </div>
                     <div class="col-md-2">
-                    <select name="reference" class="form-control select1">
-                                    <option selected disabled>Nature annonce</option>
+                    <select name="natureannonce" class="form-control select1">
+                                    <option value="">Nature annonce</option>
                                     <option value="Changement">Changement</option>
                                     <option value="Don">Don</option>
                                   </select>
