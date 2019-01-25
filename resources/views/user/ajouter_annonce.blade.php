@@ -259,7 +259,7 @@ $(document).ready(function(){
 
 
 $("#typeannonce").change(function(){
-    
+ 
     $('.ProduitAdonner').show();
     $('.ProduitSouhaité').show();
 
@@ -268,7 +268,7 @@ $("#typeannonce").change(function(){
             if($("#natureAnnonce").val()=="Cangement"){
                 $('.ProduitAdonner').show();
                 $('.ProduitSouhaité').show();
-            }else  if($("#natureAnnonce").val()=="Don"){
+            }else if($("#natureAnnonce").val()=="Don"){
                 $('.ProduitAdonner').show();
                  $('.ProduitSouhaité').hide();
 
@@ -279,7 +279,7 @@ $("#typeannonce").change(function(){
             if($("#natureAnnonce").val()=="Cangement"){
                 $('.ProduitAdonner').show();
                 $('.ProduitSouhaité').show();
-            }else  if($("#natureAnnonce").val()=="Don"){
+            }else if($("#natureAnnonce").val()=="Don"){
                 $('.ProduitAdonner').hide();
                  $('.ProduitSouhaité').show();
 
@@ -300,7 +300,7 @@ $("#typeannonce").change(function(){
             if($("#natureAnnonce").val()=="Cangement"){
                 $('.ProduitAdonner').show();
                 $('.ProduitSouhaité').show();
-            }else  if($("#natureAnnonce").val()=="Don"){
+            }else if($("#natureAnnonce").val()=="Don"){
                 $('.ProduitAdonner').show();
                  $('.ProduitSouhaité').hide();
 
@@ -311,7 +311,7 @@ $("#typeannonce").change(function(){
             if($("#natureAnnonce").val()=="Cangement"){
                 $('.ProduitAdonner').show();
                 $('.ProduitSouhaité').show();
-            }else  if($("#natureAnnonce").val()=="Don"){
+            }else if($("#natureAnnonce").val()=="Don"){
                 $('.ProduitAdonner').hide();
                  $('.ProduitSouhaité').show();
 
