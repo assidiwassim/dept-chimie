@@ -159,28 +159,25 @@
         <div class="box">
           <div class="box-body">
             <div class="row">
-                <form id="search-form">
+                <form id="search-form" method="post" action="{{route('serachannonce')}}">
                     <div class="col-md-6 input-container ">
                             <input type="text" name="designation" class="form-control" placeholder="Essayer, 'Une désignation' ou bien 'Une Formule chimique' " >
                     </div>
-                    <div class="col-md-2">
-                            <select name="reference" class="form-control select1">
-                                    <option selected disabled>Catégorie</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                    <option>option 5</option>
-                                  </select>
-                     </div>
+                  
                     <div class="col-md-2">
                             <select name="formule" class="form-control select2">
                                     <option selected disabled>Type d'annonce</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                    <option>option 5</option>
+                                    <option value="offre">Offre</option>
+                                    <option value="demande">Demande</option>
                             </select>
                     </div>
+                    <div class="col-md-2">
+                            <select name="reference" class="form-control select1">
+                                    <option selected disabled>Nature annonce</option>
+                                    <option value="Changement">Changement</option>
+                                    <option value="Don">Don</option>
+                                  </select>
+                     </div>
                     <div class="col-md-2">
                             <input type="submit" class="btn btn-primary btn-sm btn-block" value="Rechercher" >
                     </div>

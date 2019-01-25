@@ -42,6 +42,9 @@ Route::post('/magasin/modiferproduit', 'ProduitController@updateproduit')->name(
 Route::get('/discussion', 'HomeController@discussion_labo')->name('discussion_labo');
 Route::get('/aide', 'HomeController@aide_labo')->name('aide_labo');
 Route::get('/parametre', 'HomeController@parametre_labo')->name('parametre_labo');
+
+
+Route::post('/mesannonces/serach','SerachController@serachmesannonces')->name('serachannonce');
 });
 
 
