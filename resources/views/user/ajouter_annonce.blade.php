@@ -103,7 +103,7 @@ fieldset
                               <label for="typeannonce" class="col-sm-2 control-label">Type d'annonce</label>
             
                               <div class="col-sm-10">
-                                    <select name="typeannonce" id="typeannonce" class="form-control">
+                                    <select name="typeannonce" id="typeannonce" class="form-control" required>
                                             <option value="Offre">Offre</option>
                                             <option value="Demande" >Demande</option>
                                     </select>
@@ -118,7 +118,7 @@ fieldset
                                     <label for="typeoffre"  class="col-sm-2 control-label">Nature d'annonce</label>
                   
                                     <div class="col-sm-10">
-                                          <select name="natureannonce" id="natureannonce" class="form-control" >    
+                                          <select name="natureannonce" id="natureannonce" class="form-control" required>    
                                                   <option value="Changement">Changement </option>
                                                   <option value="Don" >Don</option>
                                           </select>
@@ -149,8 +149,8 @@ fieldset
                                                 <div class="col-md-4">
                                                     <div class="form-group ">
                                                             <div class="col-sm-12">
-                                                                      <select name="refproduit" id="refproduit" class="form-control">
-                                                                                 <option value="id p1" selected disabled>Référence  </option> 
+                                                                      <select name="refproduit" id="refproduit" class="form-control" required>
+                                                                              
                                                                                  @foreach($refuser as $ref)
                                                                                  <option value="{{$ref->id}}">{{$ref->reference}} </option>
                                                                                  @endforeach
@@ -167,7 +167,7 @@ fieldset
                                                 <div class="col-md-8">
                                                         <div class="form-group qte">
                                                              <div class="col-sm-12">
-                                                                  <input type="number" class="form-control" name="qte" id="qte" placeholder="Quantité " >
+                                                                  <input type="number" class="form-control" name="qte" id="qte" placeholder="Quantité " required>
                                                                   @if ($errors->has('qte'))
                                                                 <span class="help-block">
                                                                     <strong>{{ $errors->first('qte') }}</strong>
@@ -189,8 +189,8 @@ fieldset
                                             <div class="col-md-4">
                                                 <div class="form-group refproduitEchange">
                                                         <div class="col-sm-12">
-                                                                  <select name="refproduitEchange" id="refproduitEchange" class="form-control">
-                                                                             <option value="id p1" selected disabled>Référence  </option> 
+                                                                  <select name="refproduitEchange" id="refproduitEchange" class="form-control" required>
+                                                                 
                                                                              @foreach($reftotal as $ref)
                                                                              <option value="{{$ref->id}}">{{$ref->reference}} </option>
                                                                              @endforeach
@@ -206,7 +206,7 @@ fieldset
                                             <div class="col-md-8">
                                                     <div class="form-group qtetEchange">
                                                          <div class="col-sm-12">
-                                                              <input type="number" class="form-control" name="qtetEchange" id="qtetEchange" placeholder="Quantité " >
+                                                              <input type="number" class="form-control" name="qtetEchange" id="qtetEchange" placeholder="Quantité " required>
                                                               @if ($errors->has('qtetEchange'))
                                                             <span class="help-block">
                                                                 <strong>{{ $errors->first('qtetEchange') }}</strong>
@@ -270,6 +270,9 @@ $("#natureannonce,#typeannonce").change(function(){
     var contenue2=$( "#typeannonce option:selected" ).text().trim();
     console.log(contenue,contenue2);
 
+    $('.ProduitSouhaite select,.ProduitSouhaite input').attr( "required" );
+    $('.ProduitAdonner select,.ProduitAdonner input').attr( "required" );
+
     if(contenue=="Changement"){
         console.log("(Offre + Changement) ou bien (Demande + Changement)");
             $('.ProduitAdonner').show();
@@ -280,12 +283,14 @@ $("#natureannonce,#typeannonce").change(function(){
             console.log("Offre + Don");
             $('.ProduitAdonner').show();
              $('.ProduitSouhaite').hide();
+             $('.ProduitSouhaite select,.ProduitSouhaite input').removeAttr( "required" );
     }
 
     if(contenue2=="Demande"  && contenue=="Don"){
         console.log("Demande + Don");
         $('.ProduitAdonner').hide();
         $('.ProduitSouhaite').show();
+        $('.ProduitAdonner select,.ProduitAdonner input').removeAttr( "required" );
     }
 
     });
