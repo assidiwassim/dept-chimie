@@ -159,7 +159,12 @@
                   <span class="progress-number"><b>{{DB::table('annonces')->whereuser_id(Auth::user()->id)->count()}}</b>/{{DB::table('annonces')->count()}}</span>
 
                   <div class="progress sm">
-                    <div class="progress-bar progress-bar-aqua" style="width:{{(( DB::table('annonces')->whereuser_id(Auth::user()->id)->count())*100)/(DB::table('annonces')->count())}}%"></div>
+                  @if(DB::table('annonces')->whereuser_id(Auth::user()->id)->count()==0)
+                    <div class="progress-bar progress-bar-aqua" style="width:0%"></div>
+                 @else
+                 <div class="progress-bar progress-bar-aqua" style="width:{{(( DB::table('annonces')->whereuser_id(Auth::user()->id)->count())*100)/(DB::table('annonces')->count())}}%"></div>
+
+                 @endif
                   </div>
                 </div>
                 <!-- /.progress-group -->
@@ -168,7 +173,12 @@
                   <span class="progress-number"><b>{{DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce("Offre")->count()}}</b>/{{DB::table('annonces')->whereuser_id(Auth::user()->id)->count()}}</span>
 
                   <div class="progress sm">
-                    <div class="progress-bar progress-bar-red" style="width: {{(( DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce('Offre')->count()) *100)/(DB::table('annonces')->whereuser_id(Auth::user()->id)->count()) }}%"></div>
+                  @if(DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce("Offre")->count()==0)
+                    <div class="progress-bar progress-bar-red" style="width:0%"></div>
+                  @else
+                  <div class="progress-bar progress-bar-red" style="width: {{(( DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce('Offre')->count()) *100)/(DB::table('annonces')->whereuser_id(Auth::user()->id)->count()) }}%"></div>
+
+                  @endif
                   </div>
                 </div>
                 <!-- /.progress-group -->
@@ -177,7 +187,12 @@
                   <span class="progress-number"><b>{{DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce("Demande")->count()}}</b>/ {{DB::table('annonces')->whereuser_id(Auth::user()->id)->count()}}</span>
 
                   <div class="progress sm">
-                    <div class="progress-bar progress-bar-green" style="width: {{(( DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce('Demande')->count() ) *100)/(DB::table('annonces')->whereuser_id(Auth::user()->id)->count() )}}%"></div>
+                  @if(DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce("Demande")->count()==0)
+                    <div class="progress-bar progress-bar-green" style="width:0%"></div>
+                  @else
+                  <div class="progress-bar progress-bar-green" style="width: {{(( DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce('Demande')->count() ) *100)/(DB::table('annonces')->whereuser_id(Auth::user()->id)->count() )}}%"></div>
+
+                  @endif
                   </div>
                 </div>
                 <!-- /.progress-group -->
@@ -186,7 +201,12 @@
                   <span class="progress-number"><b>{{DB::table('produits')->whereuser_id(Auth::user()->id)->count()}}</b>/{{DB::table('produits')->count()}}</span>
 
                   <div class="progress sm">
-                    <div class="progress-bar progress-bar-yellow" style="width: {{ ( (DB::table('produits')->whereuser_id(Auth::user()->id)->count())*100)/(DB::table('produits')->count()) }}%"></div>
+                  @if(DB::table('produits')->whereuser_id(Auth::user()->id)->count()==0)
+                    <div class="progress-bar progress-bar-yellow" style="width:0%"></div>
+                 @else
+              <div class="progress-bar progress-bar-yellow" style="width: {{ ( (DB::table('produits')->whereuser_id(Auth::user()->id)->count())*100)/(DB::table('produits')->count()) }}%"></div>
+
+                 @endif
                   </div>
                 </div>
                 <!-- /.progress-group -->

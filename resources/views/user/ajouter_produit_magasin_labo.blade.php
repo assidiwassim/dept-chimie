@@ -69,7 +69,14 @@
     </ol>
   </section>
   <section class="content">
-  
+ 
+                @if (Session::has('message-success-ajout-produit'))
+                        <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4><i class="icon fa fa-check"></i> alerte !</h4>
+                                {{ Session::get('message-success-ajout-produit') }}
+                        </div>
+                @endif
 
     <div class="row row_list_produit">
             <div class="col-md-12">

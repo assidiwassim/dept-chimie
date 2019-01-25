@@ -87,11 +87,11 @@ fieldset
             <div class="col-md-12">
               <div class="box">
                 <div class="box-body">
-                @if (Session::has('message-success-ajout-produit'))
+                @if (Session::has('message-success-ajout-annonce'))
                         <div class="alert alert-success alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                 <h4><i class="icon fa fa-check"></i> alerte !</h4>
-                                {{ Session::get('message-success-ajout-produit') }}
+                                {{ Session::get('message-success-ajout-annonce') }}
                         </div>
                 @endif
                   <div class="row">
