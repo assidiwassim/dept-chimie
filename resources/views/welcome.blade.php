@@ -13,10 +13,28 @@
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-      
+          <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+                <script>
+                
+                        $(window).load(function() {
+                                $(".se-pre-con").fadeOut("slow");;
+                        });
+                </script>
           <!-- Fonts -->
           <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-  
+          <style>
+                        .no-js #loader { display: none;  }
+                        .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+                        .se-pre-con {
+                                position: fixed;
+                                left: 0px;
+                                top: 0px;
+                                width: 100%;
+                                height: 100%;
+                                z-index: 9999;
+                                background: url("{{ asset('img/loader.gif') }}") center no-repeat #fff;
+                        }
+                  </style>
           <!-- Styles -->
           <link rel="stylesheet" type="text/css" href="{{ asset('css/welcome.css') }}">
       </head>
@@ -229,27 +247,9 @@
                   </div>
               </div>
           </footer>
-          <style>
-                .no-js #loader { display: none;  }
-                .js #loader { display: block; position: absolute; left: 100px; top: 0; }
-                .se-pre-con {
-                        position: fixed;
-                        left: 0px;
-                        top: 0px;
-                        width: 100%;
-                        height: 100%;
-                        z-index: 9999;
-                        background: url("{{ asset('img/loader.gif') }}") center no-repeat #fff;
-                }
-          </style>
-                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-                <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-                <script>
-                
-                        $(window).load(function() {
-                                $(".se-pre-con").fadeOut("slow");;
-                        });
-                </script>
+   
+   
+            
        </body>
   </html>
   
