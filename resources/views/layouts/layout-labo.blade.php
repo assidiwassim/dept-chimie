@@ -214,9 +214,10 @@ width: 190px;
         <!-- Optionally, you can add icons to the links -->
         <li class=" tableaudebord_labo"><a href="{{ route('tableaudebord_labo') }}"><i class="fa fa-home"></i> <span>Tableau de bord</span></a></li>
         <li class=" Annonces_labo"><a href="{{ route('Annonces_labo') }}"><i class="fa fa-shopping-basket"></i> <span>Annonce</span></a></li>
-        <li class="treeview MesAnnonces_labo">
-          <a href="{{ route('MesAnnonces_labo') }}">
-              <i class="fa fa-shopping-basket"></i> <span>Mes annonces</span>
+ 
+        <li class="treeview MesAnnonces_laboratoire">
+          <a href="">
+              <i class="fa  fa-shopping-basket"></i> <span>Mes annonces</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -226,8 +227,9 @@ width: 190px;
             <li><a href="{{ route('ajouter_annonce') }}"><i class="fa fa-link"></i> <span> Ajouter une annonce</span></a></li>
         </ul>
         </li>
-       <li class="treeview magasin_labo">
-          <a href="{{ route('magasin_labo') }}">
+      
+        <li class="treeview magasin_labo">
+          <a href="">
               <i class="fa fa-product-hunt"></i> <span>Magasin</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -297,7 +299,7 @@ width: 190px;
 if (url.indexOf("/labo/annonces") >= 0){
   $('.Annonces_labo').addClass("active");
 }else if (url.indexOf("/labo/mesannonces") >= 0 ||url.indexOf("/labo/mesannonces/ajouter-annonce") >= 0 ){
-  $('.MesAnnonces_labo').addClass("active");
+  $('.MesAnnonces_laboratoire').addClass("active");
 }else if (url.indexOf("/labo/magasin") >= 0 ||url.indexOf("/labo/magasin/ajouter-produit") >= 0 ){
   $('.magasin_labo').addClass("active");
 }else if (url.indexOf("/labo/discussion") >= 0){
