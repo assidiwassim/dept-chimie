@@ -48,7 +48,7 @@ class ProduitController extends Controller
            
            $produit = Produit::find($request->input('idproduit'));  
            $produit->delete();
-           session()->flash('message-success-produit',"la  produit  été supprimer correctement!");
+           session()->flash('message-success-delete-produit',"la  produit  été supprimer correctement!");
             return redirect()->route('magasin_labo');
 
         }

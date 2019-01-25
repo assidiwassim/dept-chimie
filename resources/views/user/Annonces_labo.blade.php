@@ -191,7 +191,9 @@
       </div>
     </div>
 
+
     <div class="row row_list_produit">
+    @if(!empty($annonces))
           @foreach($annonces as $annonce)
               <div class="col-md-3 col-sm-4  ">
               <div class="box box-animation" style="padding:0 !important;">
@@ -241,7 +243,12 @@
                 </div>
               </div>
             </div>
+            
             @endforeach
+            {{$annonces->links()}}
+            @else
+            <p>aucune annonce ap publié </p>
+            @endif
               
             </div>
           </div>

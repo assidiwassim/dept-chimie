@@ -101,7 +101,7 @@ width: 190px;
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="#" class="logo">
 
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg pull-left " style="margin-left:10px;"><b>Labo {{Auth::user()->id}}</b></span>

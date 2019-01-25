@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Produit;
 use App\Annonce;
 use Auth;
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     /**
@@ -31,7 +32,7 @@ class HomeController extends Controller
 
 
     public function Annonces_labo()
-    {    $annonces=Annonce::all();
+    {    $annonces=Annonce::paginate(8);
         return view('user/Annonces_labo')->with('annonces',$annonces);
     }
 
@@ -39,7 +40,7 @@ class HomeController extends Controller
     public function MesAnnonces_labo()
     {
 
-        $annonces=Annonce::whereuser_id(Auth::user()->id)->get();
+        $annonces=Annonce::whereuser_id(Auth::user()->id)->simplePaginate(8);
         return view('user/MesAnnonces_labo')->with('annonces',$annonces);
         
     }

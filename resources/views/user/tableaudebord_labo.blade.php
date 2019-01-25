@@ -104,7 +104,7 @@
                         </thead>
                         <tbody>
                         @php
-                        $demande=DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce("Demande")->get();
+                        $demande=DB::table('annonces')->whereuser_id(Auth::user()->id)->wheretypeannonce("Demande")->paginate(5);
                         @endphp
                         @if(!empty($demande))
 
@@ -121,6 +121,7 @@
                          
                         </tr>
                         @endforeach
+                        {{$demande->links()}}
                         @else
                         <p>aucun annonce a publié dans cette magasin</p>
                         @endif

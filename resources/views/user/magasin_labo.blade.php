@@ -87,7 +87,21 @@
             {{ Session::get('message-success-update-produit') }}
     </div>
     @endif
-    
+    @if (Session::has('  message-success-delete-produit'))
+    <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i> alerte !</h4>
+            {{ Session::get('message-success-update-produit') }}
+    </div>
+    @endif
+  
+    @if (Session::has('message-success-ajout-produit'))
+    <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i> alerte !</h4>
+            {{ Session::get('message-success-update-produit') }}
+    </div>
+    @endif
     
 
     <div class="row">
