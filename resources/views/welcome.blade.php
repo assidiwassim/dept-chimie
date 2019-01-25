@@ -7,22 +7,29 @@
           <meta name="viewport" content="width=device-width, initial-scale=1">
   
           <title>Département chimie FSM</title>
-  
-           <!-- bootstrap import -->
+
+          <link rel="stylesheet" type="text/css" href="{{ asset('css/welcome.css') }}">
+          <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-          <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-                <script>
-                
-                        $(window).load(function() {
-                                $(".se-pre-con").fadeOut("slow");;
-                        });
-                </script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    
+          <script>
+           //paste this code under the head tag or in a separate js file.
+               // Wait for window load
+               $(window).load(function() {
+                   // Animate loader off screen
+                   $(".se-pre-con").fadeOut("slow");
+               });
+          </script>
           <!-- Fonts -->
-          <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-          <style>
+                 <style>
+                       
+                                                /* Paste this css to your style sheet file or under head tag */
+                        /* This only works with JavaScript, 
+                        if it's not present, don't show loader */
                         .no-js #loader { display: none;  }
                         .js #loader { display: block; position: absolute; left: 100px; top: 0; }
                         .se-pre-con {
@@ -32,11 +39,12 @@
                                 width: 100%;
                                 height: 100%;
                                 z-index: 9999;
-                                background: url("{{ asset('img/loader.gif') }}") center no-repeat #fff;
+                        background: url("{{ asset('img/loader.gif') }}") center no-repeat #fff;
                         }
+
                   </style>
           <!-- Styles -->
-          <link rel="stylesheet" type="text/css" href="{{ asset('css/welcome.css') }}">
+        
       </head>
       <body>
                 <div class="se-pre-con"></div>
