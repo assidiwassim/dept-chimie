@@ -114,7 +114,7 @@ fieldset
                                 @endif
                               </div>
                             </div>
-                            <div class="form-group natureAnnonce">
+                            <div class="form-group natureannonce">
                                     <label for="typeoffre"  class="col-sm-2 control-label">Nature d'annonce</label>
                   
                                     <div class="col-sm-10">
@@ -182,7 +182,7 @@ fieldset
                                  </div>
 
                              </div>
-                             <div class="form-group ProduitSouhaité">
+                             <div class="form-group ProduitSouhaite">
                                     <label for="designation" class="col-sm-2 control-label ">Produit souhaité </label>
                              <div class="col-md-10">
                                     <div class="row" >
@@ -251,6 +251,8 @@ fieldset
             </div>
           </div>
     </div>
+    
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
    <script>
@@ -258,70 +260,35 @@ fieldset
 $(document).ready(function(){
 
 
-$("#typeannonce").change(function(){
- 
+
+$("#natureannonce,#typeannonce").change(function(){
+
     $('.ProduitAdonner').show();
     $('.ProduitSouhaité').show();
 
-        if($("#typeannonce").val()=="Offre"){
+    var contenue=$( "#natureannonce option:selected" ).text().trim();
+    var contenue2=$( "#typeannonce option:selected" ).text().trim();
+    console.log(contenue,contenue2);
 
-            if($("#natureAnnonce").val()=="Cangement"){
-                $('.ProduitAdonner').show();
-                $('.ProduitSouhaité').show();
-            }else if($("#natureAnnonce").val()=="Don"){
-                $('.ProduitAdonner').show();
-                 $('.ProduitSouhaité').hide();
+    if(contenue=="Changement"){
+        console.log("(Offre + Changement) ou bien (Demande + Changement)");
+            $('.ProduitAdonner').show();
+            $('.ProduitSouhaite').show();
+    }
 
-            }
+    if(contenue2=="Offre"  && contenue=="Don"){
+            console.log("Offre + Don");
+            $('.ProduitAdonner').show();
+             $('.ProduitSouhaite').hide();
+    }
 
-        }else if($("#typeannonce").val()=="Demande"){
-           
-            if($("#natureAnnonce").val()=="Cangement"){
-                $('.ProduitAdonner').show();
-                $('.ProduitSouhaité').show();
-            }else if($("#natureAnnonce").val()=="Don"){
-                $('.ProduitAdonner').hide();
-                 $('.ProduitSouhaité').show();
+    if(contenue2=="Demande"  && contenue=="Don"){
+        console.log("Demande + Don");
+        $('.ProduitAdonner').hide();
+        $('.ProduitSouhaite').show();
+    }
 
-            }
-
-        }
-    
-        
     });
-
-    $("#natureAnnonce").change(function(){
-        
-        $('.ProduitAdonner').show();
-    $('.ProduitSouhaité').show();
-
-        if($("#typeannonce").val()=="Offre"){
-
-            if($("#natureAnnonce").val()=="Cangement"){
-                $('.ProduitAdonner').show();
-                $('.ProduitSouhaité').show();
-            }else if($("#natureAnnonce").val()=="Don"){
-                $('.ProduitAdonner').show();
-                 $('.ProduitSouhaité').hide();
-
-            }
-
-        }else if($("#typeannonce").val()=="Demande"){
-           
-            if($("#natureAnnonce").val()=="Cangement"){
-                $('.ProduitAdonner').show();
-                $('.ProduitSouhaité').show();
-            }else if($("#natureAnnonce").val()=="Don"){
-                $('.ProduitAdonner').hide();
-                 $('.ProduitSouhaité').show();
-
-            }
-
-        }
-  
-});
-
-
 });
 
  
