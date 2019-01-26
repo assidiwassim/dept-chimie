@@ -69,7 +69,12 @@
     </ol>
   </section>
   <section class="content">
- 
+ @foreach($annonces as $x)
+ {{$x->id}}
+ @endforeach
+ @foreach($reponseconfirmer as $x)
+ {{$x->etat}}
+ @endforeach
      
 </section>
 @endsection

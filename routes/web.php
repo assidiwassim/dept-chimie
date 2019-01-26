@@ -47,6 +47,9 @@ Route::post('/mesannonces/ajouter-annonce-from', 'AnnonceController@addannoncefr
 
 Route::get('/mesannonces/demande/{id}', 'HomeController@consulte_demande')->name('consulte_demande');
 Route::get('/mesannonces/offre/{id}', 'HomeController@consulte_offre')->name('consulte_offre');
+Route::post('/mesannonces/demande', 'HomeController@consulte_offre_confirmer')->name('consulte_offre_confirmer');
+Route::post('/mesannonces/offre', 'HomeController@consulte_offre_annuler')->name('consulte_offre_annuler');
+
 
 
 /* MAgasin */

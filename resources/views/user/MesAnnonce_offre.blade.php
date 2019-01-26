@@ -70,43 +70,7 @@
 
    
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="box">
-          <div class="box-body">
-            <div class="row">
-            <form id="search-form" method="post" action="">
-                @csrf 
-                    <div class="col-md-6 input-container ">
-                            <input type="text"  name="designation" class="form-control" placeholder="Essayer, 'Une désignation' ou bien 'Une référence' " >
-                    </div>
-                    <div class="col-md-2">
-                    <select name="categorie" class="form-control select2" >
-                                    <option value="" >Catégorie</option>
-                                    @foreach($categorie as $cat)
-                                    <option value="{{$cat->categorie}}">{{$cat->categorie}}</option>
-                                    @endforeach
-                                  
-                            </select>
-                     </div>
-                    <div class="col-md-2">
-                    <select name="formule" class="form-control select1">
-                                    <option value="">Formule</option>
-                                    
-                                    @foreach($formule as $cat)
-                                    <option value="{{$cat->formule}}">{{$cat->formule}}</option>
-                                    @endforeach
-                                  </select>
-                    </div>
-                    <div class="col-md-2">
-                            <input type="submit" class="btn btn-primary btn-sm btn-block" value="Rechercher" >
-                    </div>
-                </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
     <div class="row row_list_produit">
             <div class="col-md-12">
@@ -117,40 +81,72 @@
                                 <thead>
                                 <tr role="row">
                                 <th>N°</th>
-                                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Référence</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Désignation</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Formule chimique</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Quantité</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Unité</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nom  de labo</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Commentaire</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Etat</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Date</th>
+
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"></th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"></th>
+                               <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
+
                      
                                 <tr role="row" class="even">
-                               @foreach($produits as $produits)
+                               @foreach($reponse as $rep)
                                 <td>{{$loop->index+1}}</td>
-                                  <td class="sorting_1">{{$produits->reference}}</td>
-                                  <td>{{$produits->designation}}</td>
-                                  <td>{{$produits->formule}}</td>
-                                  <td>{{$produits->qte}}</td>
-                                  <td>{{$produits->unite}}</td>
+                                  <td class="sorting_1">{{DB::table('users')->whereid($rep->user_id)->value('name')}}</td>
+                                  <td>{{$rep->commentaire}}</td>
+                                  <td>{{$rep->created_at}}</td>
+                                  <td>
+
+                                  @if($rep->etat=="annuler")
+                                  <span class="label label-danger">Annuler</span>
+                                  @elseif($rep->etat=="enattente")
+                                  <span class="label label-warning">En attente</span>
+                                  @else
+                                  <span class="label label-success">Confirmer</span>
+                                  @endif
+
+                                  </td>
+                                
+                                  
+                                  @if($rep->etat=="enattente")
                                   <td  style="width: 50px">
-                                  <form method="post"  action="{{route('form_modifer-produit')}}"   >
+                                  <form method="post"  action="{{route('consulte_offre_confirmer')}}">
                                         @csrf
-                                        <input  name="idproduit" type="hidden" value="{{$produits->id}}">   
-                                         <button class="btn btn-primary btn-sm btn-block" type="submit">Modifier</button>
+                                        <input  name="reponse_id" type="hidden" value="{{$rep->id}}">   
+                                         <button class="btn btn-succes btn-sm btn-block" type="submit">Confirmer</button>
                                     </form>
                                     </td> 
+                             
                                   <td style="width: 50px">
 
-                                  <form method="post"  action="magasin/supprimer-produit"   >
+                                  <form method="post"  action="{{route('consulte_offre_annuler')}}">
                                         @csrf
-                                        <input  name="idproduit" type="hidden" value="{{$produits->id}}">
-                                         <button class="btn btn-danger btn-sm btn-block" type="submit">supprimer</button>
+                                        <input  name="reponse_id" type="hidden" value="{{$rep->id}}"> 
+                                         <button class="btn btn-danger btn-sm btn-block" type="submit">Annuler</button>
                                     </form>
                                     </td>
+                                    @elseif($rep->etat=="confirmer")
+                                    <td style="width: 50px">
+
+                                        <form method="post"  action="{{route('consulte_offre_annuler')}}">
+                                            @csrf
+                                            <input  name="reponse_id" type="hidden" value="{{$rep->id}}"> 
+                                            <button class="btn btn-danger btn-sm btn-block" type="submit">Annuler</button>
+                                        </form>
+                                        </td>
+                                    @else
+                                    <td  style="width: 50px">
+                                  <form method="post"  action="{{route('consulte_offre_confirmer')}}">
+                                        @csrf
+                                        <input  name="reponse_id" type="hidden" value="{{$rep->id}}">   
+                                         <button class="btn btn-succes btn-sm btn-block" type="submit">Confirmer</button>
+                                    </form>
+                                    </td> 
+                                    @endif
                                 </tr>
                                 @endforeach
                                </tbody>

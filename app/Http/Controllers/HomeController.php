@@ -123,26 +123,46 @@ class HomeController extends Controller
     }
     public function consulte_offre($id)
     {
-        $produits=Produit::where('user_id',Auth::user()->id)->get();
-
-        $categorie=Produit::select('categorie')
-        ->where('user_id',Auth::user()->id)
-        ->distinct('categorie')
-        ->get();
-
-        $formule=Produit::select('formule')
-        ->where('user_id',Auth::user()->id)
-        ->distinct('formule')
-        ->get();
-
-          
-        return view('user/MesAnnonce_offre')->with('produits',$produits)
-        ->with('categorie',$categorie)
-        ->with('formule',$formule);
- 
-        
+     $annonce=Annonce::whereid($id)->get();
+     $reponse=Reponseannonce::whereannonce_id($id)
+     ->get();
+     return view('user.MesAnnonce_offre')->with('annonce',$annonce)->with('reponse',$reponse);
     }
 
+
+    public function  consulte_offre_confirmer(Request $request)
+    {
+       $reponse_id=$request->input('reponse_id');
+
+        $confirmerreponse=Reponseannonce::whereid($reponse_id)->first();
+        $confirmerreponse->etat="confirmer";
+        $confirmerreponse->save();
+        $id=$confirmerreponse->annonce_id;
+        $allreponse=Reponseannonce::whereannonce_id($id)->where('id','<>',$reponse_id)->update(['etat' => "annuler"]);
+        
+        $annonce=Annonce::whereid($id)->get();
+        $reponse=Reponseannonce::whereannonce_id($id)
+        ->get();
+        
+        return view('user.MesAnnonce_offre')->with('annonce',$annonce)->with('reponse',$reponse);
+    }
+
+
+    public function  consulte_offre_annuler(Request $request)
+    {
+      $confirmerreponse=Reponseannonce::whereid($request->input('reponse_id'))->first();
+        $confirmerreponse->etat="annuler";
+        $confirmerreponse->save();
+        $id=$confirmerreponse->annonce_id;
+        $annonce=Annonce::whereid($id)->get();
+        $reponse=Reponseannonce::whereannonce_id($id)
+        ->get();
+        return view('user.MesAnnonce_offre')->with('annonce',$annonce)->with('reponse',$reponse);
+    }
+
+
+
+   
     
     
 
