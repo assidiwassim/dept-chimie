@@ -460,4 +460,11 @@ html {
        padding-top:12px;
      font-size: 12px;
     } 
+
+    #menu-home-page a.btn-outline-primary {
+        border-color: #2DD393 !important;
+        color: #2DD393 !important;
+        padding: 6px 30px;
+        DISPLAY: NONE;
+    }
     }
