@@ -127,4 +127,3 @@ class SerachController extends Controller
          }
         
 }
-szd
