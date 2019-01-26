@@ -23,30 +23,32 @@ Auth::routes();
 /* group for link simple user  */
 Route::group(['prefix' =>'labo'  ,'middleware'=> 'labo'],function()
 {
+/* Home */
 Route::get('/', 'HomeController@index')->name('tableaudebord_labo');
+
+/* Annonce */
 Route::get('/annonces', 'HomeController@Annonces_labo')->name('Annonces_labo');
+Route::post('/annonces', 'HomeController@Annonces_labo_search')->name('Annonces_labo_search');
+
+/* Mes annonces */
 Route::get('/mesannonces', 'HomeController@MesAnnonces_labo')->name('MesAnnonces_labo');
+Route::post('/mesannonces', 'HomeController@MesAnnonces_labo_search')->name('MesAnnonces_labo_search');
 Route::get('/mesannonces/ajouter-annonce', 'AnnonceController@ajouter_annonce')->name('ajouter_annonce');
-
-
 Route::post('/mesannonces/ajouter-annonce-from', 'AnnonceController@addannoncefrom')->name('addannonce');
 
+/* MAgasin */
 Route::get('/magasin', 'HomeController@magasin_labo')->name('magasin_labo');
+Route::post('/magasin', 'HomeController@magasin_labo_search')->name('magasin_labo_search');
 Route::get('/magasin/ajouter-produit', 'HomeController@ajouter_produit_magasin_labo')->name('ajouter_produit_magasin_labo');
 Route::post('/magasin/ajouter-produit', 'ProduitController@addproduit')->name('addproduit');
 Route::post('/magasin/supprimer-produit', 'ProduitController@deleteproduit')->name('delete-produit');
-
-Route::post('/magasin/frome-modifer-produit', 'ProduitController@formmodiferproduit')->name('form_modifer-produit');
-
+Route::post('/magasin/form-modifier-produit', 'ProduitController@formmodiferproduit')->name('form_modifer-produit');
 Route::post('/magasin/modiferproduit', 'ProduitController@updateproduit')->name('updateproduit');
 
+/* Option */
 Route::get('/discussion', 'HomeController@discussion_labo')->name('discussion_labo');
 Route::get('/aide', 'HomeController@aide_labo')->name('aide_labo');
 Route::get('/parametre', 'HomeController@parametre_labo')->name('parametre_labo');
-
-
-Route::post('/mesannonces/serach','SerachController@serachmesannonces')->name('serachmesannonces');
-Route::post('/annonces/serach','SerachController@serachmesannonces')->name('serachannonces');
 
 });
 

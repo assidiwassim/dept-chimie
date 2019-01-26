@@ -95,41 +95,35 @@
     </div>
     @endif
   
-    @if (Session::has('message-success-ajout-produit'))
-    <div class="alert alert-success alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4><i class="icon fa fa-check"></i> alerte !</h4>
-            {{ Session::get('message-success-update-produit') }}
-    </div>
-    @endif
-    
+   
 
     <div class="row">
       <div class="col-md-12">
         <div class="box">
           <div class="box-body">
             <div class="row">
-                <form id="search-form">
+            <form id="search-form" method="post" action="{{route('magasin_labo_search')}}">
+                @csrf 
                     <div class="col-md-6 input-container ">
-                            <input type="text" name="designation" class="form-control" placeholder="Essayer, 'Une désignation' ou bien 'Une Formule chimique' " >
+                            <input type="text"  name="designation" class="form-control" placeholder="Essayer, 'Une désignation' ou bien 'Une référence' " >
                     </div>
                     <div class="col-md-2">
-                            <select name="reference" class="form-control select1">
-                                    <option selected disabled>Référence</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                    <option>option 5</option>
-                                  </select>
+                    <select name="categorie" class="form-control select2" >
+                                    <option value="" >Catégorie</option>
+                                    @foreach($categorie as $cat)
+                                    <option value="{{$cat->categorie}}">{{$cat->categorie}}</option>
+                                    @endforeach
+                                  
+                            </select>
                      </div>
                     <div class="col-md-2">
-                            <select name="formule" class="form-control select2">
-                                    <option selected disabled>Formule</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                    <option>option 5</option>
-                            </select>
+                    <select name="formule" class="form-control select1">
+                                    <option value="">Formule</option>
+                                    
+                                    @foreach($formule as $cat)
+                                    <option value="{{$cat->formule}}">{{$cat->formule}}</option>
+                                    @endforeach
+                                  </select>
                     </div>
                     <div class="col-md-2">
                             <input type="submit" class="btn btn-primary btn-sm btn-block" value="Rechercher" >

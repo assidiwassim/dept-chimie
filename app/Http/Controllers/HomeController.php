@@ -36,6 +36,20 @@ class HomeController extends Controller
         return view('user/Annonces_labo')->with('annonces',$annonces);
     }
 
+    
+    public function Annonces_labo_search(Request $request)
+    {   
+        $designation=$request->input('designation');
+        $typeannonce=$request->input('typeannonce');
+        $natureannonce=$request->input('natureannonce');
+      
+       $annonces=Annonce::where('designation','like','%'.$designation.'%')
+       ->where('typeannonce','like','%'.$typeannonce.'%')
+       ->where('natureannonce','like','%'.$natureannonce.'%')
+       ->paginate(8);
+
+        return view('user/Annonces_labo')->with('annonces',$annonces);
+    }
 
     public function MesAnnonces_labo()
     {
@@ -45,13 +59,78 @@ class HomeController extends Controller
         
     }
 
+    public function MesAnnonces_labo_search(Request $request)
+    {   
+        $designation=$request->input('designation');
+        $typeannonce=$request->input('typeannonce');
+        $natureannonce=$request->input('natureannonce');
+      
+       $annonces=Annonce::where('designation','like','%'.$designation.'%')
+       ->where('typeannonce','like','%'.$typeannonce.'%')
+       ->where('natureannonce','like','%'.$natureannonce.'%')
+       ->whereuser_id(Auth::user()->id)
+       ->paginate(8);
+
+        return view('user/MesAnnonces_labo')->with('annonces',$annonces);
+    }
+
 
 
     public function magasin_labo()
     {
         $produits=Produit::where('user_id',Auth::user()->id)->get();
-        return view('user/magasin_labo')->with('produits',$produits);
+
+        $categorie=Produit::select('categorie')
+        ->where('user_id',Auth::user()->id)
+        ->distinct('categorie')
+        ->get();
+
+        $formule=Produit::select('formule')
+        ->where('user_id',Auth::user()->id)
+        ->distinct('formule')
+        ->get();
+
+          
+        return view('user/magasin_labo')->with('produits',$produits)
+        ->with('categorie',$categorie)
+        ->with('formule',$formule);
+
     }
+
+
+    //test
+    public function magasin_labo_search(Request $request)
+    { 
+        
+        $designation=$request->input('designation');
+        $categorie=$request->input('categorie');
+        $formule=$request->input('formule');
+      
+       $produits=Produit::where('designation','like','%'.$designation.'%')
+       ->orwhere('qte','like','%'.$designation.'%')
+       ->orwhere('unite','like','%'.$designation.'%')
+       ->orwhere('reference','like','%'.$designation.'%')
+       ->where('categorie','like','%'.$categorie.'%')
+       ->where('formule','like','%'.$formule.'%')
+       ->whereuser_id(Auth::user()->id)
+       ->paginate(8);
+
+       $categorie=Produit::select('categorie')
+       ->where('user_id',Auth::user()->id)
+       ->distinct('categorie')
+       ->get();
+
+       $formule=Produit::select('formule')
+       ->where('user_id',Auth::user()->id)
+       ->distinct('formule')
+       ->get();
+
+       return view('user/magasin_labo')->with('produits',$produits)
+        ->with('categorie',$categorie)
+        ->with('formule',$formule);
+    }
+
+    
     public function discussion_labo()
     {
         return view('user/discussion_labo');

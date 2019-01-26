@@ -159,7 +159,7 @@
         <div class="box">
           <div class="box-body">
             <div class="row">
-                <form id="search-form" method="post" action="{{route('serachmesannonces')}}">
+                <form id="search-form" method="post" action="{{route('MesAnnonces_labo_search')}}">
                 @csrf 
                     <div class="col-md-6 input-container ">
                             <input type="text" value="" name="designation" class="form-control" placeholder="Essayer, 'Une désignation' ou bien 'Une Formule chimique' " >
