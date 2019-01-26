@@ -51,6 +51,30 @@ class HomeController extends Controller
         return view('user/Annonces_labo')->with('annonces',$annonces);
     }
 
+    public function reponse_offre($id)
+    {    
+        return view('user/reponse_offre')->with('id',$id);
+    }
+
+    public function reponse_demande($id)
+    {    
+        return view('user/reponse_demande')->with('id',$id);
+    }
+
+
+    public function store_reponse_offre($id)
+    {    
+        return view('user/store_reponse_offre');
+    }
+
+    public function store_reponse_demande($id)
+    {    
+        return view('user/store_reponse_demande');
+    }
+
+
+
+
     public function MesAnnonces_labo()
     {
 

@@ -30,6 +30,12 @@ Route::get('/', 'HomeController@index')->name('tableaudebord_labo');
 Route::get('/annonces', 'HomeController@Annonces_labo')->name('Annonces_labo');
 Route::post('/annonces', 'HomeController@Annonces_labo_search')->name('Annonces_labo_search');
 
+Route::get('/annonces/offre/{id}', 'HomeController@reponse_offre')->name('reponse_offre');
+Route::post('/annonces/offre', 'HomeController@store_reponse_offre')->name('store_reponse_offre');
+
+Route::get('/annonces/demande/{id}', 'HomeController@reponse_demande')->name('reponse_demande');
+Route::post('/annonces/demande', 'HomeController@store_reponse_demande')->name('store_reponse_demande');
+
 /* Mes annonces */
 Route::get('/mesannonces', 'HomeController@MesAnnonces_labo')->name('MesAnnonces_labo');
 Route::post('/mesannonces', 'HomeController@MesAnnonces_labo_search')->name('MesAnnonces_labo_search');
