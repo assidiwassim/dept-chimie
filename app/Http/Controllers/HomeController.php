@@ -47,6 +47,7 @@ class HomeController extends Controller
         $annonces=Annonce::where('designation','like','%'.$designation.'%')
         ->where('typeannonce','like','%'.$typeannonce.'%')
         ->where('natureannonce','like','%'.$natureannonce.'%')
+        ->orderBy('created_at', 'desc')
         ->paginate(8);
          return view('user/Annonces_labo')->with('annonces',$annonces);
     }
@@ -104,7 +105,7 @@ class HomeController extends Controller
     public function MesAnnonces_labo()
     {
 
-        $annonces=Annonce::whereuser_id(Auth::user()->id)->simplePaginate(8);
+        $annonces=Annonce::whereuser_id(Auth::user()->id)->orderBy('created_at', 'desc')->simplePaginate(8);
         return view('user/MesAnnonces_labo')->with('annonces',$annonces);
         
     }
@@ -114,6 +115,7 @@ class HomeController extends Controller
 
         $annonces=Annonce::whereid($id)->get();
         $reponseconfirmer=Reponseannonce::whereannonce_id($id)
+        ->orderBy('created_at', 'desc')
         ->whereetat("confirmer")
         ->get();
 
@@ -125,6 +127,7 @@ class HomeController extends Controller
     {
      $annonce=Annonce::whereid($id)->get();
      $reponse=Reponseannonce::whereannonce_id($id)
+     ->orderBy('created_at', 'desc')
      ->get();
      return view('user.MesAnnonce_offre')->with('annonce',$annonce)->with('reponse',$reponse);
     }
