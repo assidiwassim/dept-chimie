@@ -119,10 +119,23 @@ class HomeController extends Controller
     }
     public function consulte_offre($id)
     {
+        $produits=Produit::where('user_id',Auth::user()->id)->get();
 
-        $annonces=Annonce::whereuser_id(Auth::user()->id)->simplePaginate(8);
+        $categorie=Produit::select('categorie')
+        ->where('user_id',Auth::user()->id)
+        ->distinct('categorie')
+        ->get();
 
-        return view('user/MesAnnonce_offre')->with('annonces',$annonces);
+        $formule=Produit::select('formule')
+        ->where('user_id',Auth::user()->id)
+        ->distinct('formule')
+        ->get();
+
+          
+        return view('user/MesAnnonce_offre')->with('produits',$produits)
+        ->with('categorie',$categorie)
+        ->with('formule',$formule);
+ 
         
     }
 
