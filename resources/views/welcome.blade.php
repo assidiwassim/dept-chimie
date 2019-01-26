@@ -44,7 +44,7 @@
               <p>
                       Le département comprend aussi deux laboratoires
                       de recherche (LR) cinq unités de recherche (UR) 
-                     et une unité de service commun (USC) RMN.
+                      et une unité de service commun (USC) RMN.
               </p>
               <a class="btn btn-success btn-lg " href="{{ route('login') }}">SE CONNECTER</a>
               
