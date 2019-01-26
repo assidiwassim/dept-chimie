@@ -8,6 +8,7 @@ use App\Annonce;
 use Auth;
 use App\Reponseannonce;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\ControllerValidatesRequestsvalidate;
 class HomeController extends Controller
 {
     /**
@@ -43,13 +44,11 @@ class HomeController extends Controller
         $designation=$request->input('designation');
         $typeannonce=$request->input('typeannonce');
         $natureannonce=$request->input('natureannonce');
-      
-       $annonces=Annonce::where('designation','like','%'.$designation.'%')
-       ->where('typeannonce','like','%'.$typeannonce.'%')
-       ->where('natureannonce','like','%'.$natureannonce.'%')
-       ->paginate(8);
-
-        return view('user/Annonces_labo')->with('annonces',$annonces);
+        $annonces=Annonce::where('designation','like','%'.$designation.'%')
+        ->where('typeannonce','like','%'.$typeannonce.'%')
+        ->where('natureannonce','like','%'.$natureannonce.'%')
+        ->paginate(8);
+         return view('user/Annonces_labo')->with('annonces',$annonces);
     }
 
 
@@ -68,6 +67,10 @@ class HomeController extends Controller
 
     public function store_reponse_offre(Request $request)
     {    
+        $this->validate($request, [
+            'commentaire' => 'required|string|min:1',  
+          ]);
+     
      $reponseoffre=new Reponseannonce;
      $reponseoffre->user_id=Auth::user()->id;
      $reponseoffre->annonce_id=$request->input('idannonce');
@@ -81,6 +84,9 @@ class HomeController extends Controller
 
     public function store_reponse_demande(Request $request)
     {    
+        $this->validate($request, [
+            'commentaire' => 'required|string|min:1',  
+          ]); 
      $reponseoffre=new Reponseannonce;
      $reponseoffre->user_id=Auth::user()->id;
      $reponseoffre->annonce_id=$request->input('idannonce');
