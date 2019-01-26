@@ -112,9 +112,13 @@ class HomeController extends Controller
     public function consulte_demande($id)
     {
 
-        $annonces=Annonce::whereuser_id(Auth::user()->id)->simplePaginate(8);
+        $annonces=Annonce::whereid($id)->get();
+        $reponseconfirmer=Reponseannonce::whereannonce_id($id)
+        ->whereetat("confirmer")
+        ->get();
 
-        return view('user/MesAnnonce_demande')->with('annonces',$annonces);
+
+        return view('user/MesAnnonce_demande')->with('annonces',$annonces)->with('reponseconfirmer',$reponseconfirmer);
         
     }
     public function consulte_offre($id)
