@@ -50,7 +50,7 @@
               
          
       </div>
-      <div class="col-md-6 img-container">
+      <div class="col-md-6 img-container " >
       <img src="{{ asset('img/home.png') }}" class="logo-fsm">
       </div>
   </div>
