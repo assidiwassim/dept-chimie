@@ -229,9 +229,9 @@
              
                 
                         @if($annonce->typeannonce=="Offre")
-                            <a href="#" class="btn btn-default btn-lg btn-block btn-repondre ">Consulté</a>
+                            <a href="/labo/mesannonces/offre/{$annonce->id}" class="btn btn-default btn-lg btn-block btn-repondre ">Consulté</a>
                         @else
-                            <a href="#" class="btn btn-default btn-lg btn-block btn-repondre-Demande ">Consulté</a>
+                            <a  href="/labo/mesannonces/demande/{$annonce->id}"  class="btn btn-default btn-lg btn-block btn-repondre-Demande ">Consulté</a>
                         @endif
         
                 </div>
