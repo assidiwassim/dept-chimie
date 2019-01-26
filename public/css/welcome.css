@@ -248,8 +248,10 @@ html {
     #menu-home-page {
         border: none !important;
         padding: 0!important;
+        padding-top: 10px!important;
     }
     #menu-home-page nav {
+        margin-top:20px;
         margin-right:0 !important;
     }
 
@@ -258,7 +260,8 @@ html {
         color: #7f7f7f !important;
     }
     #menu-home-page .logo-fsm{
-        width: 317px;
+        margin-top:10px;
+
     }
 
     /*Home style*/
@@ -269,27 +272,30 @@ html {
    
     }
     #home .content {
-        padding: 30px 0 0 0px;
+        padding: 15px 5px;
+        text-align: center;
+        
     }
+  
     #home .content h1{
-        font-size:30px;
+        font-size:20px;
     }
 
     #home .content p{
-        font-size:20px;
-        margin-top:30px;
+        font-size:17px;
+        margin-top:20px;
         color:#7f7f7f;
     }
 
     #home .content a{
-        margin-top: 30px;
+        margin-top: 20px;
         background-color: #2DD393 !important;
         border-color: #2DD393 !important;
         color: #fff;
         border-radius: 8px;
-        padding: 10px 68px;
+        padding: 8px 60px;
         font-weight: 700;
-        font-size: 25px;
+        font-size: 20px;
         box-shadow: 0px 3px 13px 3px #0000002b;
     }
 
@@ -297,9 +303,8 @@ html {
          box-shadow: 0px 0px 0px 0px #0000002b;
     }
 
-    #home .img-container img{
-        width:100%;
-        margin-right:-25px;
+   #home .img-container{
+        display: none;
     }
 
 
@@ -308,7 +313,7 @@ html {
     #service{
         width:100%;
         height: 570px;
-        padding: 50px 130px;
+        padding: 0 10px;
         text-align: center;  
     }
    
