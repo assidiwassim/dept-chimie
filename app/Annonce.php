@@ -13,6 +13,10 @@ class Annonce extends Model
     public function user(){
         return $this->belongsTo('App\User');
         }
+        public function reponseannonce(){
+            return $this->hasMany('App\Reponseannonce');
+            }
+    
 
     
     }
