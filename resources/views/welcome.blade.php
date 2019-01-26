@@ -46,7 +46,7 @@
                       de recherche (LR) cinq unités de recherche (UR) 
                      et une unité de service commun (USC) RMN.
               </p>
-              <a class="btn btn-success btn-lg ">SE CONNECTER</a>
+              <a class="btn btn-success btn-lg " href="{{ route('login') }}">SE CONNECTER</a>
               
          
       </div>

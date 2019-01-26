@@ -59,6 +59,18 @@
            
 
             }
+            
+            @media screen and (max-width: 600px) {
+                .container-form-login{
+                padding-top: 1px;;
+                margin: 0;
+                width: 100%;
+                height: 100%;
+           
+
+            }
+            
+            }
             .container-form-login h2{
             font-weight:700 !important;
             margin-top:20px;
@@ -69,9 +81,7 @@
             margin-top:20px;
       
             }
-            .form-login{
- 
-            }
+           
             .form-group button[type=submit] {
             float: right;
             padding: 6px 0;
@@ -84,19 +94,18 @@
 
             .form-group button[type=submit] img{
                 width: 22px;
+                outline: none;
             }
-            .reset{
-                position: absolute;
-                bottom:0;
-                left:0 !important;
-            }
-            .reset {
-                position: absolute;
-                bottom:0;
-                left: -120px !important;
+            
+        
+            @media screen and (max-width: 600px) {
+                .reset {
+                position: static ;
+                text-align: center;
+               
 
             }
-
+            }
             .form-group input[type=email],.form-group input[type=password] {
              border-radius: 0;
              border:none;
