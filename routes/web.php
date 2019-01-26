@@ -44,7 +44,9 @@ Route::get('/aide', 'HomeController@aide_labo')->name('aide_labo');
 Route::get('/parametre', 'HomeController@parametre_labo')->name('parametre_labo');
 
 
-Route::post('/mesannonces/serach','SerachController@serachmesannonces')->name('serachannonce');
+Route::post('/mesannonces/serach','SerachController@serachmesannonces')->name('serachmesannonces');
+Route::post('/annonces/serach','SerachController@serachmesannonces')->name('serachannonces');
+
 });
 
 
