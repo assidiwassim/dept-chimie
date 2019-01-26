@@ -143,12 +143,12 @@
 </style>
 <section class="content-header">
     <h1>
-        Annonces 
+        Mes annonces 
       <small>labshare</small>
     </h1>
     <ol class="breadcrumb">
       <li class="active"><i class="fa fa-dashboard"></i> Menu</li>
-      <li><a href="#"> Annonces </a></li>
+      <li><a href="#"> Mes annonces </a></li>
     </ol>
   </section>
   <section class="content">
@@ -160,25 +160,24 @@
           <div class="box-body">
             <div class="row">
                 <form id="search-form" method="post" action="{{route('serachannonces')}}">
-                @csrf
+                @csrf 
                     <div class="col-md-6 input-container ">
-                            <input type="text" name="designation" class="form-control" placeholder="Essayer, 'Une désignation' ou bien 'Une Formule chimique' " >
+                            <input type="text" value="" name="designation" class="form-control" placeholder="Essayer, 'Une désignation' ou bien 'Une Formule chimique' " >
                     </div>
-                  
                     <div class="col-md-2">
-                            <select name="formule" class="form-control select2">
-                                    <option >Type d'annonce</option>
+                    <select name="typeannonce" class="form-control select2" >
+                                    <option value="" >Type d'annonce</option>
                                     <option value="offre">Offre</option>
                                     <option value="demande">Demande</option>
                             </select>
-                    </div>
+                     </div>
                     <div class="col-md-2">
-                            <select name="reference" class="form-control select1">
-                                    <option >Nature annonce</option>
+                    <select name="natureannonce" class="form-control select1">
+                                    <option value="">Nature annonce</option>
                                     <option value="Changement">Changement</option>
                                     <option value="Don">Don</option>
                                   </select>
-                     </div>
+                    </div>
                     <div class="col-md-2">
                             <input type="submit" class="btn btn-primary btn-sm btn-block" value="Rechercher" >
                     </div>
@@ -188,7 +187,6 @@
         </div>
       </div>
     </div>
-
 
     <div class="row row_list_produit">
     @if(!empty($annonces))
@@ -228,47 +226,21 @@
                   </p>
                 </div>
                 <div class="box-footer">
-                @if( $annonce->user_id!=Auth::user()->id)
+             
                 
                         @if($annonce->typeannonce=="Offre")
-                            <a href="#" class="btn btn-default btn-lg btn-block btn-repondre "  data-toggle="modal" data-target="#modal-default">Répondre</a>
+                            <a href="#" class="btn btn-default btn-lg btn-block btn-repondre ">Consulté</a>
                         @else
-                            <a href="#" class="btn btn-default btn-lg btn-block btn-repondre-Demande  " data-toggle="modal" data-target="#modal-default">Répondre</a>
+                            <a href="#" class="btn btn-default btn-lg btn-block btn-repondre-Demande ">Consulté</a>
                         @endif
-                  
-                    <!-- .modal-content -->
-                        <div class="modal fade" id="modal-default" style="display: none;">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span></button>
-                                  <h4 class="modal-title">Default Modal</h4>
-                                </div>
-                                <div class="modal-body">
-                                  <p>One fine body…</p>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                              </div>
-                              <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                          </div>
-
-                @else
-                <a class="btn btn-default btn-lg btn-block " disabled>Répondre</a>
-                @endif
+        
                 </div>
               </div>
             </div>
-            
             @endforeach
             {{$annonces->links()}}
             @else
-            <p>aucune annonce ap publié </p>
+            <p>aucune annonce a publié dons cette compte</p>
             @endif
               
             </div>
