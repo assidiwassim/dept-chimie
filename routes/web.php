@@ -44,6 +44,11 @@ Route::post('/mesannonces', 'HomeController@MesAnnonces_labo_search')->name('Mes
 Route::get('/mesannonces/ajouter-annonce', 'AnnonceController@ajouter_annonce')->name('ajouter_annonce');
 Route::post('/mesannonces/ajouter-annonce-from', 'AnnonceController@addannoncefrom')->name('addannonce');
 
+
+Route::get('/mesannonces/demande/{id}', 'HomeController@consulte_demande')->name('consulte_demande');
+Route::get('/mesannonces/offre/{id}', 'HomeController@consulte_offre')->name('consulte_offre');
+
+
 /* MAgasin */
 Route::get('/magasin', 'HomeController@magasin_labo')->name('magasin_labo');
 Route::post('/magasin', 'HomeController@magasin_labo_search')->name('magasin_labo_search');

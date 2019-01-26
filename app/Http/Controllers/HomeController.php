@@ -103,6 +103,26 @@ class HomeController extends Controller
         
     }
 
+    public function consulte_demande($id)
+    {
+
+        $annonces=Annonce::whereuser_id(Auth::user()->id)->simplePaginate(8);
+
+        return view('user/MesAnnonce_demande')->with('annonces',$annonces);
+        
+    }
+    public function consulte_offre($id)
+    {
+
+        $annonces=Annonce::whereuser_id(Auth::user()->id)->simplePaginate(8);
+
+        return view('user/MesAnnonce_offre')->with('annonces',$annonces);
+        
+    }
+
+    
+    
+
     public function MesAnnonces_labo_search(Request $request)
     {   
         $designation=$request->input('designation');
@@ -118,6 +138,8 @@ class HomeController extends Controller
         return view('user/MesAnnonces_labo')->with('annonces',$annonces);
     }
 
+
+    
 
 
     public function magasin_labo()
