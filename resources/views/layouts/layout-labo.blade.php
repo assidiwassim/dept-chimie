@@ -125,7 +125,7 @@ width: 190px;
     <a href="#" class="logo">
 
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg pull-left " style="margin-left:10px;"><b>Labo {{Auth::user()->id}}</b></span>
+      <span class="logo-lg pull-left " style="margin-left:10px;"><b>LabShare </b></span>
     </a>
 
     <!-- Header Navbar -->
