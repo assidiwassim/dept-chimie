@@ -312,7 +312,7 @@ html {
 
     #service{
         width:100%;
-        height: 570px;
+        height: 100%;
         padding: 0 10px;
         text-align: center;  
     }
@@ -334,7 +334,7 @@ html {
     }
 
     #service p{
-        margin-top:20px;
+     margin-top:20px;
      font-size: 17px;
      color:#7f7f7f;
     }
@@ -342,7 +342,9 @@ html {
     #apropos{
         width:100%;
         height: 400px;
-        padding: 50px 130px;
+        padding: 50px 10px;
+        height: 100%;
+        text-align: center;
     } 
     
  
@@ -351,6 +353,7 @@ html {
         position: relative;
         bottom: 20px;
         left: 116px; 
+        display:none;
     } 
     #apropos h2{
         font-size: 24px;
@@ -370,9 +373,9 @@ html {
 
     #contact{
         width:100%;
-        height: 650px;
-        padding: 50px 130px;
-      
+        height: 100%;
+        padding: 50px 10px;
+   
     }
 
     #contact h1{
@@ -414,7 +417,7 @@ html {
 
     #footer {
         width:100%;
-        height: 250px;
+        height:100%;
         background-color: #142535;
       box-sizing: border-box;
     }
@@ -425,6 +428,7 @@ html {
         background-color: #142535;
         color: #BBBBBB;
         padding: 42px 0 0 42px;
+        display:none;
     }
 
     #footer .links .row{
@@ -441,7 +445,7 @@ html {
 
     #footer .copyright{
         width:100%;
-        height: 50px;
+        height: 100%;
         background-color: #101D2A;
       color:#707070;
     }

@@ -37,14 +37,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
     color: #fff;
     border-bottom: 0 solid transparent;
 }
+
 .skin-blue .main-header .navbar .sidebar-toggle {
+    color: #43425D;
+}
+
+@media screen and (min-width: 768px){
+    .skin-blue .main-header .navbar .sidebar-toggle {
+      color: #fff;
+      display: none;
+    } 
+    .skin-blue .main-header .navbar .sidebar-toggle:hover {
     color: #fff;
     display: none;
 }
-.skin-blue .main-header .navbar .sidebar-toggle:hover {
-    color: #fff;
-    display: none;
 }
+
+@media screen and (max-width: 768px){
+    .main-header .logo{
+      display: none;
+    }
+    .main-header .sidebar-toggle{
+      position: relative;
+    top: 5px;
+    }
+  
+}
+
+
+
 .skin-blue .main-header .logo {
     background-color: transparent;
     color: #fff;
