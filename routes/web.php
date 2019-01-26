@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 })->middleware('guest');
+Route::post('/sendemail','App\Mail\Contact@sendemail')->name('sendemail')->middleware('guest');
+
 
 
 

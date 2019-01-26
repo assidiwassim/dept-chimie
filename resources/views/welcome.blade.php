@@ -113,12 +113,13 @@
       <div class="row">
           <div class="col-md-6 container-form">
             
-              <form class="form-cadre" >
+              <form class="form-cadre"  method="post" action="">
+              @csrf
                       <h1> Contactez-nous </h1>
                       <br>
                       <div class="form-group">
                         <label for="usr">Votre nom </label>
-                        <input type="text" class="form-control" id="nom">
+                        <input type="text" class="form-control" id="name">
                       </div>
                       <div class="form-group">
                               <label for="usr">Votre adresse email </label>
@@ -126,11 +127,11 @@
                       </div>
                       <div class="form-group">
                               <label for="usr">Objet </label>
-                              <input type="text" class="form-control" id="obj">
+                              <input type="text" class="form-control" id="object">
                       </div>
                       <div class="form-group">
                               <label for="comment">Votre message</label>
-                              <textarea class="form-control" rows="3" id="msg"></textarea>
+                              <textarea class="form-control" rows="3" id="message"></textarea>
                       </div> 
                      
                             <button type="submit" class="btn btn-success btn-block">Envoyer</button>
