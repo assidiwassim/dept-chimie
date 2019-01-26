@@ -38,6 +38,7 @@ class AdminController extends Controller
     {   $administrateur=User::select('id','email', 'name' )
         ->where('role','admin')
         ->where('id','<>',Auth::user()->id)
+        ->orderBy('created_at', 'desc')
         ->get();
         $nbadmin=User::where('role','admin')->count();
         return view('admin/compteadmin')->with('admins',$administrateur)->with('nbadmin',$nbadmin);
@@ -47,6 +48,7 @@ class AdminController extends Controller
     public function comptelabo()
     {    $labos=User::select('id','email', 'name' ,'block')
         ->where('role','user')
+        ->orderBy('created_at', 'desc')
         ->get();
         $nblabo=User::where('role','user')->count();
 
@@ -77,10 +79,11 @@ class AdminController extends Controller
     public function blockadmin(Request $request)
     {
         
-        session()->flash('message-success', " laboratoire  est bloqué avec succées");
+        
         $user = User::find($request->input('laboblock'));  
         $user->block= "true" ; 
         $user->save();
+        session()->flash('message-success', " laboratoire  est bloqué avec succées");
         return Redirect()->route('compteadmin');
   
     }
@@ -90,10 +93,11 @@ class AdminController extends Controller
     public function deblockadmin(Request $request)
     {
         
-            session()->flash('message-success', " Administrateur est debloqué avec succées");
             $user = User::find($request->input('admin'));  
             $user->block="false" ; 
             $user->save();       
+            session()->flash('message-success', " Administrateur est debloqué avec succées");
+
             return Redirect()->route('compteadmin');
     }
 

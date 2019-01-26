@@ -34,7 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>LabShare</b></span>
     </a>
 
     <!-- Header Navbar -->

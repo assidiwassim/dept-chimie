@@ -16,6 +16,7 @@ class AnnonceController extends Controller
     {
       $refuser=Produit::select('id','reference' )
       ->where('user_id',Auth::user()->id)
+      ->orderBy('created_at', 'desc')
       ->get();
       $reftotal=Produit::select('id','reference' )
       ->get();
