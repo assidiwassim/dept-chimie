@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Produit;
 use App\Annonce;
 use Auth;
+use App\Reponseannonce;
 use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
@@ -51,25 +52,44 @@ class HomeController extends Controller
         return view('user/Annonces_labo')->with('annonces',$annonces);
     }
 
+
+
+
     public function reponse_offre($id)
     {    
         return view('user/reponse_offre')->with('id',$id);
     }
 
     public function reponse_demande($id)
-    {    
+    {   
         return view('user/reponse_demande')->with('id',$id);
     }
 
 
-    public function store_reponse_offre($id)
+    public function store_reponse_offre(Request $request)
     {    
-        return view('user/store_reponse_offre');
+     $reponseoffre=new Reponseannonce;
+     $reponseoffre->user_id=Auth::user()->id;
+     $reponseoffre->annonce_id=$request->input('idannonce');
+     $reponseoffre->commentaire=$request->input('commentaire');
+     $reponseoffre->etat="enattente";
+     $reponseoffre->save();
+     
+     session()->flash('message-success-ajout-offre','Votre demande à cette offre est effecuté avec succées');
+     return back()->withInput();   
     }
 
-    public function store_reponse_demande($id)
+    public function store_reponse_demande(Request $request)
     {    
-        return view('user/store_reponse_demande');
+     $reponseoffre=new Reponseannonce;
+     $reponseoffre->user_id=Auth::user()->id;
+     $reponseoffre->annonce_id=$request->input('idannonce');
+     $reponseoffre->commentaire=$request->input('commentaire');
+     $reponseoffre->etat="confirmer";
+     $reponseoffre->save();
+     
+     session()->flash('message-success-ajout-demande','Votre demande confimer avec succées');
+     return back()->withInput();  
     }
 
 

@@ -70,11 +70,11 @@
   </section>
   <section class="content">
  
-                @if (Session::has('message-success-ajout-produit'))
+                @if (Session::has('message-success-ajout-offre'))
                         <div class="alert alert-success alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                 <h4><i class="icon fa fa-check"></i> alerte !</h4>
-                                {{ Session::get('message-success-ajout-produit') }}
+                                {{ Session::get('message-success-ajout-offre') }}
                         </div>
                 @endif
 
@@ -84,15 +84,15 @@
                 <div class="box-body">
               
                   <div class="row">
-                      <form class="form-horizontal" method="post"   action="">
+                      <form class="form-horizontal" method="post"   action="{{route('store_reponse_offre')}}">
                       @csrf
                           <div class="box-body">
-                        
+                          <input id="idannonce" name="idannonce" type="hidden" value="{{$id}}">
                             <div class="form-group">
                               <label for="commentaire" class=" control-label">Commentaire</label>
             
                              
-                                  <textarea class="form-control" name="commentaire" id="commentaire" rows="3" placeholder="Enter ..."></textarea>
+                                  <textarea class="form-control" name="commentaire" id="commentaire" rows="3" placeholder="Enter ..." required></textarea>
                                   @if ($errors->has('commentaire'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('commentaire') }}</strong>
