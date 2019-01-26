@@ -159,10 +159,10 @@
         <div class="box">
           <div class="box-body">
             <div class="row">
-                <form id="search-form" method="post" action="{{route('serachannonces')}}">
+                <form id="search-form" method="post" action="{{route('serachmesannonces')}}">
                 @csrf 
                     <div class="col-md-6 input-container ">
-                            <input type="text" value="" name="designation" class="form-control" placeholder="Essayer, 'Une désignation' ou bien 'Une Formule chimique' " >
+                            <input type="text" value="" name="designation" class="form-control" placeholder="Essayer, 'Une désignation' ou bien 'Une Formule chimique' " required>
                     </div>
                     <div class="col-md-2">
                     <select name="typeannonce" class="form-control select2" >
@@ -238,7 +238,7 @@
               </div>
             </div>
             @endforeach
-            {{$annonces->links()}}
+            
             @else
             <p>aucune annonce a publié dons cette compte</p>
             @endif
