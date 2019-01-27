@@ -45,7 +45,7 @@ class AnnonceController extends Controller
            $Annonce->file = $filename;
            $Annonce->user_id  = Auth::user()->id;
            $Annonce->save();
-           session()->flash('message-success-ajout-annonce','la nouvelle produit a été enregistrer correctement!');
+           session()->flash('message-success-ajout-annonce','la nouvelle annonce a été enregistrer correctement!');
 
            return back()->withInput();
          

@@ -53,41 +53,15 @@ class ProduitController extends Controller
 
         }
         
-        public function  modiferproduit(Request $request)
-        {          
-            $this->validate($request, [
-
-                'reference' => 'required|string|unique:produits',
-                'designation' => 'required|string',
-                'formule' => 'required|string',
-                'qte' => 'required|numeric',
-                'categorie' => 'required|string',
-                'unite' => 'required|string',
-                
-              ]);
-        
-
-          $produit= Produit::findOrFail($request->get('idproduit'));
-            $porduit->reference = $request->get('reference');
-            $porduit->designation = $request->get('designation');
-            $porduit->formule = $request->get('formule');
-            $porduit->qte = $request->get('qte');
-            $porduit->categorie = $request->get('categorie');
-            $porduit->unite = $request->get('unite');
-            $porduit->save();
-            dump($produit);
-            $produits=Produit::where('user_id',Auth::user()->id)->get();
-           dump($produit);
-         
-         
-         }
+       
         
          public function updateproduit(Request $req)
          {
-            $produit= Produit::findOrFail($req->get('idproduit'));
-            $produit->formule=$req->input('formule');
-            $produit->save();
-            session()->flash('message-success-update-produit',"la mose a jour de produit  fait correctement!");
+ 
+        
+            $id= $req->get('idproduit');
+            $produit= Produit::whereid($id)->update($req->except(['_method','_token','idproduit']));
+            session()->flash('message-success-update-produit',"la mise a jour de produit  fait correctement!");
             return redirect()->route('magasin_labo');
             
          }
