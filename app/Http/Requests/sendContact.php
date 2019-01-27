@@ -24,11 +24,12 @@ class sendContact extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|min:1',
-            'email' => 'required|string|email',
-            'subject' => 'required|string|min:1',
-            'message' => 'required|min:1',
-            
+            'reference' => 'required|string|unique:produits',
+            'designation' => 'required|string',
+            'formule' => 'required|string',
+            'qte' => 'required|numeric',
+            'categorie' => 'required|string',
+            'unite' => 'required|string',
         ];
     }
 }
