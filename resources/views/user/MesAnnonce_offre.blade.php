@@ -94,6 +94,7 @@
 
                      
                                 <tr role="row" class="even">
+                                @if(!empty($reponse))
                                @foreach($reponse as $rep)
                                 <td>{{$loop->index+1}}</td>
                                   <td class="sorting_1">{{DB::table('users')->whereid($rep->user_id)->value('name')}}</td>
@@ -149,6 +150,10 @@
                                     @endif
                                 </tr>
                                 @endforeach
+                                @elseif
+                                <h2 color="red">aucune offre sur cette annonce</h2>
+                                @endif
+
                                </tbody>
                             </table></div>
                   </div>
