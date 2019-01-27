@@ -298,14 +298,7 @@
                                 <div class="js-hide-when-edit-header" data-js="popover" data-jsinit="popover">
                                     <div class="u-dib">
                                             <a href="#profileMissions" data-offset="150" class="u-df u-aic u-flww u--xs-mr0  u--xs-jcc u-mb2 link quiet">
-                                                <strong class="profile-header__mission-count u-mr2">
-                                                    @if( DB::table('reponseannonces')->where('annonce_id','=',$id)->count() ==0)
-                                                    Aucune demande pour cet offre
-                                                    @else
-                                                    Il y'a <strong> {{DB::table('reponseannonces')->where('annonce_id','=',$id)->count() }}</strong> demandes pour cet offre
-                                                    @endif
-                                               
-                                                </strong>
+                                             
                                             </a>
                                     </div>
                                 </div>
