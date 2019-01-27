@@ -23,8 +23,8 @@
       <small>labshare</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Tableau de bord </a></li>
-      <li class="active">Menu</li>
+        <li class="active"><i class="fa fa-dashboard"></i> Menu</li>
+      <li><a href="#"> Tableau de bord </a></li>
     </ol>
   </section>
   <section class="content">

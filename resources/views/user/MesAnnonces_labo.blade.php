@@ -149,11 +149,10 @@
     <ol class="breadcrumb">
       <li class="active"><i class="fa fa-dashboard"></i> Menu</li>
       <li><a href="#"> Mes annonces </a></li>
+      <li><a href="#"> Liste de mes annonces </a></li>
     </ol>
   </section>
   <section class="content">
-  
-
     <div class="row">
       <div class="col-md-12">
         <div class="box">
