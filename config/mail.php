@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'saifeddinhajji@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'labsharefsm@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'LabShare'),
     ],
 
     /*
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('labsharefsm@gmail.com'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('LabShare123'),
 
     /*
     |--------------------------------------------------------------------------

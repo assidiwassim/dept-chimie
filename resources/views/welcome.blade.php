@@ -113,25 +113,25 @@
       <div class="row">
           <div class="col-md-6 container-form">
             
-              <form class="form-cadre"  method="post" action="">
+              <form class="form-cadre"  method="post" action="{{route('sendemail')}}">
               @csrf
                       <h1> Contactez-nous </h1>
                       <br>
                       <div class="form-group">
                         <label for="usr">Votre nom </label>
-                        <input type="text" class="form-control" id="name">
+                        <input type="text" name="name" class="form-control" id="name">
                       </div>
                       <div class="form-group">
                               <label for="usr">Votre adresse email </label>
-                              <input type="email" class="form-control" id="email">
+                              <input type="email"  name="email"  class="form-control" id="email">
                       </div>
                       <div class="form-group">
                               <label for="usr">Objet </label>
-                              <input type="text" class="form-control" id="object">
+                              <input type="text" name="object" class="form-control" id="object">
                       </div>
                       <div class="form-group">
                               <label for="comment">Votre message</label>
-                              <textarea class="form-control" rows="3" id="message"></textarea>
+                              <textarea class="form-control" name="message" rows="3" id="message"></textarea>
                       </div> 
                      
                             <button type="submit" class="btn btn-success btn-block">Envoyer</button>
