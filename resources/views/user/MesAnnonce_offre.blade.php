@@ -150,7 +150,7 @@
                                     @endif
                                 </tr>
                                 @endforeach
-                                @elseif
+                                @else
                                 <h2 color="red">aucune offre sur cette annonce</h2>
                                 @endif
 
