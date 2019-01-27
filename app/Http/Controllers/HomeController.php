@@ -120,7 +120,7 @@ class HomeController extends Controller
         ->get();
 
 
-        return view('user/MesAnnonce_demande')->with('annonces',$annonces)->with('reponseconfirmer',$reponseconfirmer);
+        return view('user/MesAnnonce_demande')->with('annonces',$annonces)->with('reponseconfirmer',$reponseconfirmer)->with('id',$id);
         
     }
     public function consulte_offre($id)
@@ -129,7 +129,7 @@ class HomeController extends Controller
      $reponse=Reponseannonce::whereannonce_id($id)
      ->orderBy('created_at', 'desc')
      ->get();
-     return view('user.MesAnnonce_offre')->with('annonce',$annonce)->with('reponse',$reponse);
+     return view('user.MesAnnonce_offre')->with('annonce',$annonce)->with('reponse',$reponse)->with('id',$id);
     }
 
 
