@@ -65,7 +65,7 @@
       <li><a href="#"> Mes annonces </a></li>
       <li><a href="#"> Offre </a></li>
     </ol>
-  </section>
+  </section> 
   <section class="content">
 
    

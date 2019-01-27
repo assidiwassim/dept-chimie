@@ -113,29 +113,56 @@
       <div class="row">
           <div class="col-md-6 container-form">
             
-              <form class="form-cadre"  method="post" action="{{route('sendemail')}}">
+              <form class="form-cadre"  method="post" action="{{route('sendcontact')}}">
               @csrf
                       <h1> Contactez-nous </h1>
                       <br>
                       <div class="form-group">
                         <label for="usr">Votre nom </label>
-                        <input type="text" name="name" class="form-control" id="name">
+                        <input type="text" name="name" class="form-control" id="name" required>
+                        @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
                       </div>
                       <div class="form-group">
                               <label for="usr">Votre adresse email </label>
-                              <input type="email"  name="email"  class="form-control" id="email">
+                              <input type="email"  name="email"  class="form-control" id="email" required>
+                              @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                       </div>
                       <div class="form-group">
                               <label for="usr">Objet </label>
-                              <input type="text" name="object" class="form-control" id="object">
+                              <input type="text" name="subject" class="form-control" id="subject" required>
+                              @if ($errors->has('subject'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('subject') }}</strong>
+                                    </span>
+                                @endif
                       </div>
                       <div class="form-group">
                               <label for="comment">Votre message</label>
-                              <textarea class="form-control" name="message" rows="3" id="message"></textarea>
+                              <textarea class="form-control" name="message" rows="3" id="message" required></textarea>
+                              @if ($errors->has('message'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('messages') }}</strong>
+                                    </span>
+                                @endif
                       </div> 
                      
                             <button type="submit" class="btn btn-success btn-block">Envoyer</button>
                     </form>
+                    @if (Session::has('message-success-send-message'))
+                        <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4><i class="icon fa fa-check"></i> alerte !</h4>
+                                {{ Session::get('message-success-send-message') }}
+                        </div>
+                        @endif
           </div>
           <div class="col-md-6 text-center">
                   <br>   <br>   <br>   <br>

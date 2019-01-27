@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Contact;
 use Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\sendContact;
+use Illuminate\Database\Query\Builder;
+use App\Http\Controllers\ControllerValidatesRequestsvalidate;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Support\Facades\Redirect;
 class AdminController extends Controller
 {
@@ -157,8 +162,25 @@ class AdminController extends Controller
             $user = User::find($request->input('laboblock'));  
             $user->block= "false" ; 
             $user->save();
-            return Redirect()->route('comptelabo');
+        
+        return Redirect()->route('comptelabo');
     }
     
+
+    public function storecontact(sendContact $request)
+    {
+        
+   $contact= new Contact;
+      $contact->name=$request->input('name');
+      $contact->email=$request->input('email');
+      $contact->subject=$request->input('subject');
+      $contact->message=$request->input('message');
+      $contact->save();
+
+      session()->flash('message-success-send-message','la nouvelle annonce a été enregistrer correctement!');
+
+      return back()->withInput();
+
+    }
     
 }
