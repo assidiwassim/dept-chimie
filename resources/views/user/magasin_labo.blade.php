@@ -63,6 +63,7 @@
 
       <li class="active"><i class="fa fa-dashboard"></i> Menu</li>
       <li><a href="#"> Magasin </a></li>
+      <li><a href="#"> Liste des produits </a></li>
     </ol>
   </section>
   <section class="content">
