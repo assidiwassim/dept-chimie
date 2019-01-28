@@ -31,10 +31,14 @@ class HomeController extends Controller
         return view('user/tableaudebord_labo');
     }
 
-
+/**
+ * 
+ * 
+ * 
+ */
 
     public function Annonces_labo()
-    {    $annonces=Annonce::paginate(8);
+    {    $annonces=Annonce::orderBy('created_at', 'desc')->paginate(8);
         return view('user/Annonces_labo')->with('annonces',$annonces);
     }
 
@@ -147,7 +151,7 @@ class HomeController extends Controller
         $reponse=Reponseannonce::whereannonce_id($id)
         ->get();
         
-        return view('user.MesAnnonce_offre')->with('annonce',$annonce)->with('reponse',$reponse);
+        return view('user.MesAnnonce_offre')->with('annonce',$annonce)->with('reponse',$reponse)->with('id',$id);;
     }
 
 
@@ -160,7 +164,7 @@ class HomeController extends Controller
         $annonce=Annonce::whereid($id)->get();
         $reponse=Reponseannonce::whereannonce_id($id)
         ->get();
-        return view('user.MesAnnonce_offre')->with('annonce',$annonce)->with('reponse',$reponse);
+        return view('user.MesAnnonce_offre')->with('annonce',$annonce)->with('reponse',$reponse)->with('id',$id);;
     }
 
 
