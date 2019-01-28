@@ -193,6 +193,7 @@
     <div class="row row_list_produit">
     @if(!empty($annonces))
           @foreach($annonces as $annonce)
+          @if(DB::table('reponseannonces')->whereannonce_id($annonce->id)->whereetat("confirmer")->count()==0)
               <div class="col-md-3 col-sm-4  ">
               <div class="box box-animation" style="padding:0 !important;">
                <div class="box-header boxImg" style="background-image:url('/upload/PictureAnnonce/{{$annonce->file}}');">
@@ -245,7 +246,7 @@
                 </div>
               </div>
             </div>
-            
+            @endif
             @endforeach
             {{$annonces->links()}}
             @else

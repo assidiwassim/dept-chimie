@@ -293,7 +293,7 @@ width: 190px;
     <!-- To the right -->
   
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2019 <a href="#">FSM</a>.</strong> Tous droits réservés.
+    <strong>Copyright &copy; 2019 <a href="http://www.fsm.rnu.tn/">FSM</a>.</strong> Tous droits réservés.
   </footer>
 
   <!-- Control Sidebar -->
