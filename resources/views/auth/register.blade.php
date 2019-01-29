@@ -114,7 +114,7 @@
                                             <label for="fileInput" class="col-sm-4 control-label"> Logo </label>
                                             
                                             <div class="col-sm-8">
-                                              <input   type ="file" name="logo"  class="form-control">
+                                              <input   type ="file" accept="image/*" name="logo"  class="form-control">
                                               <p>
                                                 <small>
                                                   <code>jpeg</code> ,

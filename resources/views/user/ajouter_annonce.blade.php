@@ -226,7 +226,7 @@ fieldset
                                             <label for="file" class="col-sm-2 control-label" >Image</label>
                           
                                             <div class="col-sm-10">
-                                              <input type="file" class="form-control" name="file" id="file" required>
+                                              <input type="file" class="form-control" name="file" id="file" accept="image/*" required>
                                               @if ($errors->has('file'))
                                           <span class="help-block ">
                                               <strong class="text-danger">{{ $errors->first('file') }}</strong>

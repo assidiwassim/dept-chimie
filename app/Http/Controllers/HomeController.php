@@ -118,14 +118,20 @@ class HomeController extends Controller
     public function consulte_demande($id)
     {
 
-        $annonces=Annonce::whereid($id)->get();
+        $annonces=Annonce::whereid($id)->first();
+      //  $ann=Annonce::whereid($id)->select('user_id')->first();
         $reponseconfirmer=Reponseannonce::whereannonce_id($id)
-        ->orderBy('created_at', 'desc')
         ->whereetat("confirmer")
-        ->get();
+        ->first();
+
+        if(!empty($reponseconfirmer)){
+           
+      $w=User::select('name')->whereid($annonces->user_id)->first();
+    $reponseconfirmer=$w->name;
+        }
 
 
-        return view('user/MesAnnonce_demande')->with('annonces',$annonces)->with('reponseconfirmer',$reponseconfirmer)->with('id',$id);
+   return view('user/MesAnnonce_demande')->with('annonces',$annonces)->with('reponseconfirmer',$reponseconfirmer)->with('id',$id);
         
     }
     public function consulte_offre($id)

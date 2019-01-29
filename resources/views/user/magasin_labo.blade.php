@@ -1,3 +1,5 @@
+
+
 @extends('layouts.layout-labo')
 
 @section('content')
