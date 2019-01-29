@@ -33,7 +33,8 @@ class AnnonceController extends Controller
             $logo = $request->file('file');
             $filename = time() . '.' . $logo->getClientOriginalExtension();
             Image::make($logo)->save( public_path('/upload/PictureAnnonce/' . $filename ) );
-           if(empty($request->input('qte')) || (!empty($request->input('qte')) && $request->input('qte') <= Produit::whererefproduit( $request->input('refproduit'))->select('qte')->first()))
+            $x=Produit::whereid( $request->input('refproduit'))->select('qte')->first();
+         if(empty($request->input('qte')) || (!empty($request->input('qte')) && $request->input('qte') <= $x->qte))
            {
                         $Annonce=new Annonce;
                     $Annonce->typeannonce = $request->input('typeannonce');
@@ -51,7 +52,7 @@ class AnnonceController extends Controller
             session()->flash('message-success-ajout-annonce','Quantité indisponible!');  
         }
          
-           return back()->withInput();
+          return back()->withInput();
          
                     
     }
