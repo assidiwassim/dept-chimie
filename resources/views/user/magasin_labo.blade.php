@@ -150,17 +150,17 @@
                                 <tbody>
                      
                                 <tr role="row" class="even">
-                               @foreach($produits as $produits)
+                               @foreach($produits as $produit)
                                 <td>{{$loop->index+1}}</td>
-                                  <td class="sorting_1">{{$produits->reference}}</td>
-                                  <td>{{$produits->designation}}</td>
-                                  <td>{{$produits->formule}}</td>
-                                  <td>{{$produits->qte}}</td>
-                                  <td>{{$produits->unite}}</td>
+                                  <td class="sorting_1">{{$produit->reference}}</td>
+                                  <td>{{$produit->designation}}</td>
+                                  <td>{{$produit->formule}}</td>
+                                  <td>{{$produit->qte}}</td>
+                                  <td>{{$produit->unite}}</td>
                                   <td  style="width: 50px">
                                   <form method="post"  action="{{route('form_modifer-produit')}}"   >
                                         @csrf
-                                        <input  name="idproduit" type="hidden" value="{{$produits->id}}">   
+                                        <input  name="idproduit" type="hidden" value="{{$produit->id}}">   
                                          <button class="btn btn-primary btn-sm btn-block" type="submit">Modifier</button>
                                     </form>
                                     </td> 
@@ -168,12 +168,13 @@
 
                                   <form method="post"  action="magasin/supprimer-produit"   >
                                         @csrf
-                                        <input  name="idproduit" type="hidden" value="{{$produits->id}}">
+                                        <input  name="idproduit" type="hidden" value="{{$produit->id}}">
                                          <button class="btn btn-danger btn-sm btn-block" type="submit">supprimer</button>
                                     </form>
                                     </td>
                                 </tr>
                                 @endforeach
+                                {{$produits->links()}}
                                </tbody>
                             </table></div>
                   </div>

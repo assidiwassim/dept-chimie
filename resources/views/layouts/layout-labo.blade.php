@@ -183,8 +183,8 @@ width: 190px;
                 <img src="/upload/logo/{{Auth::user()->logo}}" class="img-circle" alt="User Image">
 
                 <p>
-                    {{ Auth::user()->name }} - Administrateur
-                  <small>Member since Nov. 2012</small>
+                    {{ Auth::user()->name }} - laboratoire
+                  <small> {{date("h:i:sa")}}</small>
                 </p>
               </li>
            

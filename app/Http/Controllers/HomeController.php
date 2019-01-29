@@ -195,7 +195,7 @@ class HomeController extends Controller
 
     public function magasin_labo()
     {
-        $produits=Produit::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->get();
+        $produits=Produit::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->paginate(8);
 
         $categorie=Produit::select('categorie')
         ->where('user_id',Auth::user()->id)
