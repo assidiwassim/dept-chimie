@@ -30,23 +30,27 @@ class AnnonceController extends Controller
 
     public function addannoncefrom(Request $request)
     {
-        $logo = $request->file('file');
-        $filename = time() . '.' . $logo->getClientOriginalExtension();
-        Image::make($logo)->save( public_path('/upload/PictureAnnonce/' . $filename ) );
-
-           $Annonce=new Annonce;
-           $Annonce->typeannonce = $request->input('typeannonce');
-           $Annonce->natureannonce  = $request->input('natureannonce');
-           $Annonce->designation  = $request->input('designation');
-           $Annonce->refproduit = $request->input('refproduit');
-           $Annonce->qte = $request->input('qte');
-           $Annonce->refproduitEchange = $request->input('refproduitEchange');
-           $Annonce->qteEchange = $request->input('qtetEchange');
-           $Annonce->file = $filename;
-           $Annonce->user_id  = Auth::user()->id;
-           $Annonce->save();
-           session()->flash('message-success-ajout-annonce','la nouvelle annonce a été enregistrer correctement!');
-
+            $logo = $request->file('file');
+            $filename = time() . '.' . $logo->getClientOriginalExtension();
+            Image::make($logo)->save( public_path('/upload/PictureAnnonce/' . $filename ) );
+           if(empty($request->input('qte')) || (!empty($request->input('qte')) && $request->input('qte') <= Produit::whererefproduit( $request->input('refproduit'))->select('qte')->first()))
+           {
+                        $Annonce=new Annonce;
+                    $Annonce->typeannonce = $request->input('typeannonce');
+                    $Annonce->natureannonce  = $request->input('natureannonce');
+                    $Annonce->designation  = $request->input('designation');
+                    $Annonce->refproduit = $request->input('refproduit');
+                    $Annonce->qte = $request->input('qte');
+                    $Annonce->refproduitEchange = $request->input('refproduitEchange');
+                    $Annonce->qteEchange = $request->input('qtetEchange');
+                    $Annonce->file = $filename;
+                    $Annonce->user_id  = Auth::user()->id;
+                    $Annonce->save();
+                    session()->flash('message-success-ajout-annonce','la nouvelle annonce a été enregistrer correctement!');
+        }else{
+            session()->flash('message-success-ajout-annonce','Quantité indisponible!');  
+        }
+         
            return back()->withInput();
          
                     
