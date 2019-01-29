@@ -28,48 +28,78 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Profile client </h3>
             </div>
+            <div>
+            @if (Session::has('message-success-modification-profil'))
+                                            <div class="alert alert-success alert-dismissible">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                    <h4><i class="icon fa fa-check"></i> alerte !</h4>
+                                                    {{ Session::get('message-success-modification-profil') }}
+                                            </div>
+                                          @endif
+            </div>
             <div class="box-body"> 
                     <div class="col-md-9">
-                            <form class="form-horizontal" id="Modifier_profile_general">
+                            <form class="form-horizontal"  method="post" action="{{route('Modifier_profile_general')}}" >
+                            @csrf
                         <div class="form-group">
-                            <label for="username" class="col-sm-4 control-label">Nom d'utilisateur </label>
+                            <label for="username"  class="col-sm-4 control-label" >Nom d'utilisateur </label>
                             <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="username" readonly="">
+                                    <input type="text" class="form-control" name="username"  value="{{Auth::user()->name}}" required>
+                                    @if ($errors->has('username'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
                         <div class="form-group">
-                                <label for="email" class="col-sm-4 control-label">Adresse email</label>
+                                <label for="email" class="col-sm-4 control-label" >Adresse email</label>
                                 <div class="col-sm-8">
-                                        <input type="email" class="form-control" name="email" readonly="">
+                                        <input type="email" class="form-control" value="{{Auth::user()->email}}"  name="email" required>
+                                        @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                        @endif
                                 </div>
                         </div>
                         <div class="form-group">
                                 <div class="col-md-12">
-                                         <button type="submit" class="btn btn-sm btn-flat btn-primary pull-right" disabled="">Modifier</button>
+                                         <button type="submit" class="btn btn-sm btn-flat btn-primary pull-right" >Modifier</button>
                                 </div>
                     </div>
                     </form>
                     <br>
                     <hr>
-                    <form class="form-horizontal" id="Modifier_MotDePasse_profile">
-                      
+                    <form class="form-horizontal" method="post" action="{{route('changepassoword')}}" id="Modifier_MotDePasse_profile">
+                    @csrf
                             <div class="form-group">
-                                    <label for="EcienPassword" class="col-sm-4 control-label">Ancien mot de passe</label>
+                                    <label  class="col-sm-4 control-label">Ancien mot de passe</label>
                                     <div class="col-sm-8">
-                                            <input type="password" class="form-control" id="EcienPassword" name="EcienPassword">
+                                            <input type="password" class="form-control"  name="EcienPassword" required>
+                                            @if ($errors->has('EcienPassword'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('EcienPassword') }}</strong>
+                                            </span>
+                                             @endif
                                     </div>
                             </div>
                             <div class="form-group">
-                                    <label for="NewPassword" class="col-sm-4 control-label">Nouveau mot de passe</label>
+                                    <label class="col-sm-4 control-label">Nouveau mot de passe</label>
                                     <div class="col-sm-8">
-                                            <input type="password" class="form-control" id="NewPassword" name="NewPassword">
+                                            <input type="password" class="form-control"  name="NewPassword" required>
+                                            @if ($errors->has('NewPassword'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('NewPassword') }}</strong>
+                                            </span>
+                                             @endif
                                     </div>
                             </div>
                             <div class="form-group">
-                                    <label for="ConfNewPassword" class="col-sm-4 control-label">Confirmer le nouveau mot de passe</label>
+                                    <label f class="col-sm-4 control-label">Confirmer le nouveau mot de passe</label>
                                     <div class="col-sm-8">
-                                            <input type="password" class="form-control" id="ConfNewPassword" name="ConfNewPassword">
+                                            <input type="password" class="form-control" name="ConfNewPassword" required>
                                     </div>
                             </div>
                             <div class="form-group">
@@ -82,7 +112,7 @@
                     <div class="col-md-3">
                         <div class="thumbnail">
                                         
-                                        <img src="https://service.virussantecommunication.ca/user.png" class="img-responsive" alt="User Image">
+                                        <img src="/upload/logo/{{Auth::user()->logo}}" class="img-responsive" alt="User Image">
                                         
                         </div>
                         <button type="button" class="btn btn-sm btn-flat btn-default btn-block" data-toggle="modal" data-target="#modal-default14">Modifier la photo de profile</button>
@@ -97,15 +127,22 @@
                                   <div class="modal-body">
                                       <div class="box">
                                       
-                                          <form id="modifier-photo-profile">
+                                          <form id="modifier-photo-profile"  method="post" enctype="multipart/form-data" action="{{route('changeavatar')}}">
+                                          @csrf
                                             <div class="box-body">                                  
                                               <div class="form-group">
                                                 <label for="ImageInput" class=" control-label">Choisir une image</label>
-                                                <input type="file" id="FileInput" name="FileInput" class="form-control">
+                                                <input type ="file" name="logo"  class="form-control" required>
+
                                                 <p>
                                                         <small>Upload file in
                                                             <code>png</code>,<code>jpg</code>,<code>jpeg</code>format</small>
-                                                </p>         
+                                                </p>   
+                                                @if ($errors->has('logo'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('logo') }}</strong>
+                                                    </span>
+                                                @endif      
                                               </div>
                                             </div>
                                             
@@ -114,6 +151,13 @@
                                             <br> 
                                             
                                           </form>
+                                          @if (Session::has('message-success-modification-user'))
+                                            <div class="alert alert-success alert-dismissible">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                    <h4><i class="icon fa fa-check"></i> alerte !</h4>
+                                                    {{ Session::get('message-success-modification-user') }}
+                                            </div>
+                                          @endif
                                           
                                       </div>
                                 </div>

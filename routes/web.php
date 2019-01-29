@@ -17,7 +17,9 @@ Route::get('/', function () {
 })->middleware('guest');
 Route::post('/send-contact','AdminController@storecontact')->name('sendcontact')->middleware('guest');
 
-
+Route::get('/forgetpassword',function(){
+    return view('auth.passwords.email');
+})->name('forgetpassword');
 
 Auth::routes();
 
@@ -64,6 +66,9 @@ Route::post('/magasin/modiferproduit', 'ProduitController@updateproduit')->name(
 Route::get('/discussion', 'HomeController@discussion_labo')->name('discussion_labo');
 Route::get('/aide', 'HomeController@aide_labo')->name('aide_labo');
 Route::get('/parametre', 'HomeController@parametre_labo')->name('parametre_labo');
+Route::post('/parametre/Modifier_profile_general', 'ParametreProfil@Modifier_profile_general')->name('Modifier_profile_general');
+Route::post('/parametre/changepassoword', 'ParametreProfil@changepassoword')->name('changepassoword');
+Route::post('/parametre/changeavatar', 'ParametreProfil@changeavatar')->name('changeavatar');
 
 });
 

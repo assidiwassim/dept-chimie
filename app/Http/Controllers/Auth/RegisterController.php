@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'role' => ['required', 'string', 'min:4','max:5'],
             'tel'  => ['required', 'min:8','numeric','unique:users'],
             'logo' => ['required','image','mimes:jpeg,png,jpg,tiff|max:2048'],      
-        ]);
+                              ]);
     }
 
     /**

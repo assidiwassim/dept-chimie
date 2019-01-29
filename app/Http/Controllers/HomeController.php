@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Produit;
 use App\Annonce;
+use App\User;
 use Auth;
 use App\Reponseannonce;
 use Illuminate\Support\Facades\DB;
@@ -221,7 +222,6 @@ class HomeController extends Controller
         $designation=$request->input('designation');
         $categorie=$request->input('categorie');
         $formule=$request->input('formule');
-      
        $produits=Produit::where('designation','like','%'.$designation.'%')
        ->orwhere('qte','like','%'.$designation.'%')
        ->orwhere('unite','like','%'.$designation.'%')
@@ -256,8 +256,9 @@ class HomeController extends Controller
         return view('user/aide_labo');
     }
     public function parametre_labo()
-    {
-        return view('user/parametre_labo');
+    { 
+        $user=User::select('email','name')->whereid(Auth::user()->id)->first();
+        return view('user/parametre_labo')->with('user',$user);
     }
     public function ajouter_produit_magasin_labo()
     {
