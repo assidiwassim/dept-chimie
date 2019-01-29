@@ -132,7 +132,7 @@
                                             <div class="box-body">                                  
                                               <div class="form-group">
                                                 <label for="ImageInput" class=" control-label">Choisir une image</label>
-                                                <input type ="file" name="logo"  class="form-control" required>
+                                                <input type ="file" name="logo"  class="form-control" accept="image/*" required>
 
                                                 <p>
                                                         <small>Upload file in
