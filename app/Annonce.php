@@ -8,7 +8,7 @@ class Annonce extends Model
 {
     protected $table = 'annonces';
     protected $fillable = [
-        'typeannonce', 'natureannonce', 'designation','refproduit','qte','refproduitEchange','qteEchange','file',];
+        'typeannonce', 'natureannonce', 'designation','refproduit','qte','refproduitEchange','qteEchange','file','user_id',];
 
     public function user(){
         return $this->belongsTo('App\User');

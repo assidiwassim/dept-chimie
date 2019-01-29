@@ -163,7 +163,12 @@
    top:1px;
    color: #8b8b8c;
 }
-
+.tonpon{
+    width: 100px;
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+}
 </style>
 <section class="content-header">
     <h1>
@@ -293,8 +298,16 @@
                                         @endif
                                     @endif
                                 </p>
-                       
+                                
+                                @if(!empty($reponseconfirmer))
+                                    <p class="">
+                                        <b class="text-success">Valider par le laboratoire  : {{$reponseconfirmer}} </b> 
+                                    
+                                    </p>
+                                    <img src="/img/v.jpg" class="img-responsive tonpon" >
+                                    @endif
                             </div>
+
                                 <div class="js-hide-when-edit-header" data-js="popover" data-jsinit="popover">
                                     <div class="u-dib">
                                             <a href="#profileMissions" data-offset="150" class="u-df u-aic u-flww u--xs-mr0  u--xs-jcc u-mb2 link quiet">
@@ -313,12 +326,8 @@
           </div>
     </div>
    
- @foreach($annonces as $x)
- {{$x->id}}
- @endforeach
- @foreach($reponseconfirmer as $x)
- {{$x->etat}}
- @endforeach
+
+
      
 </section>
 @endsection
