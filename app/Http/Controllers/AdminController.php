@@ -167,10 +167,11 @@ class AdminController extends Controller
     }
     
 
-    public function storecontact(sendContact $request)
-    {
+    public function storecontact(Request $request)
+    { 
         
-   $contact= new Contact;
+        
+      $contact= new Contact;
       $contact->name=$request->input('name');
       $contact->email=$request->input('email');
       $contact->subject=$request->input('subject');

@@ -194,7 +194,7 @@
                   <div class="box-header" >
                    
                         @foreach(DB::table('annonces')->where('id','=',$id)->get() as $annonce)
-                    <div class="col-md-4 col-sm-5 col-xs-12 image-annonce" style="background-image: url('https://cloudinary-a.akamaihd.net/hopwork/image/upload/h_360,w_360,c_thumb,g_face,z_0.4,q_auto,dpr_2.0/uy1al7shzjwodnyqadkg.webp')">
+                    <div class="col-md-4 col-sm-5 col-xs-12 image-annonce" style="background-image: url('/upload/PictureAnnonce/{{$annonce->file}}')">
                             <div class="cover">
                                         @if($annonce->typeannonce=="Offre")
                                             <a class="btn btn-default btn-success offre "> 
@@ -329,7 +329,7 @@
                                   <textarea class="form-control" name="commentaire" id="commentaire" rows="3" placeholder="Enter ..." required></textarea>
                                   @if ($errors->has('commentaire'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('commentaire') }}</strong>
+                                        <strong class="text-danger">{{ $errors->first('commentaire') }}</strong>
                                     </span>
                                 @endif
                           

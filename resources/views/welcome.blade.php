@@ -130,7 +130,7 @@
                         <label for="usr">Votre nom </label>
                         <input type="text" name="name" class="form-control" id="name" required>
                         @if ($errors->has('name'))
-                                    <span class="help-block">
+                                    <span class="help-block alert alert-danger">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
@@ -139,7 +139,7 @@
                               <label for="usr">Votre adresse email </label>
                               <input type="email"  name="email"  class="form-control" id="email" required>
                               @if ($errors->has('email'))
-                                    <span class="help-block">
+                                    <span class="help-block alert alert-danger">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
@@ -148,7 +148,7 @@
                               <label for="usr">Objet </label>
                               <input type="text" name="subject" class="form-control" id="subject" required>
                               @if ($errors->has('subject'))
-                                    <span class="help-block">
+                                    <span class="help-block alert alert-danger">
                                         <strong>{{ $errors->first('subject') }}</strong>
                                     </span>
                                 @endif
@@ -157,7 +157,7 @@
                               <label for="comment">Votre message</label>
                               <textarea class="form-control" name="message" rows="3" id="message" required></textarea>
                               @if ($errors->has('message'))
-                                    <span class="help-block">
+                                    <span class="help-block alert alert-danger">
                                         <strong>{{ $errors->first('messages') }}</strong>
                                     </span>
                                 @endif

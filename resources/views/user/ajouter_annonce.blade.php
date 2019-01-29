@@ -108,8 +108,8 @@ fieldset
                                             <option value="Demande" >Demande</option>
                                     </select>
                                 @if ($errors->has('typeannonce'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('typeannonce') }}</strong>
+                                    <span class="help-block ">
+                                        <strong class="text-danger">{{ $errors->first('typeannonce') }}</strong>
                                     </span>
                                 @endif
                               </div>
@@ -124,7 +124,7 @@ fieldset
                                           </select>
                                       @if ($errors->has('natureannonce'))
                                           <span class="help-block">
-                                              <strong>{{ $errors->first('natureannonce') }}</strong>
+                                              <strong class="text-danger">{{ $errors->first('natureannonce') }}</strong>
                                           </span>
                                       @endif
                                     </div>
@@ -135,8 +135,8 @@ fieldset
                               <div class="col-sm-10">
                                   <textarea class="form-control" name="designation" id="designation" rows="3" placeholder="Enter ..." required></textarea>
                                   @if ($errors->has('designation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('designation') }}</strong>
+                                    <span class="help-block ">
+                                        <strong class="text-danger">{{ $errors->first('designation') }}</strong>
                                     </span>
                                 @endif
                               </div>
@@ -158,7 +158,7 @@ fieldset
                                                                       </select>
                                                                   @if ($errors->has('refproduit'))
                                                                       <span class="help-block">
-                                                                          <strong>{{ $errors->first('refproduit') }}</strong>
+                                                                          <strong class="text-danger">{{ $errors->first('refproduit') }}</strong>
                                                                       </span>
                                                                   @endif
                                                             </div>
@@ -169,8 +169,8 @@ fieldset
                                                              <div class="col-sm-12">
                                                                   <input type="number" class="form-control" name="qte" id="qte" placeholder="Quantité " required>
                                                                   @if ($errors->has('qte'))
-                                                                <span class="help-block">
-                                                                    <strong>{{ $errors->first('qte') }}</strong>
+                                                                <span class="help-block ">
+                                                                    <strong class="text-danger">{{ $errors->first('qte') }}</strong>
                                                                 </span>
                                                                   @endif
                                                         </div>
@@ -196,8 +196,8 @@ fieldset
                                                                              @endforeach
                                                                   </select>
                                                               @if ($errors->has('refproduitEchange'))
-                                                                  <span class="help-block">
-                                                                      <strong>{{ $errors->first('refproduitEchange') }}</strong>
+                                                                  <span class="help-block ">
+                                                                      <strong class="text-danger">{{ $errors->first('refproduitEchange') }}</strong>
                                                                   </span>
                                                               @endif
                                                         </div>
@@ -208,8 +208,8 @@ fieldset
                                                          <div class="col-sm-12">
                                                               <input type="number" class="form-control" name="qtetEchange" id="qtetEchange" placeholder="Quantité " required>
                                                               @if ($errors->has('qtetEchange'))
-                                                            <span class="help-block">
-                                                                <strong>{{ $errors->first('qtetEchange') }}</strong>
+                                                            <span class="help-block ">
+                                                                <strong class="text-danger">{{ $errors->first('qtetEchange') }}</strong>
                                                             </span>
                                                               @endif
                                                     </div>
@@ -228,8 +228,8 @@ fieldset
                                             <div class="col-sm-10">
                                               <input type="file" class="form-control" name="file" id="file" required>
                                               @if ($errors->has('file'))
-                                          <span class="help-block">
-                                              <strong>{{ $errors->first('file') }}</strong>
+                                          <span class="help-block ">
+                                              <strong class="text-danger">{{ $errors->first('file') }}</strong>
                                           </span>
                                               @endif
                                             </div>

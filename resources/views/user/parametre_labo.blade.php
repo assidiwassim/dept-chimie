@@ -47,7 +47,7 @@
                                     <input type="text" class="form-control" name="username"  value="{{Auth::user()->name}}" required>
                                     @if ($errors->has('username'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
+                                        <strong class="text-danger">{{ $errors->first('username') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -59,7 +59,7 @@
                                         <input type="email" class="form-control" value="{{Auth::user()->email}}"  name="email" required>
                                         @if ($errors->has('email'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong class="text-danger" >{{ $errors->first('email') }}</strong>
                                     </span>
                                         @endif
                                 </div>
@@ -80,7 +80,7 @@
                                             <input type="password" class="form-control"  name="EcienPassword" required>
                                             @if ($errors->has('EcienPassword'))
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('EcienPassword') }}</strong>
+                                                <strong class="text-danger">{{ $errors->first('EcienPassword') }}</strong>
                                             </span>
                                              @endif
                                     </div>
@@ -91,7 +91,7 @@
                                             <input type="password" class="form-control"  name="NewPassword" required>
                                             @if ($errors->has('NewPassword'))
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('NewPassword') }}</strong>
+                                                <strong class="text-danger">{{ $errors->first('NewPassword') }}</strong>
                                             </span>
                                              @endif
                                     </div>
@@ -104,7 +104,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12">
-                            <button type="submit" class="btn btn-sm btn-flat btn-primary pull-right ">Modifier</button>
+                            <button type="submit" class="btn btn-sm btn-flat btn-primary pull-right " disubled="">Modifier</button>
                         </div>   
                         </div>
                         </form>
@@ -140,7 +140,7 @@
                                                 </p>   
                                                 @if ($errors->has('logo'))
                                                     <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('logo') }}</strong>
+                                                        <strong class="text-danger">{{ $errors->first('logo') }}</strong>
                                                     </span>
                                                 @endif      
                                               </div>

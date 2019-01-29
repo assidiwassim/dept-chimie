@@ -54,7 +54,7 @@
 
                                                 @if ($errors->has('name'))
                                                     <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('name') }}</strong>
+                                                        <strong class="text-danger">{{ $errors->first('name') }}</strong>
                                                     </span>
                                                 @endif
                                                 
@@ -70,7 +70,7 @@
 
                                                 @if ($errors->has('email'))
                                                     <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('email') }}</strong>
+                                                        <strong class="text-danger">{{ $errors->first('email') }}</strong>
                                                     </span>
                                                 @endif
                                             </div>
@@ -84,7 +84,7 @@
 
                                                     @if ($errors->has('tel'))
                                                         <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $errors->first('tel') }}</strong>
+                                                            <strong class="text-danger">{{ $errors->first('tel') }}</strong>
                                                         </span>
                                                     @endif
                                                 
@@ -98,7 +98,7 @@
 
                                                 @if ($errors->has('password'))
                                                     <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('password') }}</strong>
+                                                        <strong class="text-danger">{{ $errors->first('password') }}</strong>
                                                     </span>
                                                 @endif
                                             </div>

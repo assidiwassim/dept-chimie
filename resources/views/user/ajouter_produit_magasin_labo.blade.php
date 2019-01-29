@@ -93,8 +93,8 @@
                               <div class="col-sm-10">
                                 <input type="text" class="form-control" name="reference" id="reference" placeholder="Référence" required>
                                 @if ($errors->has('reference'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('reference') }}</strong>
+                                    <span class="help-block ">
+                                        <strong class="text-danger">{{ $errors->first('reference') }}</strong>
                                     </span>
                                 @endif
                               </div>
@@ -105,8 +105,8 @@
                               <div class="col-sm-10">
                                   <textarea class="form-control" name="designation" id="designation" rows="3" placeholder="Enter ..."></textarea>
                                   @if ($errors->has('designation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('designation') }}</strong>
+                                    <span class="help-block ">
+                                        <strong class="text-danger">{{ $errors->first('designation') }}</strong>
                                     </span>
                                 @endif
                               </div>
@@ -117,8 +117,8 @@
                                 <div class="col-sm-10">
                                   <input type="text" class="form-control" name="formule" id="formule" placeholder="Formule chimique exemple: h2o" required>
                                   @if ($errors->has('formule'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('formule') }}</strong>
+                                    <span class="help-block ">
+                                        <strong class="text-danger">{{ $errors->first('formule') }}</strong>
                                     </span>
                                   @endif
                                 </div>
@@ -130,8 +130,8 @@
                                     <input type="text" class="form-control" name="unite" id="unite" placeholder="Unité exemple: Litre" required>
                                     
                                     @if ($errors->has('unite'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('unite') }}</strong>
+                                    <span class="help-block ">
+                                        <strong class="text-danger">{{ $errors->first('unite') }}</strong>
                                     </span>
                                   @endif
                                   </div>
@@ -142,8 +142,8 @@
                                     <div class="col-sm-10">
                                       <input type="number" class="form-control" name="qte" id="qte" placeholder="Quantité exemple: 10" required>
                                       @if ($errors->has('qte'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('qte') }}</strong>
+                                    <span class="help-block ">
+                                        <strong class="text-danger">{{ $errors->first('qte') }}</strong>
                                     </span>
                                       @endif
                                     </div>
@@ -154,8 +154,8 @@
                                       <div class="col-sm-10">
                                         <input type="text" class="form-control" name="categorie" id="categorie" placeholder="Catégorie exemple: gaz" required>
                                         @if ($errors->has('categorie'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('categorie') }}</strong>
+                                    <span class="help-block ">
+                                        <strong class="text-danger">{{ $errors->first('categorie') }}</strong>
                                     </span>
                                         @endif
                                       </div>
