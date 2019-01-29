@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+    'host' => env('MAIL_HOST', 'mailtrap.io'),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('labsharefsm@gmail.com'),
+    'username' => env('0430addf3f3738'),
 
-    'password' => env('LabShare123'),
+    'password' => env('215e4064873787'),
 
     /*
     |--------------------------------------------------------------------------
