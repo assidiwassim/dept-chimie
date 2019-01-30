@@ -1,5 +1,7 @@
 @extends('layouts.layout-labo')
 @section('content')
+<link rel="shortcut icon" type="image/png" href="img/log.png"/>
+  <link rel="shortcut icon" type="image/png" href="img/log.png" />
 <style>
     .info-box {
         box-shadow: 0px 3px 13px 3px #00000014;

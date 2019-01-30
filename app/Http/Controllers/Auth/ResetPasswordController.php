@@ -25,8 +25,15 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+   // protected $redirectTo = '/labo';
 
+   protected function authenticated()
+   {
+           if(Auth::user()->role=="user")
+                return redirect('/labo');
+           else
+                return redirect('/admin');
+   }
     /**
      * Create a new controller instance.
      *

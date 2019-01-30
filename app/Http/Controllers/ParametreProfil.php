@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ControllerValidatesRequestsvalidate;
 class ParametreProfil extends Controller
 {
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function Modifier_profile_general(Request $request)
     {  
          

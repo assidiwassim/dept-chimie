@@ -13,6 +13,10 @@ use App\Http\Controllers\ControllerValidatesRequestsvalidate;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 class ProduitController extends Controller
 {
+   public function __construct()
+    {
+        $this->middleware('auth');
+    }
     
     public function addproduit(updateproduit $request)
     {      

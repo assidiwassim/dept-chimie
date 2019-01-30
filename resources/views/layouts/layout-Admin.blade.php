@@ -8,12 +8,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Labshare</title>
-  <link rel="shortcut icon" type="image/png" href="{{ URL::to('img/log.png') }}"/>
-  <link rel="shortcut icon" type="image/png" href="{{ asset('img/log.png') }}" />
+  <link rel="shortcut icon" type="image/png" href="img/log.png"/>
+  <link rel="shortcut icon" type="image/png" href="img/log.png" />
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-
+   
   <link rel="stylesheet"  type="text/css" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
   <link rel="stylesheet"  type="text/css" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">

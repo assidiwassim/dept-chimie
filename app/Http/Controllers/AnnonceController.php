@@ -11,6 +11,10 @@ use App\Produit;
 use App\Annonce;
 class AnnonceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
  
     public function ajouter_annonce()
     {

@@ -17,9 +17,7 @@ Route::get('/', function () {
 })->middleware('guest');
 Route::post('/send-contact','AdminController@storecontact')->name('sendcontact')->middleware('guest');
 
-Route::get('/forgetpassword',function(){
-    return view('auth.passwords.email');
-})->name('forgetpassword');
+
 
 Auth::routes();
 
