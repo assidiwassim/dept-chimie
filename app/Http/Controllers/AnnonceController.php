@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use Image;
+use Alert;
 use File;
 use App\Produit;
 use App\Annonce;
@@ -55,7 +56,7 @@ class AnnonceController extends Controller
         }else{
             session()->flash('message-success-ajout-annonce','Quantité indisponible!');  
         }
-         
+        Alert::success('Success Message', 'Optional Title');
           return back()->withInput();
          
                     

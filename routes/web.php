@@ -16,7 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('guest');
 Route::post('/send-contact','AdminController@storecontact')->name('sendcontact')->middleware('guest');
-
+Route::get('my-notification/{type}', 'alertController@myNotification');
 
 
 Auth::routes();
