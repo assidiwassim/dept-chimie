@@ -39,7 +39,8 @@ class HomeController extends Controller
  */
 
     public function Annonces_labo()
-    {    $annonces=Annonce::orderBy('created_at', 'desc')->paginate(8);
+    {    $annonces=Annonce::where('user_id','!=',Auth::user()->id)
+                ->orderBy('created_at', 'desc')->paginate(8);
         return view('user/Annonces_labo')->with('annonces',$annonces);
     }
 
@@ -49,7 +50,8 @@ class HomeController extends Controller
         $designation=$request->input('designation');
         $typeannonce=$request->input('typeannonce');
         $natureannonce=$request->input('natureannonce');
-        $annonces=Annonce::where('designation','like','%'.$designation.'%')
+        $annonces=Annonce::where('user_id','!=',Auth::user()->id)
+        ->where('designation','like','%'.$designation.'%')
         ->where('typeannonce','like','%'.$typeannonce.'%')
         ->where('natureannonce','like','%'.$natureannonce.'%')
         ->orderBy('created_at', 'desc')
