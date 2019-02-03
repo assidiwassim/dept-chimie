@@ -9,9 +9,8 @@
 
         <title>Labshare</title>
 
-        <link rel="shortcut icon" type="image/png" href="img/log.png"/>
-        <link rel="shortcut icon" type="image/png" href="img/log.png" />
-
+        <link rel="shortcut icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/fr/thumb/7/79/LogoFacult%C3%A9DesSciencesDeMonastir2012.png/800px-LogoFacult%C3%A9DesSciencesDeMonastir2012.png"/>
+  
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
          <!-- bootstrap import -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">

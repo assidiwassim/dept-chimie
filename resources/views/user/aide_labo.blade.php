@@ -1,6 +1,7 @@
 @extends('layouts.layout-labo')
 
 @section('content')
+
 <style>
 .info-box {
     box-shadow: 0px 3px 13px 3px #00000014;
