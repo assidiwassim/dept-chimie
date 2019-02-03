@@ -89,12 +89,15 @@
           <div class="box-body">
             <div class="row">
               <div class="col-md-6">
+                  <p class="text-center">
+                      <strong>Dernières demandes </strong>
+                    </p>
                 <div class="box-body">
                     <div class="table-responsive">
                       <table class="table no-margin">
                         <thead>
                         <tr>
-                           <th>n</th>
+                           <th>N°</th>
                            <th>Type annonce</th>
                           <th>Reference produit </th>
                           <th>Nature annonce</th>
@@ -117,8 +120,11 @@
                           <td><a href="#">{{$demand->refproduit}}</a></td>
                         
                           <td>{{$demand->natureannonce}}</td>
-                          <td><span class="label label-success">Shipped</span></td>
-                         
+                          @if(DB::table('reponseannonces')->where('annonce_id','=',$demande->id)->count()>0)
+                          <td><span class="label label-success">Confirmer</span></td>
+                           @else
+                           <td><span class="label label-danger">En attente</span></td>
+                           @endif
                         </tr>
                         @endforeach
                         {{$demande->links()}}
