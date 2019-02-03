@@ -1,7 +1,11 @@
 @extends('layouts.layout-labo')
 
 @section('content')
-
+<div id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+</div>
 <style>
 .info-box {
     box-shadow: 0px 3px 13px 3px #00000014;
@@ -19,6 +23,7 @@
 }
 
 </style>
+
 <section class="content-header">
     <h1>
         Centre d'aide

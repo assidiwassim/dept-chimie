@@ -120,6 +120,7 @@ width: 190px;
 
 
 <body class="hold-transition skin-blue sidebar-mini">
+   
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -282,7 +283,7 @@ width: 190px;
 
     <!-- Main content -->
     <section class="content container-fluid">
-
+       
                 @yield('content')
 
     </section>
@@ -338,5 +339,6 @@ if (url.indexOf("/labo/annonces") >= 0){
 }
 
 </script>
+
 </body>
 </html>
