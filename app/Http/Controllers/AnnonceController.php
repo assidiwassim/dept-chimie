@@ -5,16 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
-use Image;
 use Alert;
+use Image;
 use File;
 use App\Produit;
 use App\Annonce;
+use Notification;
+//App\Http\Controllers\Notification;
+use App\Notifications\TaskComeplted;
+
+use App\Notifications\Addannonce;
 class AnnonceController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        
     }
  
     public function ajouter_annonce()
@@ -56,9 +61,21 @@ class AnnonceController extends Controller
         }else{
             session()->flash('message-success-ajout-annonce','Quantité indisponible!');  
         }
-        Alert::success('Success Message', 'Optional Title');
-          return back()->withInput();
-         
+          
+$users=User::where('id','<>',Auth::user()->id)->get();
+$auth=Auth::user();
+$post=Annonce::orderBy('created_at', 'desc')->first();
+Notification::send($users,new Addannonce($post,$auth));
+foreach(Auth::user()->notifications as $net)
+{
+    var_dump($net->data['id']);
+}
+ 
+      /*foreach ($users as $user) {
+        $user->notify(new Addannonce($idpost));
+    }*/
+   
+    return back()->withInput()->with('errors', 'Profile updated!');;
                     
     }
 
