@@ -98,10 +98,9 @@
                         <thead>
                         <tr>
                            <th>N°</th>
+                           <th>Reference produit </th>
                            <th>Type annonce</th>
-                          <th>Reference produit </th>
-                          <th>Nature annonce</th>
-                          <th>Status</th>
+                           <th>Status</th>
                       
                         </tr>
                         </thead>
@@ -114,13 +113,11 @@
                         @foreach($demande as $demand)
                         <tr>
                         
-                          <td><a href="#">1</a></td>
-                          <td>{{$demand->typeannonce}}</td>
-                          
-                          <td><a href="#">{{$demand->refproduit}}</a></td>
-                        
-                          <td>{{$demand->natureannonce}}</td>
-                          @if(DB::table('reponseannonces')->where('annonce_id','=',$demande->id)->count()>0)
+                          <td><a href="#">{{$loop->index+1}}</a></td>
+                          <td><a href="#">{{DB::table('produits')->select('reference')->where('id','=',$demand->refproduitEchange)->value('reference') }}</a></td>
+                          <td>{{$demand->typeannonce}} | {{$demand->natureannonce}}</td>
+
+                          @if(DB::table('reponseannonces')->where('annonce_id','=',$demand->id)->count()>0)
                           <td><span class="label label-success">Confirmer</span></td>
                            @else
                            <td><span class="label label-danger">En attente</span></td>
@@ -129,7 +126,7 @@
                         @endforeach
                         {{$demande->links()}}
                         @else
-                        <p>aucun annonce a publié dans cette magasin</p>
+                        <p style="text-align:center;">Aucune demande </p>
                         @endif
                         
                         </tbody>
