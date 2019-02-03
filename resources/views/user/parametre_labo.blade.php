@@ -17,12 +17,24 @@
         box-shadow: 0px 3px 13px 3px #00000014;
         padding: 0;
     }
+   .disabled{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+} 
 </style>    
-<div class="content container-fluid">
-        
-              
-  
-    
+<section class="content-header">
+    <h1>
+        Paramètres
+      <small>labshare</small>
+    </h1>
+    <ol class="breadcrumb">
+       
+      <li class="active"><i class="fa fa-dashboard"> </i> Menu</li>
+      <li><a href="#"> Paramètres </a></li>
+    </ol>
+  </section>
+<section class="content container-fluid">
     
     
     <div id="ProfileAdmin">
@@ -106,7 +118,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12">
-                            <button type="submit" class="btn btn-sm btn-flat btn-primary pull-right " disubled="">Modifier</button>
+                            <button type="submit" class="btn btn-sm btn-flat btn-primary pull-right " disabled>Modifier</button>
                         </div>   
                         </div>
                         </form>
@@ -148,8 +160,8 @@
                                               </div>
                                             </div>
                                             
-                                            <button type="button" class="btn btn-default pull-left close_modal_doc" data-dismiss="modal">ANNULER</button>
-                                            <button type="submit" class="btn btn-primary pull-right">MODIFIER</button>
+                                            <button type="button" class="btn btn-default pull-left close_modal_doc" >ANNULER</button>
+                                            <button type="submit" class="btn btn-primary pull-right "  > MODIFIER</button>
                                             <br> 
                                             
                                           </form>
@@ -171,14 +183,8 @@
                     </div>
                     
                
-                </div>
-              
-            
+                </div>           
      </div>
-     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
  </div>
-  
-    
-
-</div>
+</section>
 @endsection
