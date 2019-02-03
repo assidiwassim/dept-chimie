@@ -58,7 +58,7 @@
 </style>
 <section class="content-header">
     <h1>
-        Modifer un produit 
+        Modifier un produit 
       <small>labshare</small>
     </h1>
     <ol class="breadcrumb">
@@ -158,7 +158,7 @@
                           </div>
                           <!-- /.box-body -->
                           <div class="box-footer">
-                            <button type="reset" class="btn btn-default">Annuler</button>
+                                <button type="reset"  class="btn btn-default">Annuler</button>
                             <button type="submit" class="btn btn-primary pull-right">modifer</button>
                           </div>
                           <!-- /.box-footer -->

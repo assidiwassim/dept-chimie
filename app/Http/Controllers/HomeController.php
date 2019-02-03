@@ -257,6 +257,7 @@ class HomeController extends Controller
     
     public function discussion_labo()
     {
+        
         return view('user/discussion_labo');
     }
     public function aide_labo()

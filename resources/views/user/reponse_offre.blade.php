@@ -178,7 +178,7 @@
     </ol>
   </section>
   <section class="content">
- 
+        @if(DB::table('reponseannonces')->whereuser_id(Auth::user()->id)->whereannonce_id($id)->count()==0)
                 @if (Session::has('message-success-ajout-offre'))
                         <div class="alert alert-success alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -354,10 +354,15 @@
                           <!-- /.box-footer -->
                         </form>
                 </div>
+              
               </div>
             </div>
           </div>
     </div>
-   
+   @else
+    @component('user.confirm')
+    
+    @endcomponent
+    @endif
 </section>
 @endsection
