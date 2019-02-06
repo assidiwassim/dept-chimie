@@ -16,7 +16,7 @@ class labo
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->role=="user"){
+        if(Auth::user()->role=="labo"){
             return $next($request);
         }
         else{

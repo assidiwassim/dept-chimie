@@ -20,8 +20,8 @@ class admin
             return $next($request);
         }
         else{
-            return Response::view('errors.missing', array(), 404);
+            return view('error.erreur');
         }
-       
+        return $next($request);
     }
 }
