@@ -160,12 +160,8 @@ width: 190px;
                   <li><!-- start notification -->
                     <a href="#">
                         @foreach (Auth::user()->unreadNotifications as $notification)
-                        @php
-                        
-                        ;
-                        @endphp
-                      <li>ghj</li>
-                      @endforeach
+                        {{$notification->data['text']}}
+                        @endforeach
                     </a>
                   </li>
                   <!-- end notification -->
