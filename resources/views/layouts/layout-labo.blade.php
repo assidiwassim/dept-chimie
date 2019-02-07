@@ -159,7 +159,7 @@ width: 190px;
                 <ul class="menu">
                   <li><!-- start notification -->
                     <a href="#">
-                        @foreach (Auth::user()->unreadNotifications->data.toArray() as $notification)
+                        @foreach (Auth::user()->unreadNotifications as $notification)
                         @php
                         
                         ;
