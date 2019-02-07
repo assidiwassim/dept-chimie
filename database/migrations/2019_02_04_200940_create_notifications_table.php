@@ -12,7 +12,7 @@ class CreateNotificationsTable extends Migration
      * @return void
      */
     public function up()
-        {   Schema::defaultStringLength(191);
+        {   
             Schema::create('notifications', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('type');
