@@ -24,6 +24,10 @@ Auth::routes();
 /* group for link simple user  */
 Route::group(['prefix' =>'labo' ],function()
 {
+
+    Route::auth();
+    Route::get('/home', 'HomeController@home')->name('home');
+
 /* Home */
 Route::get('/', 'HomeController@index')->name('tableaudebord_labo');
 
@@ -70,6 +74,7 @@ Route::post('/parametre/changeavatar', 'ParametreProfil@changeavatar')->name('ch
 
 });
 
+Route::post('sendmessage', 'chatController@sendMessage');
 
 
 
@@ -90,6 +95,8 @@ Route::post('/compteadmin/deleteLabo','AdminController@deletelabo')->name('delet
 Route::post('/compteLabo/blocklabo','AdminController@blocklabo')->name('blocklabo');
 Route::post('/compteLabo/deblocklabo','AdminController@deblocklabo')->name('deblocklabo');
 });
+
+
 
 
 

@@ -15,6 +15,7 @@
         "intervention/image": "^2.4",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
+        "predis/predis": "^1.1",
         "uxweb/sweet-alert": "^2.0"
     },
     "require-dev": {

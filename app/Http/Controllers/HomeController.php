@@ -31,6 +31,10 @@ class HomeController extends Controller
     {
         return view('user/tableaudebord_labo');
     }
+    public function home()
+    {
+        return view('home');
+    }
 
 /**
  * 
