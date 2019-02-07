@@ -149,16 +149,23 @@ width: 190px;
             <!-- Menu toggle button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
+              <span class="label label-danger">{{Auth::user()->unreadnotifications->count()}}</span>
+             
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
+              <li class="header">You have {{Auth::user()->notifications->count()}} notifications</li>
               <li>
                 <!-- Inner Menu: contains the notifications -->
                 <ul class="menu">
                   <li><!-- start notification -->
                     <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                        @foreach (Auth::user()->unreadNotifications as $notification)
+                        @php
+                        
+                        ;
+                        @endphp
+                      <li>ghj</li>
+                      @endforeach
                     </a>
                   </li>
                   <!-- end notification -->
