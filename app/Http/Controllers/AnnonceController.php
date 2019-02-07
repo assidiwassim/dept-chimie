@@ -12,9 +12,7 @@ use App\Produit;
 use App\Annonce;
 use Notification;
 //App\Http\Controllers\Notification;
-use App\Notifications\TaskComeplted;
-
-use App\Notifications\Addannonce;
+use App\Notifications\addannonce;
 class AnnonceController extends Controller
 {
     public function __construct()
@@ -63,19 +61,16 @@ class AnnonceController extends Controller
         }
           
 $users=User::where('id','<>',Auth::user()->id)->get();
-$auth=Auth::user();
-$post=Annonce::orderBy('created_at', 'desc')->first();
-Notification::send($users,new Addannonce($post,$auth));
+$annonce=Annonce::orderBy('created_at', 'desc')->first();
+Notification::send($users,new addannonce($annonce));
 foreach(Auth::user()->notifications as $net)
 {
-    var_dump($net->data['id']);
+    var_dump($net->data['text']);
 }
  
-      /*foreach ($users as $user) {
-        $user->notify(new Addannonce($idpost));
-    }*/
+      
    
-    return back()->withInput()->with('errors', 'Profile updated!');;
+   // return back()->withInput()->with('errors', 'Profile updated!');
                     
     }
 

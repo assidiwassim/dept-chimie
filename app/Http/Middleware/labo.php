@@ -20,7 +20,7 @@ class labo
             return $next($request);
         }
         else{
-            return Response::view('errors.missing', array(), 404);
+            return redirect()->route('login');
         }
     }
 }

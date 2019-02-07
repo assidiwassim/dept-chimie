@@ -22,7 +22,7 @@ Route::get('my-notification/{type}', 'alertController@myNotification');
 Auth::routes();
 
 /* group for link simple user  */
-Route::group(['prefix' =>'labo'  ,'middleware'=> 'labo'],function()
+Route::group(['prefix' =>'labo' ],function()
 {
 /* Home */
 Route::get('/', 'HomeController@index')->name('tableaudebord_labo');
@@ -74,7 +74,7 @@ Route::post('/parametre/changeavatar', 'ParametreProfil@changeavatar')->name('ch
 
 
 /* group for link admin user  */
-Route::group(['prefix' =>'admin'  ,'middleware'=> 'admin'],function()
+Route::group(['prefix' =>'admin'  ],function()
 {
 
 Route::get('/','AdminController@index')->name('tableaudebord');

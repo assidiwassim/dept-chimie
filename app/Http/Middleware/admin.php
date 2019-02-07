@@ -19,9 +19,9 @@ class admin
         if(Auth::user()->role=="admin"){
             return $next($request);
         }
-        else{
-            return view('error.erreur');
+        else{ 
+            return redirect()->route('login');
         }
-        return $next($request);
+        
     }
 }
