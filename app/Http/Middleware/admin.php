@@ -22,6 +22,6 @@ class admin
         else{
             return view('error.erreur');
         }
-        return $next($request);
+       
     }
 }

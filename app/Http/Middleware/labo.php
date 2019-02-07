@@ -22,5 +22,6 @@ class labo
         else{
             return Response::view('errors.missing', array(), 404);
         }
+        
     }
 }
