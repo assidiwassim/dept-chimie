@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Produit;
 use App\Annonce;
 use App\User;
-use App\Chat;
 use Auth;
 use App\Reponseannonce;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ControllerValidatesRequestsvalidate;
-
-
-
 class HomeController extends Controller
 {
     /**
@@ -36,26 +31,8 @@ class HomeController extends Controller
     {
         return view('user/tableaudebord_labo');
     }
-    public function home()
-    {
-        return view('home');
-    }
 
-    public function AddMsg(Request $request){
-
-        $Chat = new Chat;
-
-        $Chat->from = $request->input('from');
-        $Chat->to = $request->input('to');
-        $Chat->text = $request->input('text');
-
-        $Chat->save();
-
-       return response()->json( $response, 200);
-
-    }
 /**
- * 
  * 
  * 
  * 
@@ -92,43 +69,117 @@ class HomeController extends Controller
 
     public function reponse_demande($id)
     {   
+
+
+
         return view('user/reponse_demande')->with('id',$id);
     }
 
 /***** problem stock   *****/
     public function store_reponse_offre(Request $request)
-    {    
-        $this->validate($request, [
-            'commentaire' => 'required|string|min:1',  
-          ]);
+    {     $this->validate($request, [
+        'commentaire' => 'required|string|min:1',  
+      ]); 
+
+        $annonce=Annonce::select('natureannonce','refproduit','refproduitEchange','qte','qteEchange')->whereid($request->input('idannonce'))->first();
+        if($annonce->natureannonce=="Changement")
+        {
+                $produit=Produit::select('qte')->whereid($annonce->refproduit)->first();
+                $produitEchange=Produit::select('qte')->whereid($annonce->refproduitEchange)->whereuser_id(Auth::user()->id)->first();
+                  if(!empty($produitEchange))
+                  {
+                    if($produit->qte >= $annonce->qte && $produitEchange->qte >= $annonce->qteEchange  )
+                    {  
+                        $reponseoffre=new Reponseannonce;
+                        $reponseoffre->user_id=Auth::user()->id;
+                        $reponseoffre->annonce_id=$request->input('idannonce');
+                        $reponseoffre->commentaire=$request->input('commentaire');
+                        $reponseoffre->etat="confirmer";
+                        $reponseoffre->save();
+                       // $allreponse=Produit::where($)->where('id','<>',$reponse_id)->update(['etat' => "annuler"]);
+                        //*update produit fornisseur -qte
+                        //*update produit haj +qteechange
+                    }
+                    else
+                    {
+                        if($produit->qte < $annonce->qte)
+                            session()->flash('message-error-ajout-offre','le produit de votre fournisseur est non disponible' );   
+                        elseif($produitEchange->qte < $annonce->qteEchange)
+                            session()->flash('message-error-ajout-offre','Quantite insuffisante' );   
+                       
+                    }
+                    
+                }else
+                {session()->flash('message-error-ajout-offre','Vous navais pas ce type de produit dans votre stock' ); }
+
+         }
+        else
+        {
+                        $produit=Produit::whereid($annonce->refproduit)->first();
+                        if($produit->qte >= $annonce->qte)
+                        {
+                            $reponseoffre=new Reponseannonce;
+                            $reponseoffre->user_id=Auth::user()->id;
+                            $reponseoffre->annonce_id=$request->input('idannonce');
+                            $reponseoffre->commentaire=$request->input('commentaire');
+                            $reponseoffre->etat="confirmer";
+                            $reponseoffre->save();
+                            //*update produit fornisseur + qte
+                            //ajout produit a le meme informations que le de fr
+
+                            //*
+                        }
+                        else
+                        {
+                            session()->flash('message-error-ajout-offre','le produit de votre fournisseur est non disponible' );  
+                        }
+
+                    }
+                        return back()->withInput();  
      
-     $reponseoffre=new Reponseannonce;
-     $reponseoffre->user_id=Auth::user()->id;
-     $reponseoffre->annonce_id=$request->input('idannonce');
-     $reponseoffre->commentaire=$request->input('commentaire');
-     $reponseoffre->etat="enattente";
-     $reponseoffre->save();
-     
-     session()->flash('message-success-ajout-offre','Votre demande à cette offre est effecuté avec succées');
-     return back()->withInput();   
+   
     }
+
+
+    /**** commentaire *****/
+    /* dump("informations annonce");
+                            dump("informations annonce:natureannonce");
+                            dump($annonce->natureannonce);
+                            dump("informations annonce:refproduit");
+                            dump($annonce->refproduit);
+                            dump("informations annonce:refproduitEchange");
+                            dump($annonce->refproduitEchange);
+                            dump("informations annonce :qte");
+                            dump($annonce->qte);
+                            dump("informations annonce:qteEchange");
+                            dump($annonce->qteEchange);
+                            dump("informations produit donnee");
+                            dump("informations produit: qte");
+                            dump($produit->qte);
+                            dump("informations produit user_id");
+                            dump($produit->user_id);
+                            dump("informations produit eachange");
+                            dump("informations produit :qte");
+                            dump($produitEchange->qte);
+                            dump("informations produit :user_id");
+                            dump($produitEchange->user_id);*/
 /***** problem stock   *****/
     public function store_reponse_demande(Request $request)
-    {    
-      /*  $this->validate($request, [
-            'commentaire' => 'required|string|min:1',  
-          ]); 
-     $reponseoffre=new Reponseannonce;
-     $reponseoffre->user_id=Auth::user()->id;
-     $reponseoffre->annonce_id=$request->input('idannonce');
-     $reponseoffre->commentaire=$request->input('commentaire');
-     $reponseoffre->etat="confirmer";
-     $reponseoffre->save();
-     
-     session()->flash('message-success-ajout-demande','Votre demande confimer avec succées');
-     return back()->withInput();  */
-     dump($request);
-    }
+    {   
+            $this->validate($request, [
+                'commentaire' => 'required|string|min:1',  
+              ]);
+         $annonce=Annonce::whereid($request->input('idannonce'))->get();
+         
+         $reponseoffre=new Reponseannonce;
+         $reponseoffre->user_id=Auth::user()->id;
+         $reponseoffre->annonce_id=$request->input('idannonce');
+         $reponseoffre->commentaire=$request->input('commentaire');
+         $reponseoffre->etat="enattente";
+         $reponseoffre->save();
+    
+        
+ }
 
 
 
@@ -145,7 +196,7 @@ class HomeController extends Controller
     {
 
         $annonces=Annonce::whereid($id)->first();
-      //  $ann=Annonce::whereid($id)->select('user_id')->first();
+        $ann=Annonce::whereid($id)->select('user_id')->first();
         $reponseconfirmer=Reponseannonce::whereannonce_id($id)
         ->whereetat("confirmer")
         ->first();
@@ -172,7 +223,7 @@ class HomeController extends Controller
 
     public function  consulte_offre_confirmer(Request $request)
     {
-       $reponse_id=$request->input('reponse_id');
+        $reponse_id=$request->input('reponse_id');
 
         $confirmerreponse=Reponseannonce::whereid($reponse_id)->first();
         $confirmerreponse->etat="confirmer";
@@ -190,7 +241,7 @@ class HomeController extends Controller
 
     public function  consulte_offre_annuler(Request $request)
     {
-      $confirmerreponse=Reponseannonce::whereid($request->input('reponse_id'))->first();
+        $confirmerreponse=Reponseannonce::whereid($request->input('reponse_id'))->first();
         $confirmerreponse->etat="annuler";
         $confirmerreponse->save();
         $id=$confirmerreponse->annonce_id;

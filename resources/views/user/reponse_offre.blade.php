@@ -179,13 +179,7 @@
   </section>
   <section class="content">
         @if(DB::table('reponseannonces')->whereuser_id(Auth::user()->id)->whereannonce_id($id)->count()==0)
-                @if (Session::has('message-success-ajout-offre'))
-                        <div class="alert alert-success alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                <h4><i class="icon fa fa-check"></i> alerte !</h4>
-                                {{ Session::get('message-success-ajout-offre') }}
-                        </div>
-                @endif
+               
 
                 
     <div class="row " id="annonce">
@@ -328,6 +322,14 @@
                 <div class="box-body">
              
                   <div class="row">
+                        @if (Session::has('message-error-ajout-offre'))
+                        <div class="alert alert-danger alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4><i class="icon fa fa-check"></i> alerte !</h4>
+                                {{ Session::get('message-error-ajout-offre') }}
+                        </div>
+                @endif
+                <br>
                       <form class="form-horizontal" method="post"   action="{{route('store_reponse_offre')}}">
                       @csrf
                           <div class="box-body">

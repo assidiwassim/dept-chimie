@@ -27,6 +27,7 @@ class AnnonceController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->get();
                 $reftotal=Produit::select('id','reference' )
+                ->where('user_id','<>',Auth::user()->id)
                 ->get();
                 return view('user/ajouter_annonce')->with('reftotal',$reftotal)->with('refuser',$refuser);
                 }
@@ -56,17 +57,18 @@ class AnnonceController extends Controller
                     $Annonce->user_id  = Auth::user()->id;
                     $Annonce->save();
                    $annonce=$Annonce->id;
+                                
+                    $users=User::where('id','<>',Auth::user()->id)
+                    ->whererole('user')->get();
+                    $annonce=Annonce::find($annonce);
+                    Notification::send($users,new addannonce($annonce));
                     session()->flash('message-success-ajout-annonce','la nouvelle annonce a été enregistrer correctement!');
             }
         else
         {
             session()->flash('message-success-ajout-annonce','Quantité indisponible!');  
         }
-          
-        $users=User::where('id','<>',Auth::user()->id)
-        ->whererole('user')->get();
-        $annonce=Annonce::find($x);
-        Notification::send($users,new addannonce($annonce));
+        
         return back()->withInput();
                     
     }

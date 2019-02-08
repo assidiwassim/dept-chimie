@@ -50,7 +50,7 @@ class addannonce extends Notification
         return [
             'type' => 'addannonce',
             'annonce_id' => $this->annonce->id,
-            'user_id'  => $this->Auth::user()->id,
+            'user_id'  => Auth::user()->id,
             'avatar' => Auth::user()->logo,
             'text' => 'ilya une nouvelle annonce à publié '
             
