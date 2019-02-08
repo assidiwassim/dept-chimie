@@ -242,20 +242,20 @@
                                     <p>
                                             @if($annonce->typeannonce=="Offre")
                                                 
-                                                    Offre avec
+                                                    Offre 
                                                     @if($annonce->natureannonce=="Changement")
-                                                      Changement
+                                                    avec changement
                                                     @else
-                                                      Don
+                                                      avec don
                                                     @endif
                                              
                                             @else
                                               
-                                                    Demande avec
+                                                    Demande 
                                                 @if($annonce->natureannonce=="Changement")
-                                                    Changement
+                                                      avec changement
                                                 @else
-                                                     Sans changement
+                                                     sans changement
                                                 @endif
                                             @endif
                                         </p>
