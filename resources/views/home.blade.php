@@ -12,7 +12,7 @@
  
 
 $(function () {
-  var socket = io.connect('http://localhost:3002');
+  var socket = io.connect('http://localhost:3000');
     $('form').submit(function(e){
       e.preventDefault(); 
       socket.emit('chat', $('#m').val());

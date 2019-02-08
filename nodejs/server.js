@@ -16,8 +16,8 @@ io.on('connection', function(socket){
 });
 
 
-server.listen(3002, function(){
-  console.log('listening on *:3002');
+server.listen(3000, function(){
+  console.log('listening on :3000');
 });
 
 
