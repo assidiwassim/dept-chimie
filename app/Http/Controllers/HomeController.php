@@ -95,7 +95,7 @@ class HomeController extends Controller
         return view('user/reponse_demande')->with('id',$id);
     }
 
-
+/***** problem stock   *****/
     public function store_reponse_offre(Request $request)
     {    
         $this->validate($request, [
@@ -112,10 +112,10 @@ class HomeController extends Controller
      session()->flash('message-success-ajout-offre','Votre demande à cette offre est effecuté avec succées');
      return back()->withInput();   
     }
-
+/***** problem stock   *****/
     public function store_reponse_demande(Request $request)
     {    
-        $this->validate($request, [
+      /*  $this->validate($request, [
             'commentaire' => 'required|string|min:1',  
           ]); 
      $reponseoffre=new Reponseannonce;
@@ -126,7 +126,8 @@ class HomeController extends Controller
      $reponseoffre->save();
      
      session()->flash('message-success-ajout-demande','Votre demande confimer avec succées');
-     return back()->withInput();  
+     return back()->withInput();  */
+     dump($request);
     }
 
 

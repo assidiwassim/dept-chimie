@@ -167,7 +167,7 @@
 </style>
 <section class="content-header">
     <h1>
-        Demander cet offre
+        Offre
       <small>labshare</small>
     </h1>
     <ol class="breadcrumb">

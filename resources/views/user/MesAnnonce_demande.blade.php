@@ -179,7 +179,7 @@
        
       <li class="active"><i class="fa fa-dashboard"> </i> Menu</li>
       <li><a href="#"> Mes annonces </a></li>
-      <li><a href="#"> demande </a></li>
+      <li><a href="#"> demandes </a></li>
     </ol>
   </section>
   <section class="content">
@@ -247,20 +247,20 @@
                                     <p>
                                             @if($annonce->typeannonce=="Offre")
                                                 
-                                                    Offre avec
+                                                    Offre 
                                                     @if($annonce->natureannonce=="Changement")
-                                                      Changement
+                                                    avec changement
                                                     @else
-                                                      Don
+                                                    avec don
                                                     @endif
                                              
                                             @else
                                               
-                                                    Demande avec
+                                                    Demande 
                                                 @if($annonce->natureannonce=="Changement")
-                                                    Changement
+                                                    avec changement
                                                 @else
-                                                     Sans changement
+                                                     sans changement
                                                 @endif
                                             @endif
                                         </p>

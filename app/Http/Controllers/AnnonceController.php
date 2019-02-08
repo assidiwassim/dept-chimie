@@ -15,21 +15,21 @@ use Notification;
 use App\Notifications\addannonce;
 class AnnonceController extends Controller
 {
-    public function __construct()
-    {
+            public function __construct()
+            {
+                
+            }
         
-    }
- 
-    public function ajouter_annonce()
-    {
-      $refuser=Produit::select('id','reference' )
-      ->where('user_id',Auth::user()->id)
-      ->orderBy('created_at', 'desc')
-      ->get();
-      $reftotal=Produit::select('id','reference' )
-      ->get();
-       return view('user/ajouter_annonce')->with('reftotal',$reftotal)->with('refuser',$refuser);
-    }
+                public function ajouter_annonce()
+                {
+                $refuser=Produit::select('id','reference' )
+                ->where('user_id',Auth::user()->id)
+                ->orderBy('created_at', 'desc')
+                ->get();
+                $reftotal=Produit::select('id','reference' )
+                ->get();
+                return view('user/ajouter_annonce')->with('reftotal',$reftotal)->with('refuser',$refuser);
+                }
 
 
 
@@ -55,22 +55,19 @@ class AnnonceController extends Controller
                     $Annonce->file = $filename;
                     $Annonce->user_id  = Auth::user()->id;
                     $Annonce->save();
+                   $annonce=$Annonce->id;
                     session()->flash('message-success-ajout-annonce','la nouvelle annonce a été enregistrer correctement!');
-        }else{
+            }
+        else
+        {
             session()->flash('message-success-ajout-annonce','Quantité indisponible!');  
         }
           
-$users=User::where('id','<>',Auth::user()->id)->get();
-$annonce=Annonce::orderBy('created_at', 'desc')->first();
-Notification::send($users,new addannonce($annonce));
-foreach(Auth::user()->notifications as $net)
-{
-    var_dump($net->data['text']);
-}
- 
-      
-   
-   // return back()->withInput()->with('errors', 'Profile updated!');
+        $users=User::where('id','<>',Auth::user()->id)
+        ->whererole('user')->get();
+        $annonce=Annonce::find($x);
+        Notification::send($users,new addannonce($annonce));
+        return back()->withInput();
                     
     }
 
