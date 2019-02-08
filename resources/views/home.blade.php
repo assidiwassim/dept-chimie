@@ -46,11 +46,10 @@ $(function () {
         data: data_msg,
         cache:false,
         success: function (data) {
-       console.log(data);
+            console.log(data);
         },
         error: function (data, textStatus, errorThrown) {
             console.log(data);
-
         },
       })
 
