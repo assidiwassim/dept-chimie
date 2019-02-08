@@ -27,6 +27,7 @@ Route::group(['prefix' =>'labo' ],function()
 
     Route::auth();
     Route::get('/home', 'HomeController@home')->name('home');
+    Route::post('/AddMsg', 'HomeController@AddMsg');
 
 /* Home */
 Route::get('/', 'HomeController@index')->name('tableaudebord_labo');

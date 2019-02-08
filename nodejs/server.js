@@ -8,13 +8,11 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
-  
-   socket.on('chat', function(msg){
-    io.emit('chat', msg);
+  socket.on('chat', function(data_msg){
+    io.emit('chat', data_msg);
   });
-  
+ 
 });
-
 
 server.listen(3000, function(){
   console.log('listening on :3000');

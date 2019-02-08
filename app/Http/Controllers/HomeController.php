@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Produit;
 use App\Annonce;
 use App\User;
+use App\Chat;
 use Auth;
 use App\Reponseannonce;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ControllerValidatesRequestsvalidate;
+
+
+
 class HomeController extends Controller
 {
     /**
@@ -36,7 +41,21 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function AddMsg(Request $request){
+
+        $Chat = new Chat;
+
+        $Chat->from = $request->input('from');
+        $Chat->to = $request->input('to');
+        $Chat->text = $request->input('text');
+
+        $Chat->save();
+
+       return response()->json( $response, 200);
+
+    }
 /**
+ * 
  * 
  * 
  * 
