@@ -48,9 +48,11 @@ class addannonce extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'id' => $this->annonce->id,
+            'type' => 'addannonce',
+            'annonce_id' => $this->annonce->id,
+            'user_id'  => $this->Auth::user()->id,
             'avatar' => Auth::user()->logo,
-            'text' => 'ilya une nouvelle annonce '
+            'text' => 'ilya une nouvelle annonce à publié '
             
         ];
     }
