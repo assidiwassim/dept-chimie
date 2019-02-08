@@ -22,5 +22,12 @@
         "sass-loader": "^7.1.0",
         "sweetalert": "^2.0.8",
         "vue": "^2.5.17"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.16.4",
+        "redis": "^2.8.0",
+        "redis-server": "^1.2.2",
+        "socket.io": "^2.2.0"
     }
 }

@@ -161,8 +161,10 @@ width: 190px;
                     <a href="#">
                         @foreach (Auth::user()->unreadNotifications as $notification)
 
-                      {{$notification->data['text']}}
-                      @endforeach
+
+                        {{$notification->data['text']}}
+                        @endforeach
+
                     </a>
                   </li>
                   <!-- end notification -->
@@ -273,6 +275,8 @@ width: 190px;
         <li class="discussion_labo"><a href="{{ route('discussion_labo') }}"><i class="fa fa-envelope"></i> <span>Discussion</span></a></li>
         <li class="aide_labo"><a href="{{ route('aide_labo') }}"><i class="fa fa-question-circle"></i> <span>Centre d'aide</span></a></li>
         <li class="parametre_labo"><a href="{{ route('parametre_labo') }}"><i class="fa fa-cog"></i> <span>Paramètres</span></a></li>
+        <li class=""><a href="{{ route('home') }}"><i class="fa fa-cog"></i> <span>Chat_home</span></a></li>
+        
         
         
       </ul>
