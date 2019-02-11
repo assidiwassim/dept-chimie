@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Produit;
 use App\Annonce;
@@ -36,6 +36,17 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+
+    public function AddMsg(Request $request){
+        $Chat = new Chat;
+        $Chat->from = $request->input('from');
+        $Chat->to = $request->input('to');
+        $Chat->text = $request->input('text');
+        $Chat->save();
+       return response()->json( $response, 200);
+    }
+    
 /**
  * 
  * 
