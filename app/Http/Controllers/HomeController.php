@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Produit;
 use App\Annonce;
 use App\User;
+use App\Chat;
 use Auth;
 use App\Reponseannonce;
 use Illuminate\Support\Facades\DB;
