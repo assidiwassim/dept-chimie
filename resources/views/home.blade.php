@@ -12,7 +12,7 @@
 <ul id="messages">
   </ul>
   
-    <form action="">
+    <form action=""></form>
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
     
