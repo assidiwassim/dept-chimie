@@ -12,7 +12,7 @@
 <ul id="messages">
   </ul>
   
-    <form action=""></form>
+    <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
     
@@ -40,7 +40,7 @@ $(function () {
       var data_msg = {'_token': '{{csrf_token()}}',"from":22, "to":33,"text":msg}; 
       socket.emit('chat', data_msg);
       $('#m').val('');
-      $.ajax({
+     /* $.ajax({
         type: 'POST',
         url: 'AddMsg',
         data: data_msg,
@@ -51,7 +51,7 @@ $(function () {
         error: function (data, textStatus, errorThrown) {
             console.log(data);
         },
-      })
+      })*/
 
       return false;
     });
