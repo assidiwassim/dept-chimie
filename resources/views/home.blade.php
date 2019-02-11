@@ -26,7 +26,7 @@ $.ajaxSetup({
 
 $(function () {
   
-  var socket = io.connect('http://localhost:3000');
+  var socket = io.connect('http://dept-chimie-chat.ml/');
 
     socket.on('chat', function(data_msg){
       console.log(data_msg);
