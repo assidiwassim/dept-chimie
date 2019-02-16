@@ -12,7 +12,7 @@ class CreateChattable extends Migration
      * @return void
      */
     public function up()
-    {
+    {Schema::defaultStringLength(191);
         Schema::create('chats', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('from')->nullable();

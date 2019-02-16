@@ -47,6 +47,19 @@ class HomeController extends Controller
         $Chat->save();
        return response()->json( $response, 200);
     }
+
+    
+    public function GetListMessage(Request $request){
+       
+        $message=Chat::where('from',$request->input('from'))
+                       ->where('to',$request->input('to'))
+                       ->orwhere('to',$request->input('from'))
+                       ->where('from',$request->input('to'))
+                       ->get();
+       return response()->json( $message, 200);
+    }
+
+    
     
 /**
  * 

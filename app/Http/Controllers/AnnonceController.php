@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
@@ -31,12 +29,6 @@ class AnnonceController extends Controller
                 ->get();
                 return view('user/ajouter_annonce')->with('reftotal',$reftotal)->with('refuser',$refuser);
                 }
-
-
-
-
-
-
     public function addannoncefrom(Request $request)
     {
             $logo = $request->file('file');
@@ -72,7 +64,4 @@ class AnnonceController extends Controller
         return back()->withInput();
                     
     }
-
-
-
 }
