@@ -406,8 +406,8 @@ img{ max-width:100%;}
 .intercom-composer-popover.active{
   visibility: visible;
   opacity: 1;
-  bottom: 118px;
-  right: 172px;
+ bottom: 118px;
+    right: 315px;
 }
 .intercom-emoji-picker {
 width: 334px;
