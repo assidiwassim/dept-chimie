@@ -335,7 +335,7 @@ if (url.indexOf("/labo/annonces") >= 0){
   $('.MesAnnonces_laboratoire').addClass("active");
 }else if (url.indexOf("/labo/magasin") >= 0 ||url.indexOf("/labo/magasin/ajouter-produit") >= 0 ){
   $('.magasin_labo').addClass("active");
-}else if (url.indexOf("/labo/discussion") >= 0){
+}else if (url.indexOf("/labo/chat") >= 0){
   $('.discussion_labo').addClass("active");
 }else if (url.indexOf("/labo/aide") >= 0){
   $('.aide_labo').addClass("active");

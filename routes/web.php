@@ -26,7 +26,7 @@ Route::group(['prefix' =>'labo' ],function()
 {
 
     Route::auth();
-    Route::get('/home', 'HomeController@home')->name('home');
+    Route::get('/chat', 'HomeController@home')->name('home');
     Route::post('/AddMsg', 'HomeController@AddMsg');
     Route::post('/GetListMessage', 'HomeController@GetListMessage');
 /* Home */
