@@ -272,11 +272,10 @@ width: 190px;
             <li><a href="{{ route('ajouter_produit_magasin_labo') }}"><i class="fa fa-link"></i> <span> Ajouter un produit</span></a></li>
         </ul>
         </li>
-        <li class="discussion_labo"><a href="{{ route('discussion_labo') }}"><i class="fa fa-envelope"></i> <span>Discussion</span></a></li>
+        <li class="discussion_labo"><a href="{{ route('home') }}"><i class="fa fa-envelope"></i> <span>Discussion</span></a></li>
         <li class="aide_labo"><a href="{{ route('aide_labo') }}"><i class="fa fa-question-circle"></i> <span>Centre d'aide</span></a></li>
         <li class="parametre_labo"><a href="{{ route('parametre_labo') }}"><i class="fa fa-cog"></i> <span>Paramètres</span></a></li>
-        <li class=""><a href="{{ route('home') }}"><i class="fa fa-cog"></i> <span>Chat_home</span></a></li>
-        
+       
         
         
       </ul>
