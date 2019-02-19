@@ -390,8 +390,8 @@ img{ max-width:100%;}
 .intercom-composer-popover {
   z-index: 2147483003;
   position: absolute;
-  bottom: 118px;
-  right: 172px;
+   bottom: 118px;
+    right: 315px;
   box-shadow: 0 1px 15px 1px rgba(0,0,0,.08);
   background-color: #fff;
   border-radius: 6px;
