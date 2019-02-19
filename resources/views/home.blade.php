@@ -223,10 +223,14 @@ $('#form-chat').submit(function(e){
 
 
 $( "#m" ).keyup(function() {
+  
 var message_notif = $("#m").val();
-  socket.emit('message_notif', true);
+console.log(message_notif)
+  socket.emit('message_notif', message_notif);
 });
+
 $("#typing").hide();
+
 socket.on('message_notif', function(notif){
   if(notif){
     $("#typing").show();
