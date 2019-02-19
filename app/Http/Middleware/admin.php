@@ -19,9 +19,8 @@ class admin
         if(Auth::user()->role=="admin"){
             return $next($request);
         }
-        else{ 
-            return redirect()->route('login');
-        }
+        return 'You are not ADMIN';
+
 
     }
 }
