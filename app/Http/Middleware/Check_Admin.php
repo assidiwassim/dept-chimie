@@ -22,12 +22,12 @@ class Check_Admin
         // c'est une page d'administration 
        if((strpos($str, "/labo")==false) && (Auth::user()->role == 'user'))
          {
-             return response('Page autorisé  ');
+             return response('Page  labo non autorisé  ');
         }
 
          // c'est une page de simple utilisateur 
          if((strpos($str, "/admin")==false) && (Auth::user()->role == 'admin'))
-         {  return response('Page autorisé ');}
+         {  return response('Page admin non autorisé ');}
 
          return $next($request);   
                 
