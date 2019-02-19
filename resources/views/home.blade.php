@@ -83,10 +83,13 @@
                       
               
                     </div>
+                    <p id="typing">En traint de taper...</p>
                     <div class="type_msg">
+                      
                       <div class="input_msg_write">
+                         
                         <form id="form-chat">
-                          <p id="typing">En traint d'ecrire</p>
+                         
                             <textarea type="text" class="test-emoji" rows="1" id="m" placeholder="Taper un message" ></textarea>
                            <button type="submit" class=" submit-msg"><img src="{{ asset("img/send.png")}}"/></button>
                         </form>
@@ -223,7 +226,7 @@ $( "#m" ).keyup(function() {
 var message_notif = $("#m").val();
   socket.emit('message_notif', true);
 });
-
+$("#typing").hide();
 socket.on('message_notif', function(notif){
   if(notif){
     $("#typing").show();
