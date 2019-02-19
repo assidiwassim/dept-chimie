@@ -19,9 +19,8 @@ class labo
         if(Auth::user()->role=="labo"){
             return $next($request);
         }
-        else{
-            return redirect()->route('login');
-        }
+        return 'You are not labo';
+
         
     }
 }
