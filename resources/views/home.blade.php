@@ -86,6 +86,7 @@
                     <div class="type_msg">
                       <div class="input_msg_write">
                         <form id="form-chat">
+                          <p id="typing">En traint d'ecrire</p>
                             <textarea type="text" class="test-emoji" rows="1" id="m" placeholder="Taper un message" ></textarea>
                            <button type="submit" class=" submit-msg"><img src="{{ asset("img/send.png")}}"/></button>
                         </form>
@@ -125,6 +126,7 @@ $( ".action_on_user" ).click(function() {
       $(".action_on_user").each(function() {
         $(".action_on_user").removeClass("active_chat");
       })
+
       $(this).addClass("active_chat") ;
 
 
@@ -166,8 +168,6 @@ $( ".action_on_user" ).click(function() {
 var socket = io.connect('https://dept-chimie-chat.ml/');
 
 socket.on('chat', function(data_msg){
-
-    
      if((data_msg.from==from && data_msg.to==to) || (data_msg.from==to && data_msg.to==from) ){
       $("#change_value_"+data_msg.from).text(data_msg.text);
     $("#change_value_"+data_msg.to).text(data_msg.text);
@@ -217,6 +217,21 @@ $('#form-chat').submit(function(e){
         
 
 });
+
+
+$( "#m" ).keyup(function() {
+var message_notif = $("#m").val();
+  socket.emit('message_notif', true);
+});
+
+socket.on('message_notif', function(notif){
+  if(notif){
+    $("#typing").show();
+  }else{
+    $("#typing").hide();
+  }
+  
+})
 
 $( "#target" ).keyup(function() {
 var inpp = $(this).val();
