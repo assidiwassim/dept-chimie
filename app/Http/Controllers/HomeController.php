@@ -45,6 +45,7 @@ class HomeController extends Controller
         $Chat->to = $request->input('to');
         $Chat->text = $request->input('text');
         $Chat->save();
+
        return response()->json( $response, 200);
     }
 
@@ -56,7 +57,17 @@ class HomeController extends Controller
                        ->orwhere('to',$request->input('from'))
                        ->where('from',$request->input('to'))
                        ->get();
-       return response()->json( $message, 200);
+                   
+             $url_to   = User::select('logo')->whereid($request->input('from'))->get();
+             $url_from   = User::select('logo')->whereid($request->input('to'))->get();
+
+             $j=["data_msg" => $message,
+             "url_to" => $url_to,
+            "url_from" =>$url_from 
+            ];
+                 
+             
+       return response()->json( $j, 200);
     }
 
     

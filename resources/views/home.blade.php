@@ -32,6 +32,9 @@
   .action_on_user{
     cursor: pointer;
   }
+  .raduis_profil{
+    border-radius: 50%;
+  }
 </style>
 </head>
   <body>
@@ -60,11 +63,10 @@
                       <div class="chat_list  action_on_user" >
                         <input type="hidden" value="{{$user->id}}" >
                         <div class="chat_people">
-                          <div class="chat_img"> <img src="/upload/logo/{{$user->logo}}" alt="sunil"> </div>
+                          <div class="chat_img"> <img src="/upload/logo/{{$user->logo}}" class="raduis_profil" alt="sunil"> </div>
                           <div class="chat_ib">
                             <h5 class="username">{{$user->name}} </h5>
-                            <p>Test, which is a new approach to have all solutions 
-                              astrology under one roof.</p>
+                            <p id="change_value_{{$user->id}}">{{DB::table('chats')->select('text')->where('from',$user->id)->where('to',Auth::user()->id)->orderBy('created_at', 'desc')->value('value')}}</p>
                           </div>
                         </div>
                       </div>
@@ -113,6 +115,8 @@ $(function () {
  
 var from ;
 var to;
+var logo_from;
+var logo_to;
 
 
 $( ".action_on_user" ).click(function() {
@@ -133,14 +137,17 @@ $( ".action_on_user" ).click(function() {
             url: 'GetListMessage',
             data: data_msg,
             cache:false,
-            success: function (data) {
+            success: function (res) {
+               logo_from= res.url_from[0].logo;
+              logo_to=  res.url_to[0].logo;
               $('#messages div').remove();
+              var  data=res.data_msg;
               data.forEach(function(element) {
                 if(element.from=={{Auth::user()->id}}){
                   $('#messages').append('<div class=" dd outgoing_msg"><div class="sent_msg"><p>'+element.text+'</p><span class="time_date"> 11:01 AM    |    Today</span> </div></div>');
                 }
                 else{
-                  $('#messages').append('<div class="dd incoming_msg"><div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div><div class="received_msg"><div class="received_withd_msg"><p>'+element.text+'</p><span class="time_date"> 11:01 </span></div></div></div>');
+                  $('#messages').append('<div class="dd incoming_msg"><div class="incoming_msg_img"> <img src="/upload/logo/'+logo_from+'"  class="raduis_profil" alt="sunil"> </div><div class="received_msg"><div class="received_withd_msg"><p>'+element.text+'</p><span class="time_date"> 11:01 </span></div></div></div>');
               
                 }
                 $('#messages').animate({ scrollTop: $('#messages').prop('scrollHeight') }, 5);
@@ -159,12 +166,15 @@ $( ".action_on_user" ).click(function() {
 var socket = io.connect('https://dept-chimie-chat.ml/');
 
 socket.on('chat', function(data_msg){
-  
+
+    
      if((data_msg.from==from && data_msg.to==to) || (data_msg.from==to && data_msg.to==from) ){
+      $("#change_value_"+data_msg.from).text(data_msg.text);
+    $("#change_value_"+data_msg.to).text(data_msg.text);
           if(data_msg.from=={{Auth::user()->id}} ){
                       $('#messages').append('<div class="outgoing_msg"><div class="sent_msg"><p>'+data_msg.text+'</p><span class="time_date"> 11:01 AM    |    Today</span> </div></div>');
           }else{
-                      $('#messages').append('<div class="incoming_msg"><div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div><div class="received_msg"><div class="received_withd_msg"><p>'+data_msg.text+'</p><span class="time_date"> 11:01 </span></div></div></div>');
+                      $('#messages').append('<div class="incoming_msg"><div class="incoming_msg_img"> <img src="/upload/logo/'+logo_from+'" class="raduis_profil" alt="sunil"> </div><div class="received_msg"><div class="received_withd_msg"><p>'+data_msg.text+'</p><span class="time_date"> 11:01 </span></div></div></div>');
                   
           }
      
