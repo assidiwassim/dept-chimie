@@ -118,7 +118,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12">
-                            <button type="submit" class="btn btn-sm btn-flat btn-primary pull-right " disabled>Modifier</button>
+                            <button type="submit" class="btn btn-sm btn-flat btn-primary pull-right " >Modifier</button>
                         </div>   
                         </div>
                         </form>

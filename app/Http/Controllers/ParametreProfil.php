@@ -42,17 +42,23 @@ class ParametreProfil extends Controller
             'NewPassword' => 'required|string|min:6',
                                   ]);
 
-    $user=Auth::user();                           
-    $ecien=$user->password;
-    
-    $formacien=Hash::make($request->input('EcienPassword'));
-    var_dump($ecien);
-    echo "yes";
-    var_dump($formacien);
-    //$n=User::whereid(Auth::user()->id)->update(['password' => Hash::make($request->input('NewPassword'))]);
+                            
+    $ancien_password=Auth::user()->password;
+    $pass_form_ancien_password=$request->input('EcienPassword');
+    $new_ecien=$request->input('NewPassword');
+
+    if (Hash::check($pass_form_ancien_password,$ancien_password))
+ {
+  $n=User::whereid(Auth::user()->id)->update(['password' => Hash::make($new_ecien)]);
+  session()->flash('message-success-modification-profil','Votre mot de passe  à eté  modifier avec succées');
+  
+      return back()->withInput();
+    }
+   
+   
         
       
-       
+      
        
       
     }
