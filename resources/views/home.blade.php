@@ -170,21 +170,25 @@ $( ".action_on_user" ).click(function() {
 
 var socket = io.connect('https://dept-chimie-chat.ml/');
 
-socket.on('message_notif', function(message_notif){
-          if(message_notif){
+
+socket.on('message_notif', function(data_notif){
+  if(data_notif.from==to && data_notif.to==from ){
+          if(data_notif.message_notif){
           $('#typing').text("En train d'écrire...");
           }else{
-          $('#typing').text("");
+            setTimeout(function(){  $('#typing').text("")}, 500);
           }
+  }
     });
 	
 	   $( "#m" ).keyup(function() {
-      setTimeout(function(){ 	  socket.emit('message_notif', false); }, 500);
-	
+      var data_notif = {"from":from, "to":to,"message_notif":false};
+     	  socket.emit('message_notif', data_notif); 
 	  	});
 		
 		 $( "#m" ).keydown(function() {
-		  socket.emit('message_notif', true);
+      var data_notif = {"from":from, "to":to,"message_notif":true};
+		  socket.emit('message_notif', data_notif);
 	  	});
 
 
