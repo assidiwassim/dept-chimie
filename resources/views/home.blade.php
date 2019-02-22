@@ -81,7 +81,9 @@
                       
               
                     </div>
-                    <div class="type_msg">
+               
+                    <div class="type_msg" style="position:relative">
+                        <p id="typing" class="fade"></p>
                       <div class="input_msg_write">
                         <form id="form-chat">
                             <textarea type="text" class="test-emoji" rows="1" id="m" placeholder="Taper un message" ></textarea>
@@ -157,6 +159,23 @@ $( ".action_on_user" ).click(function() {
 
 
 var socket = io.connect('https://dept-chimie-chat.ml/');
+
+socket.on('message_notif', function(message_notif){
+          if(message_notif){
+          $('#typing').text("En train d'écrire...");
+          }else{
+          $('#typing').text("");
+          }
+    });
+	
+	   $( "#m" ).keyup(function() {
+		  socket.emit('message_notif', false);
+	  	});
+		
+		 $( "#m" ).keydown(function() {
+		  socket.emit('message_notif', true);
+	  	});
+
 
 socket.on('chat', function(data_msg){
   
@@ -261,6 +280,8 @@ $('.intercom-composer-popover-input').on('input', function() {
 
 
 
+	
+   
 </script>
 </body>
 </html>
