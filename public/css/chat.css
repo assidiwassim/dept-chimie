@@ -490,4 +490,16 @@ height: 318px;}
   left:20px;
 }
 
+.fade {
+  opacity: 1;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+  transition: 0.3s;
+  position: absolute;
+bottom: 44px;
+  }
 
+  .fade:hover {
+     opacity: 0.5;
+     }

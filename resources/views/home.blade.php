@@ -83,9 +83,9 @@
                       
               
                     </div>
-                    <p id="typing">En traint de taper...</p>
-                    <div class="type_msg">
-                      
+               
+                    <div class="type_msg" style="position:relative">
+                        <p id="typing" class="fade"></p>
                       <div class="input_msg_write">
                          
                         <form id="form-chat">
@@ -170,6 +170,28 @@ $( ".action_on_user" ).click(function() {
 
 var socket = io.connect('https://dept-chimie-chat.ml/');
 
+
+socket.on('message_notif', function(data_notif){
+  if(data_notif.from==to && data_notif.to==from ){
+          if(data_notif.message_notif){
+          $('#typing').text("En train d'écrire...");
+          }else{
+            setTimeout(function(){  $('#typing').text("")}, 500);
+          }
+  }
+    });
+	
+	   $( "#m" ).keyup(function() {
+      var data_notif = {"from":from, "to":to,"message_notif":false};
+     	  socket.emit('message_notif', data_notif); 
+	  	});
+		
+		 $( "#m" ).keydown(function() {
+      var data_notif = {"from":from, "to":to,"message_notif":true};
+		  socket.emit('message_notif', data_notif);
+	  	});
+
+
 socket.on('chat', function(data_msg){
      if((data_msg.from==from && data_msg.to==to) || (data_msg.from==to && data_msg.to==from) ){
       $("#change_value_"+data_msg.from).text(data_msg.text);
@@ -222,23 +244,6 @@ $('#form-chat').submit(function(e){
 });
 
 
-$( "#m" ).keyup(function() {
-  
-var message_notif = $("#m").val();
-console.log(message_notif)
-  socket.emit('message_notif', message_notif);
-});
-
-$("#typing").hide();
-
-socket.on('message_notif', function(notif){
-  if(notif){
-    $("#typing").show();
-  }else{
-    $("#typing").hide();
-  }
-  
-})
 
 $( "#target" ).keyup(function() {
 var inpp = $(this).val();
@@ -293,6 +298,8 @@ $('.intercom-composer-popover-input').on('input', function() {
 
 
 
+	
+   
 </script>
 </body>
 </html>
