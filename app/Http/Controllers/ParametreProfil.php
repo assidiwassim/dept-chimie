@@ -54,6 +54,13 @@ class ParametreProfil extends Controller
   
       return back()->withInput();
     }
+    else
+    {
+      session()->flash('message-success-modification-profil','3afsa');
+  
+      return back()->withInput();
+    }
+    }
    
    
         

@@ -14,6 +14,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+<!-- jQuery 3 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{{ asset("bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset("bower_components/admin-lte/dist/js/adminlte.min.js")}}"></script>
+<script src = "https://timeago.yarp.com/jquery.timeago.js" type = "text/javascript"> </script>
+
   <link rel="stylesheet"  type="text/css" href="{{ asset("bower_components/bootstrap/dist/css/bootstrap.min.css") }}">
   <!-- Font Awesome -->
   <link rel="stylesheet"  type="text/css" href="{{ asset("bower_components/font-awesome/css/font-awesome.min.css") }}">
@@ -316,14 +325,6 @@ width: 190px;
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
-
-<!-- jQuery 3 -->
-
-<script src="{{ asset("bower_components/jquery/dist/jquery.min.js")}}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{{ asset("bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset("bower_components/admin-lte/dist/js/adminlte.min.js")}}"></script>
 
 <script>
   

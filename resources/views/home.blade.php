@@ -10,8 +10,7 @@
 <html>
   <head>
  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <!---------------------------------------------------------------------------------------->
 
 <!------ Include the above in your HEAD tag ---------->
@@ -149,12 +148,13 @@ $( ".action_on_user" ).click(function() {
               var  data=res.data_msg;
               data.forEach(function(element) {
                 if(element.from=={{Auth::user()->id}}){
-                  $('#messages').append('<div class=" dd outgoing_msg"><div class="sent_msg"><p>'+element.text+'</p><span class="time_date"> 11:01 AM    |    Today</span> </div></div>');
+                  $('#messages').append('<div class=" dd outgoing_msg"><div class="sent_msg"><p>'+element.text+'</p><span class="time_date"> '+element.created_at+'</span> </div></div>');
                 }
                 else{
-                  $('#messages').append('<div class="dd incoming_msg"><div class="incoming_msg_img"> <img src="/upload/logo/'+logo_from+'"  class="raduis_profil" alt="sunil"> </div><div class="received_msg"><div class="received_withd_msg"><p>'+element.text+'</p><span class="time_date"> 11:01 </span></div></div></div>');
+                  $('#messages').append('<div class="dd incoming_msg"><div class="incoming_msg_img"> <img src="/upload/logo/'+logo_from+'"  class="raduis_profil" alt="sunil"> </div><div class="received_msg"><div class="received_withd_msg"><p>'+element.text+'</p><span class="time_date"> '+element.created_at+'</span></div></div></div>');
               
                 }
+                $(".time_date").last().text($.timeago($(".time_date").last().text()))
                 $('#messages').animate({ scrollTop: $('#messages').prop('scrollHeight') }, 5);
               });
             },
@@ -197,14 +197,15 @@ socket.on('chat', function(data_msg){
       $("#change_value_"+data_msg.from).text(data_msg.text);
     $("#change_value_"+data_msg.to).text(data_msg.text);
           if(data_msg.from=={{Auth::user()->id}} ){
-                      $('#messages').append('<div class="outgoing_msg"><div class="sent_msg"><p>'+data_msg.text+'</p><span class="time_date"> 11:01 AM    |    Today</span> </div></div>');
+                      $('#messages').append('<div class="outgoing_msg"><div class="sent_msg"><p>'+data_msg.text+'</p><span class="time_date">a linstant</span> </div></div>');
           }else{
-                      $('#messages').append('<div class="incoming_msg"><div class="incoming_msg_img"> <img src="/upload/logo/'+logo_from+'" class="raduis_profil" alt="sunil"> </div><div class="received_msg"><div class="received_withd_msg"><p>'+data_msg.text+'</p><span class="time_date"> 11:01 </span></div></div></div>');
+                      $('#messages').append('<div class="incoming_msg"><div class="incoming_msg_img"> <img src="/upload/logo/'+logo_from+'" class="raduis_profil" alt="sunil"> </div><div class="received_msg"><div class="received_withd_msg"><p>'+data_msg.text+'</p><span class="time_date">a linstant</span></div></div></div>');
                   
           }
+              $('#messages').animate({ scrollTop: $('#messages').prop('scrollHeight') }, 5);
      
    }
-   $('#messages').animate({ scrollTop: $('#messages').prop('scrollHeight') }, 20);
+   
                 
                 
 });
