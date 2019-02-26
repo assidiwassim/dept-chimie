@@ -72,11 +72,7 @@ class HomeController extends Controller
 
     
     
-/**
- * 
- * 
- * 
- */
+
 
     public function Annonces_labo()
     {    $annonces=Annonce::where('user_id','!=',Auth::user()->id)
@@ -181,29 +177,6 @@ class HomeController extends Controller
     }
 
 
-    /**** commentaire *****/
-    /* dump("informations annonce");
-                            dump("informations annonce:natureannonce");
-                            dump($annonce->natureannonce);
-                            dump("informations annonce:refproduit");
-                            dump($annonce->refproduit);
-                            dump("informations annonce:refproduitEchange");
-                            dump($annonce->refproduitEchange);
-                            dump("informations annonce :qte");
-                            dump($annonce->qte);
-                            dump("informations annonce:qteEchange");
-                            dump($annonce->qteEchange);
-                            dump("informations produit donnee");
-                            dump("informations produit: qte");
-                            dump($produit->qte);
-                            dump("informations produit user_id");
-                            dump($produit->user_id);
-                            dump("informations produit eachange");
-                            dump("informations produit :qte");
-                            dump($produitEchange->qte);
-                            dump("informations produit :user_id");
-                            dump($produitEchange->user_id);*/
-/***** problem stock   *****/
     public function store_reponse_demande(Request $request)
     {   
             $this->validate($request, [
