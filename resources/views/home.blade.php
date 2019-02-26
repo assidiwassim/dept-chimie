@@ -168,7 +168,7 @@ $( ".action_on_user" ).click(function() {
  
 
 
-var socket = io.connect('https://dept-chimie-chat.ml/');
+var socket = io.connect('https://dept-chimie-chat.assidiwassim.tn/');
 
 
 socket.on('message_notif', function(data_notif){
