@@ -197,9 +197,9 @@ socket.on('chat', function(data_msg){
       $("#change_value_"+data_msg.from).text(data_msg.text);
     $("#change_value_"+data_msg.to).text(data_msg.text);
           if(data_msg.from=={{Auth::user()->id}} ){
-                      $('#messages').append('<div class="outgoing_msg"><div class="sent_msg"><p>'+data_msg.text+'</p><span class="time_date">a linstant</span> </div></div>');
+                      $('#messages').append('<div class="outgoing_msg"><div class="sent_msg"><p>'+data_msg.text+'</p><span class="time_date">À l\'instant</span> </div></div>');
           }else{
-                      $('#messages').append('<div class="incoming_msg"><div class="incoming_msg_img"> <img src="/upload/logo/'+logo_from+'" class="raduis_profil" alt="sunil"> </div><div class="received_msg"><div class="received_withd_msg"><p>'+data_msg.text+'</p><span class="time_date">a linstant</span></div></div></div>');
+                      $('#messages').append('<div class="incoming_msg"><div class="incoming_msg_img"> <img src="/upload/logo/'+logo_from+'" class="raduis_profil" alt="sunil"> </div><div class="received_msg"><div class="received_withd_msg"><p>'+data_msg.text+'</p><span class="time_date">À l\'instant</span></div></div></div>');
                   
           }
               $('#messages').animate({ scrollTop: $('#messages').prop('scrollHeight') }, 5);
