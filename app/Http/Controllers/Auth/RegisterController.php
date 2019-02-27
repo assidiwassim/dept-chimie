@@ -71,7 +71,7 @@ class RegisterController extends Controller
             
                     $logo = $data->file('logo');
                     $filename = time() . '.' . $logo->getClientOriginalExtension();
-                    Image::make($logo)->resize(50,50)->save( public_path('/upload/logo/' . $filename ) );
+                    Image::make($logo)->save( public_path('/upload/logo/' . $filename ) );
                     return User::create([
                     'name' => $data['name'],
                     'email' => $data['email'],
