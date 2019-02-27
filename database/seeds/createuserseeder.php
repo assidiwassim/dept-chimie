@@ -23,7 +23,7 @@ class createuserseeder extends Seeder
             'name' => 'sayfoun',
             'email' => 'saif@mail.com',
             'password' => bcrypt('123456'),
-            'role' => "labo",
+            'role' => "user",
             'tel' =>  "22985027",
             'logo' => "logo.png",
         ]);
