@@ -170,23 +170,19 @@ width: 190px;
                     <a href="#">
                         @foreach (Auth::user()->unreadNotifications as $notification)
                             @if($notification->type="App\Notifications\addannonce") 
-                                @if(DB::table('annonces')->select('typeannonce')->where('id',$notification->data['annonce_id'])->value('typeannonce')=="Offre")
-                                <a href="/labo/annonces/offre/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
-                                @else
-                                <a href="/labo/annonces/demande/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
-                                @endif
+                                    @if(DB::table('annonces')->select('typeannonce')->where('id',$notification->data['annonce_id'])->value('typeannonce')=="Offre")
+                                    <a href="/labo/annonces/offre/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
+                                    @else
+                                    <a href="/labo/annonces/demande/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
+                                    @endif
+                            @else
 
-
-                            @elseif($notification->type="App\Notifications\confirme")
-                            @if($notification->data['type']="confirme")
-                            <a href="/labo/mesannonces/offre/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
-                                @else
-                                <a href="/labo/mesannonces/demande/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
-                                @endif
-
-
-
-                                @endif 
+                                  @if($notification->data['type']=="confirme")
+                                      <a href="/labo/mesannonces/offre/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
+                                  @else
+                                      <a href="/labo/mesannonces/demande/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
+                                  @endif
+                            @endif
                         @endforeach
 
                     </a>
