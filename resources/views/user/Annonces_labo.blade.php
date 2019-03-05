@@ -191,7 +191,6 @@
 
 
     <div class="row row_list_produit">
-        <div class="row">
     @if(!empty($annonces))
           @foreach($annonces as $annonce)
           @if(DB::table('reponseannonces')->whereannonce_id($annonce->id)->whereetat("confirmer")->count()==0)
@@ -247,11 +246,10 @@
                 </div>
               </div>
             </div>
-        </div>
             @endif
             @endforeach
-           <div class=" row text-center">
-                    {{$annonces->links()}}
+            <div class=" col-sm-12 text-center ">
+            {{$annonces->links()}}
             </div>
             @else
             <p>aucune annonce ap publié </p>
