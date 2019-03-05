@@ -169,7 +169,7 @@ width: 190px;
                   <li><!-- start notification -->
                     <a href="#">
                         @foreach (Auth::user()->unreadNotifications as $notification)
-                            @if($notification->type="App\Notifications\addannonce") 
+                            @if($notification->type=="App\Notifications\addannonce") 
                                     @if(DB::table('annonces')->select('typeannonce')->where('id',$notification->data['annonce_id'])->value('typeannonce')=="Offre")
                                     <a href="/labo/annonces/offre/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
                                     @else
