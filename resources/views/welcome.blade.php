@@ -74,7 +74,7 @@
      
           <div class="col-md-4">
               <img src="{{ asset('img/icon1.png') }}">
-              <h2>Echange </h2>
+              <h2>Echanges </h2>
               <p>
                       Echanger des produits
                       chimiques 
@@ -82,7 +82,7 @@
           </div>
           <div class="col-md-4">
               <img src="{{ asset('img/icon2.png') }}">
-              <h2>Offre </h2>
+              <h2>Offres </h2>
               <p>
                       Offrir des produits
                       chimiques 
@@ -90,7 +90,7 @@
           </div>
           <div class="col-md-4">
                   <img src="{{ asset('img/icon3.png') }}">
-                  <h2>Demander </h2>
+                  <h2>Demandes </h2>
                   <p>
                                 Demander des produits
                           chimiques 
