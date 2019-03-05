@@ -92,7 +92,7 @@
                   <img src="{{ asset('img/icon3.png') }}">
                   <h2>Demander </h2>
                   <p>
-                          Echanger des produits
+                                Demander des produits
                           chimiques 
                   </p>
           </div>
