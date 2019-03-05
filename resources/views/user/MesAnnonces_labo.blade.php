@@ -220,7 +220,7 @@
     </div>
 
     <div class="row row_list_produit">
-        <div class="row">
+  
 
        
     @if(!empty($annonces))
@@ -295,10 +295,9 @@
         
                 </div>
               </div>
-            </div>
         </div>
             @endforeach
-            <div class=" row text-center">
+            <div class=" col-sm-12 text-center ">
                     {{$annonces->links()}}
             </div>
            
