@@ -9,6 +9,8 @@ use App\User;
 use App\Chat;
 use Auth;
 use App\Reponseannonce;
+use Notification;
+use App\Notifications\confirme;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ControllerValidatesRequestsvalidate;
 class HomeController extends Controller
@@ -117,7 +119,7 @@ class HomeController extends Controller
         'commentaire' => 'required|string|min:1',  
       ]); 
 
-        $annonce=Annonce::select('natureannonce','refproduit','refproduitEchange','qte','qteEchange')->whereid($request->input('idannonce'))->first();
+        $annonce=Annonce::select('natureannonce','refproduit','refproduitEchange','qte','qteEchange','user_id')->whereid($request->input('idannonce'))->first();
         if($annonce->natureannonce=="Changement")
         {
                 $produit=Produit::select('qte')->whereid($annonce->refproduit)->first();
@@ -132,6 +134,10 @@ class HomeController extends Controller
                         $reponseoffre->commentaire=$request->input('commentaire');
                         $reponseoffre->etat="confirmer";
                         $reponseoffre->save();
+                       
+                        $annonce= Annonce::where('id',$request->input('idannonce'))->first();
+                        $users=User::where('id',$annonce->user_id)->whererole('user')->get();
+                        Notification::send($users,new confirme($annonce));
                        // $allreponse=Produit::where($)->where('id','<>',$reponse_id)->update(['etat' => "annuler"]);
                         //*update produit fornisseur -qte
                         //*update produit haj +qteechange
@@ -160,10 +166,14 @@ class HomeController extends Controller
                             $reponseoffre->commentaire=$request->input('commentaire');
                             $reponseoffre->etat="confirmer";
                             $reponseoffre->save();
+
+                            $annonce= Annonce::where('id',$request->input('idannonce'))->first();
+                            $users=User::where('id',$annonce->user_id)->whererole('user')->get();
+                            Notification::send($users,new confirme($annonce));
                             //*update produit fornisseur + qte
                             //ajout produit a le meme informations que le de fr
 
-                            //*
+                           
                         }
                         else
                         {
@@ -171,6 +181,8 @@ class HomeController extends Controller
                         }
 
                     }
+
+
                         return back()->withInput();  
      
    
@@ -190,7 +202,9 @@ class HomeController extends Controller
          $reponseoffre->commentaire=$request->input('commentaire');
          $reponseoffre->etat="enattente";
          $reponseoffre->save();
-
+         $annonce= Annonce::where('id',$request->input('idannonce'))->first();
+         $users=User::where('id',$annonce->user_id)->whererole('user')->get();
+         Notification::send($users,new confirme($annonce));
          return back()->withInput(); 
         
  }
