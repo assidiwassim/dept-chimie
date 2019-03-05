@@ -59,7 +59,7 @@ class confirme extends Notification
             'user_id'  => Auth::user()->id,
             'avatar' => Auth::user()->logo,
             'type' => 'demande',
-            'text' => 'votre annonce est demandeé  par  '.Auth::user()->name           
+            'text' => 'votre annonce est accepté  par  '.Auth::user()->name           
         ];
     }
         else
@@ -70,7 +70,7 @@ class confirme extends Notification
                 'annonce_id' =>$this->annonce->id,
                 'user_id'  => Auth::user()->id,
                 'avatar' => Auth::user()->logo,
-                'text' => 'votre annonce est confirmé par  '.Auth::user()->name           
+                'text' => 'votre annonce est demandé par  '.Auth::user()->name           
             ]; 
         }
         
