@@ -132,7 +132,7 @@ class HomeController extends Controller
                         $reponseoffre->user_id=Auth::user()->id;
                         $reponseoffre->annonce_id=$request->input('idannonce');
                         $reponseoffre->commentaire=$request->input('commentaire');
-                        $reponseoffre->etat="enatente";
+                        $reponseoffre->etat="enattente";
                         $reponseoffre->save();
                        
                         $annonce= Annonce::where('id',$request->input('idannonce'))->first();
@@ -164,7 +164,7 @@ class HomeController extends Controller
                             $reponseoffre->user_id=Auth::user()->id;
                             $reponseoffre->annonce_id=$request->input('idannonce');
                             $reponseoffre->commentaire=$request->input('commentaire');
-                            $reponseoffre->etat="enatente";
+                            $reponseoffre->etat="enattente";
                             $reponseoffre->save();
 
                             $annonce= Annonce::where('id',$request->input('idannonce'))->first();
