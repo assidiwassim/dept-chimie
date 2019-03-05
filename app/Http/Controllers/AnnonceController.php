@@ -37,7 +37,7 @@ class AnnonceController extends Controller
             $x=Produit::whereid( $request->input('refproduit'))->select('qte')->first();
          if(empty($request->input('qte')) || (!empty($request->input('qte')) && $request->input('qte') <= $x->qte))
            {
-                        $Annonce=new Annonce;
+                    $Annonce=new Annonce;
                     $Annonce->typeannonce = $request->input('typeannonce');
                     $Annonce->natureannonce  = $request->input('natureannonce');
                     $Annonce->designation  = $request->input('designation');
