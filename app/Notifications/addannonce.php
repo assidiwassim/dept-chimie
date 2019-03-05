@@ -46,13 +46,13 @@ class addannonce extends Notification
         ];
     }
     public function toDatabase($notifiable)
-    {
+    { 
         return [
             'type' => 'addannonce',
             'annonce_id' => $this->annonce->id,
             'user_id'  => Auth::user()->id,
             'avatar' => Auth::user()->logo,
-            'text' => 'ilya une nouvelle annonce à publié '
+            'text' => 'Le labo '.Auth::user()->name.' à publier une nouvelle annonce'
             
         ];
     }

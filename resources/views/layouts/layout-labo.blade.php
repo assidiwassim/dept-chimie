@@ -162,16 +162,16 @@ width: 190px;
              
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have {{Auth::user()->notifications->count()}} notifications</li>
+              <li class="header">vous avez {{Auth::user()->notifications->count()}} notifications</li>
               <li>
                 <!-- Inner Menu: contains the notifications -->
                 <ul class="menu">
                   <li><!-- start notification -->
                     <a href="#">
                         @foreach (Auth::user()->unreadNotifications as $notification)
-
-
-                        {{$notification->data['text']}}
+                         @if($notification->type="App\Notifications\addannonce") 
+                        <a href="">{{$notification->data['text']}}</a>
+                        @endif 
                         @endforeach
 
                     </a>

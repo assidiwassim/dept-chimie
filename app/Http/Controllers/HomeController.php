@@ -190,7 +190,8 @@ class HomeController extends Controller
          $reponseoffre->commentaire=$request->input('commentaire');
          $reponseoffre->etat="enattente";
          $reponseoffre->save();
-    
+
+         return back()->withInput(); 
         
  }
 
