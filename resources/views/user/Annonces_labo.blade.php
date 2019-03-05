@@ -248,7 +248,9 @@
             </div>
             @endif
             @endforeach
-            {{$annonces->links()}}
+           <div class=" row text-center">
+                    {{$annonces->links()}}
+            </div>
             @else
             <p>aucune annonce ap publié </p>
             @endif

@@ -29,6 +29,16 @@ class AnnonceController extends Controller
                 ->get();
                 return view('user/ajouter_annonce')->with('reftotal',$reftotal)->with('refuser',$refuser);
                 }
+
+                public function supprimer_annonce(Request $request)
+                {
+                    $id = $request->input('id');
+                    $annonce = Annonce::find($id);
+                    $annonce->delete();
+                    return redirect('/labo/mesannonces');
+
+                 }
+
     public function addannoncefrom(Request $request)
     {
             $logo = $request->file('file');

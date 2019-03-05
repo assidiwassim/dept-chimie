@@ -17,6 +17,20 @@
     padding: 0;
 }
 
+.confirm-popup{
+    border-radius: 20px !important;
+    box-shadow: 0px 3px 13px 3px #00000014;
+    background-color: transparent !important;
+}
+
+.modal {
+    background: rgba(0,0,0,0)  !important;
+}
+
+.modal-dialog{
+    background-color: transparent !important;
+}
+
 .boxImg{
     background-position: center;
     background-size: cover;
@@ -56,6 +70,24 @@
     top: 10px;
     left:10px;
     background-color: #ff396c;
+    border: 1px solid white;
+}
+
+.box-header-cover .deletee{
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 50px;
+    padding: 2px 8px;
+    position: absolute;
+    top: 10px;
+    right:10px;
+    background-color: transparent;
+    border: 1px solid white;
+}
+.box-header-cover .deletee:hover{
+   
+    background-color: red;
     border: 1px solid white;
 }
 
@@ -209,6 +241,31 @@
                       @endif
                  </a>
                  @endif
+                <a class="btn btn-default btn-success deletee "  data-toggle="modal" data-target="#modal-danger{{$annonce->id}}"> 
+                    <i class="fa fa-times" aria-hidden="true"></i> 
+                 </a>
+            
+                 <div class="modal modal-danger fade confirm-popup" id="modal-danger{{$annonce->id}}" style="display: none;">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span></button>
+                          <h4 class="modal-title">Confirmation ! </h4>
+                        </div>
+                        <div class="modal-footer">
+                                <form method="POST" action="{{ route('supprimer_annonce') }}">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$annonce->id}}">
+                                        <button type="submit" class="btn btn-outline pull-left">J'accepte</button>
+                                        <button type="button" class="btn btn-outline "  data-dismiss="modal">Anuler</button>
+                                </form>
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
                     <h1>{{DB::table('users')->select('name')->where('id','=',$annonce->user_id)->value('name')}}</h1>
                 </div>
                </div>
@@ -237,7 +294,10 @@
               </div>
             </div>
             @endforeach
-            {{$annonces->links()}}
+            <div class=" row text-center">
+                    {{$annonces->links()}}
+            </div>
+           
             @else
             <p>aucune annonce a publié dons cette compte</p>
             @endif

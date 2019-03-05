@@ -176,7 +176,13 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                                {{$produits->links()}}
+                                <tr>
+                                  <td colspan=8 class="text-center">
+                                      {{$produits->links()}}
+                                  </td>
+                                    
+                                  </tr>
+                              
                                </tbody>
                             </table></div>
                   </div>

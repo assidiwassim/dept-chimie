@@ -40,6 +40,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/mesannonces/offre/{id}', 'HomeController@consulte_offre')->name('consulte_offre');
             Route::post('/mesannonces/demande', 'HomeController@consulte_offre_confirmer')->name('consulte_offre_confirmer');
             Route::post('/mesannonces/offre', 'HomeController@consulte_offre_annuler')->name('consulte_offre_annuler');
+            Route::post('/mesannonces/supprimer', 'AnnonceController@supprimer_annonce')->name('supprimer_annonce');
+            
+            
             /* MAgasin */
             Route::get('/magasin', 'HomeController@magasin_labo')->name('magasin_labo');
             Route::post('/magasin', 'HomeController@magasin_labo_search')->name('magasin_labo_search');
