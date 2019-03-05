@@ -178,10 +178,10 @@ width: 190px;
 
 
                             @elseif($notification->type="App\Notifications\confirme")
-                            @if($notification->data['type']=="confirme")
+                            @if($notification->data['type']="confirme")
                             <a href="/labo/mesannonces/offre/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
                                 @else
-                                <a href="mesannonces/demande/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
+                                <a href="/labo/mesannonces/demande/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
                                 @endif
 
 
