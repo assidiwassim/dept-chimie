@@ -166,25 +166,7 @@
                             </span>
                         @endif
                 </div>
-                <!-------------------------------------------------------------------->
-                
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="form-group col-md-4">
-                       <div class="captcha">
-                         <span>{!! captcha_img() !!}</span>
-                         <button type="button" class="btn btn-success"><i class="fa fa-refresh" id="refresh"></i></button>
-                       </div>
-                  </div>
-                </div>
-                  <div class="row">
-                    <div class="col-md-4"></div>
-                      <div class="form-group col-md-4">
-                       <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
-                      </div> 
-                  </div>
-                <!-------------------------------------------------------------------->
-
+              
                 <div class="form-group " style="display:none;">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -338,15 +320,6 @@ $(document).ready(function() {
 
 });
 
-$('#refresh').click(function(){
-  $.ajax({
-     type:'GET',
-     url:'refreshcaptcha',
-     success:function(data){
-        $(".captcha span").html(data.captcha);
-     }
-  });
-});
 </script>
     </body>
 </html>
