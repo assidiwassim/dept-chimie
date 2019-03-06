@@ -123,6 +123,7 @@ width: 190px;
 .main-header a.logo:hover{
   background-color: transparent !important;
 }
+
 </style>
 
 </head>
@@ -152,48 +153,81 @@ width: 190px;
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
        
-
-          <!-- Notifications Menu -->
-          <li class="dropdown notifications-menu">
-            <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-danger">{{Auth::user()->unreadnotifications->count()}}</span>
-             
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">vous avez {{Auth::user()->notifications->count()}} notifications</li>
-              <li>
-                <!-- Inner Menu: contains the notifications -->
-                <ul class="menu">
-                  <li><!-- start notification -->
-                    <a href="#">
-                        @foreach (Auth::user()->unreadNotifications as $notification)
-                            @if($notification->type=="App\Notifications\addannonce") 
-                                    @if(DB::table('annonces')->select('typeannonce')->where('id',$notification->data['annonce_id'])->value('typeannonce')=="Offre")
-                                    <a href="/labo/annonces/offre/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
-                                    @else
-                                    <a href="/labo/annonces/demande/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
-                                    @endif
-                            @else
-
-                                  @if($notification->data['type']=="confirme")
-                                      <a href="/labo/mesannonces/offre/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
+            <li class="dropdown messages-menu open">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                    <i class="fa fa-bell-o"></i>
+                  <span class="label label-success">{{Auth::user()->unreadnotifications->count()}}</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="header">Vous avez {{Auth::user()->notifications->count()}} notifications</li>
+                  <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu">
+                     
+                      <li>
+                          <a href="#">
+                              @foreach (Auth::user()->unreadNotifications as $notification)
+                                  @if($notification->type=="App\Notifications\addannonce") 
+                                          @if(DB::table('annonces')->select('typeannonce')->where('id',$notification->data['annonce_id'])->value('typeannonce')=="Offre")
+                                          <a href="/labo/annonces/offre/{{$notification->data['annonce_id']}}">
+                                            <div class="pull-left">
+                                                <img src="/upload/logo/{{$notification->data['avatar']}}" class="img-circle" alt="User Image">
+                                              </div>
+                                              <h4>
+                                                {{DB::table('users')->select("name")->whereid($notification->data['user_id'])->value("name")}}
+                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                              </h4>
+                                              <p> {{$notification->data['text']}}</p>
+                                          </a>
+                                          @else
+                                          <a href="/labo/annonces/demande/{{$notification->data['annonce_id']}}">
+                                            <div class="pull-left">
+                                                <img src="/upload/logo/{{$notification->data['avatar']}}" class="img-circle" alt="User Image">
+                                              </div>
+                                              <h4>
+                                                  {{DB::table('users')->select("name")->whereid($notification->data['user_id'])->value("name")}}
+                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                              </h4>
+                                              <p> {{$notification->data['text']}}</p>  
+                                          </a>
+                                          @endif
                                   @else
-                                      <a href="/labo/mesannonces/demande/{{$notification->data['annonce_id']}}">{{$notification->data['text']}}</a>
+      
+                                        @if($notification->data['type']=="confirme")
+                                            <a href="/labo/mesannonces/offre/{{$notification->data['annonce_id']}}">
+                                              <div class="pull-left">
+                                                  <img src="/upload/logo/{{$notification->data['avatar']}}" class="img-circle" alt="User Image">
+                                                </div>
+                                                <h4>
+                                                    {{DB::table('users')->select("name")->whereid($notification->data['user_id'])->value("name")}}
+                                                  <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                </h4>
+                                                <p> {{$notification->data['text']}}</p>  
+                                            </a>
+                                        @else
+                                            <a href="/labo/mesannonces/demande/{{$notification->data['annonce_id']}}">
+                                              <div class="pull-left">
+                                                  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                </div>
+                                                <h4>
+                                                    {{DB::table('users')->select("name")->whereid($notification->data['user_id'])->value("name")}}
+                                                  <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                </h4>
+                                                <p> {{$notification->data['text']}}</p>
+                                            </a>
+                                        @endif
                                   @endif
-                            @endif
-                        @endforeach
+                              @endforeach
+      
+                          </a>
+                      </li>
 
-                    </a>
+                    </ul>
                   </li>
-                  <!-- end notification -->
+                  <li class="footer"><a href="#">See All Messages</a></li>
                 </ul>
               </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
-          <!-- Tasks Menu -->
+         
         
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
