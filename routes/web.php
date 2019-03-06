@@ -1,5 +1,8 @@
 <?php
 use Illuminate\Http\Request;
+Route::get('createcaptcha', 'CaptchaController@create');
+Route::post('captcha', 'CaptchaController@captchaValidate');
+Route::get('refreshcaptcha', 'CaptchaController@refreshCaptcha');
 
 Route::get('/', function () {
     return view('welcome');
@@ -7,10 +10,10 @@ Route::get('/', function () {
 //Route::post('sendmessage', 'chatController@sendMessage');
 Route::post('/send-contact','AdminController@storecontact')->name('sendcontact')->middleware('guest');
 //Route::get('my-notification/{type}', 'alertController@myNotification');
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::auth();
 /* group for link simple user  */
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','verified'])->group(function () {
     
     Route::middleware(['Check_Admin'])->group(function () {
      

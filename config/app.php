@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,
         
 
         /*
@@ -228,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class, 
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
     ],
 
 ];

@@ -25,8 +25,13 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
-
+    protected function authenticated()
+    {
+            if(Auth::user()->role=="user")
+                 return redirect('/labo');
+            else
+                 return redirect('/admin');
+    }
     /**
      * Create a new controller instance.
      *

@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Http\Controllers\Auth\Request;
-
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
@@ -46,6 +45,18 @@ class LoginController extends Controller
                  return redirect('/admin');
     }
 
+    protected function attemptLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email'           => 'required|max:255|email',
+            'password'           => 'required',
+            'captcha'        => 'required|captcha'
+        ]);
+
+        return $this->guard()->attempt(
+            $this->credentials($request), $request->filled('remember')
+        );
+    }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
