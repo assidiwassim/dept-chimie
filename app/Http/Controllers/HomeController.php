@@ -11,6 +11,7 @@ use Auth;
 use App\Reponseannonce;
 use Notification;
 use App\Notifications\confirme;
+use App\Notifications\accepte;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ControllerValidatesRequestsvalidate;
 class HomeController extends Controller
@@ -276,6 +277,9 @@ class HomeController extends Controller
         $annonce=Annonce::whereid($id)->get();
         $reponse=Reponseannonce::whereannonce_id($id)
         ->get();
+        $type="annuler";
+        $users=User::where('id',$Reponseannonce->user_id)->whererole('user')->get();
+        Notification::send($users,new confirme($Reponseannonce,$type));
         return view('user.MesAnnonce_offre')->with('annonce',$annonce)->with('reponse',$reponse)->with('id',$id);;
     }
 
@@ -334,12 +338,12 @@ class HomeController extends Controller
         $categorie=$request->input('categorie');
         $formule=$request->input('formule');
        $produits=Produit::where('designation','like','%'.$designation.'%')
-       ->orwhere('qte','like','%'.$designation.'%')
-       ->orwhere('unite','like','%'.$designation.'%')
-       ->orwhere('reference','like','%'.$designation.'%')
+       ->where('qte','like','%'.$designation.'%')
+       ->where('unite','like','%'.$designation.'%')
+       ->where('reference','like','%'.$designation.'%')
        ->where('categorie','like','%'.$categorie.'%')
        ->where('formule','like','%'.$formule.'%')
-       ->whereuser_id(Auth::user()->id)
+       ->where('user_id',Auth::user()->id)
        ->paginate(8);
 
        $categorie=Produit::select('categorie')
