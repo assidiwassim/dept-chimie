@@ -25,7 +25,7 @@ class ParametreProfil extends Controller
       
     
        $x= User::whereemail($request->input('email'))->count();
-     if($x==0)
+     if($x==0 || $x==1)
         {$user=User::whereid(Auth::user()->id)->update(['name' => $request->input('username'),'email' => $request->input('email')]);
         session()->flash('message-success-modification-profil','Votre profil à eté  modifier avec succées');
        }
