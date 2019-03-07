@@ -166,8 +166,10 @@ width: 190px;
                      
                       <li>
                           <a href="#">
-                              @foreach (Auth::user()->unreadNotifications as $notification)
+                              @foreach (Auth::user()->unreadNotifications as $notification
+                              )
                                   @if($notification->type=="App\Notifications\addannonce") 
+
                                           @if(DB::table('annonces')->select('typeannonce')->where('id',$notification->data['annonce_id'])->value('typeannonce')=="Offre")
                                           <a href="/labo/annonces/offre/{{$notification->data['annonce_id']}}">
                                             <div class="pull-left">
@@ -192,19 +194,19 @@ width: 190px;
                                               <p> {{$notification->data['text']}}</p>  
                                           </a>
                                           @endif
-                                  @else
+                                  @elseif($notification->type=="App\Notifications\confirme")
       
                                         @if($notification->data['type']=="confirme")
-                                            <a href="/labo/mesannonces/offre/{{$notification->data['annonce_id']}}">
-                                              <div class="pull-left">
-                                                  <img src="/upload/logo/{{$notification->data['avatar']}}" class="img-circle" alt="User Image">
-                                                </div>
-                                                <h4>
-                                                    {{DB::table('users')->select("name")->whereid($notification->data['user_id'])->value("name")}}
-                                                    <small class="time_date"> {{$notification->created_at}}</small>
-                                                </h4>
-                                                <p> {{$notification->data['text']}}</p>  
-                                            </a>
+                                                <a href="/labo/mesannonces/offre/{{$notification->data['annonce_id']}}">
+                                                  <div class="pull-left">
+                                                      <img src="/upload/logo/{{$notification->data['avatar']}}" class="img-circle" alt="User Image">
+                                                    </div>
+                                                    <h4>
+                                                        {{DB::table('users')->select("name")->whereid($notification->data['user_id'])->value("name")}}
+                                                        <small class="time_date"> {{$notification->created_at}}</small>
+                                                    </h4>
+                                                    <p> {{$notification->data['text']}}</p>  
+                                                </a>
                                         @else
                                             <a href="/labo/mesannonces/demande/{{$notification->data['annonce_id']}}">
                                               <div class="pull-left">
@@ -217,6 +219,33 @@ width: 190px;
                                                 <p> {{$notification->data['text']}}</p>
                                             </a>
                                         @endif
+                                  
+                                  @else
+                                  <!------------------------------------------------------------------------->
+                                  @if($notification->data['type']=="confirme")
+                                  <a href="/labo/mesannonces/demande/{{$notification->data['Reponseannonce_id']}}">
+                                    <div class="pull-left">
+                                        <img src="/upload/logo/{{$notification->data['avatar']}}" class="img-circle" alt="User Image">
+                                      </div>
+                                      <h4>
+                                          {{DB::table('users')->select("name")->whereid($notification->data['user_id'])->value("name")}}
+                                          <small class="time_date"> {{$notification->created_at}}</small>
+                                      </h4>
+                                      <p> {{$notification->data['text']}}</p>  
+                                  </a>
+                          @else
+                          <a href="/labo/mesannonces/demande/{{$notification->data['Reponseannonce_id']}}">
+                                <div class="pull-left">
+                                    <img src="/upload/logo/{{$notification->data['avatar']}}" class="img-circle" alt="User Image">
+                                  </div>
+                                  <h4>
+                                      {{DB::table('users')->select("name")->whereid($notification->data['user_id'])->value("name")}}
+                                      <small class="time_date"> {{$notification->created_at}}</small>
+                                  </h4>
+                                  <p> {{$notification->data['text']}}</p>
+                              </a>
+                          @endif
+                                  <!------------------------------------------------------------------------->
                                   @endif
                                   
                               @endforeach
