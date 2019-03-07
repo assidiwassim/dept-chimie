@@ -288,9 +288,9 @@
              
                 
                         @if($annonce->typeannonce=="Offre")
-                            <a href="/labo/mesannonces/offre/{{$annonce->id}}" class="btn btn-default btn-lg btn-block btn-repondre ">Consulté</a>
+                            <a href="/labo/mesannonces/offre/{{$annonce->id}}" class="btn btn-default btn-lg btn-block btn-repondre ">consulter</a>
                         @else
-                            <a  href="/labo/mesannonces/demande/{{$annonce->id}}"  class="btn btn-default btn-lg btn-block btn-repondre-Demande ">Consulté</a>
+                            <a  href="/labo/mesannonces/demande/{{$annonce->id}}"  class="btn btn-default btn-lg btn-block btn-repondre-Demande ">consulter</a>
                         @endif
         
                 </div>
@@ -302,7 +302,7 @@
             </div>
            
             @else
-            <p>aucune annonce a publié dons cette compte</p>
+            <p>Aucune annonce a publié dons cette compte</p>
             @endif
               
             </div>
