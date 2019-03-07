@@ -358,7 +358,7 @@ width: 190px;
         </ul>
         </li>
         <li class="discussion_labo"><a href="{{ route('home') }}"><i class="fa fa-envelope"></i> <span>Discussion</span></a></li>
-        <li class="aide_labo"><a href="{{ route('aide_labo') }}"><i class="fa fa-question-circle"></i> <span>Centre d'aide</span></a></li>
+        <li class="aide_labo"><a href="{{ route('aide_labo') }}"><i class="fa fa-question-circle"></i> <span>Documentation</span></a></li>
         <li class="parametre_labo"><a href="{{ route('parametre_labo') }}"><i class="fa fa-cog"></i> <span>Paramètres</span></a></li>
        
         

@@ -144,9 +144,11 @@
 <div class="col-md-offset-3 col-md-6" style="">
 
 <h2>SE CONNECTER </h2>
-   <p>
-     Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. 
-   </p>
+
+
+   <p> 
+      Connectez-vous pour commencer votre session
+  </p>
    <br>
         <form method="POST" action="{{ route('login') }}" class="form-login">
                 @csrf
