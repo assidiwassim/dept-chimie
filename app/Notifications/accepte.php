@@ -10,16 +10,17 @@ use Illuminate\Notifications\Messages\MailMessage;
 class accepte extends Notification
 {
     use Queueable;
-
-    private $annonce;
+    private $type;
+    private $Reponseannonce;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($annonce)
+    public function __construct($Reponseannonce ,$type)
     {   
-        $this->annonce =$annonce;
+        $this->Reponseannonce =$Reponseannonce;
+        $this->type =$type;
       
     }
 
@@ -43,14 +44,29 @@ class accepte extends Notification
      */
 
     public function toDatabase($notifiable)
-    { 
+    {
+         if($this->type=="confirmer")
+        {
         return [
-            'type' => 'addannonce',
-            'annonce_id' => $this->annonce->id,
+            'type' => 'confirmer',
+            'annonce_id' => $this->Reponseannonce->id,
             'user_id'  => Auth::user()->id,
             'avatar' => Auth::user()->logo,
-            'text' => 'Le labo '.Auth::user()->name.' à publier une nouvelle annonce'
+            'text' => 'Le labo '.Auth::user()->name.' est confirmer notre demande'
             
         ];
+    }
+        else
+        {
+            return [
+                'type' => 'annuler',
+                'annonce_id' => $this->annonce->id,
+                'user_id'  => Auth::user()->id,
+                'avatar' => Auth::user()->logo,
+                'text' => 'Le labo '.Auth::user()->name.' à publier une nouvelle annonce'
+                
+            ];
+        }
+
     }
 }

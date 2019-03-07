@@ -153,7 +153,7 @@ width: 190px;
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
        
-            <li class="dropdown messages-menu open">
+            <li class="dropdown messages-menu ">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                     <i class="fa fa-bell-o"></i>
                   <span class="label label-success">{{Auth::user()->unreadnotifications->count()}}</span>
