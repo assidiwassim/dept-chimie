@@ -264,8 +264,8 @@ class HomeController extends Controller
         $reponse=Reponseannonce::whereannonce_id($id)
         ->get();
         $type="confirmer";
-        $users=User::where('id',$Reponseannonce->user_id)->whererole('user')->get();
-        Notification::send($users,new accepte($Reponseannonce,$type));
+        $users=User::where('id',$confirmerreponse->user_id)->whererole('user')->get();
+        Notification::send($users,new accepte($confirmerreponse,$type));
         return view('user.MesAnnonce_offre')->with('annonce',$annonce)->with('reponse',$reponse)->with('id',$id);;
     }
 
@@ -280,8 +280,8 @@ class HomeController extends Controller
         $reponse=Reponseannonce::whereannonce_id($id)
         ->get();
         $type="annuler";
-        $users=User::where('id',$Reponseannonce->user_id)->whererole('user')->get();
-        Notification::send($users,new accepte($Reponseannonce,$type));
+        $users=User::where('id',$confirmerreponse->user_id)->whererole('user')->get();
+        Notification::send($users,new accepte($confirmerreponse,$type));
         return view('user.MesAnnonce_offre')->with('annonce',$annonce)->with('reponse',$reponse)->with('id',$id);;
     }
 
