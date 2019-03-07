@@ -301,6 +301,7 @@ class HomeController extends Controller
        ->where('typeannonce','like','%'.$typeannonce.'%')
        ->where('natureannonce','like','%'.$natureannonce.'%')
        ->whereuser_id(Auth::user()->id)
+       ->orderBy('created_at', 'desc')
        ->paginate(8);
 
         return view('user/MesAnnonces_labo')->with('annonces',$annonces);
@@ -346,6 +347,7 @@ class HomeController extends Controller
        ->where('categorie','like','%'.$categorie.'%')
        ->where('formule','like','%'.$formule.'%')
        ->where('user_id',Auth::user()->id)
+       ->orderBy('created_at', 'desc')
        ->paginate(8);
 
        $categorie=Produit::select('categorie')
