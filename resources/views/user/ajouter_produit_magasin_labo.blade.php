@@ -103,7 +103,7 @@
                               <label for="designation" class="col-sm-2 control-label">Désignation</label>
             
                               <div class="col-sm-10">
-                                  <textarea class="form-control" name="designation" id="designation" rows="3" placeholder="Enter ..."></textarea>
+                                  <textarea class="form-control" name="designation" id="designation" rows="3" placeholder="Entrer ..."></textarea>
                                   @if ($errors->has('designation'))
                                     <span class="help-block ">
                                         <strong class="text-danger">{{ $errors->first('designation') }}</strong>

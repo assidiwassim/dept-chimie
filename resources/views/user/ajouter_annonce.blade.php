@@ -133,7 +133,7 @@ fieldset
                               <label for="designation" class="col-sm-2 control-label ">Désignation </label>
             
                               <div class="col-sm-10">
-                                  <textarea class="form-control" name="designation" id="designation" rows="3" placeholder="Enter ..." required></textarea>
+                                  <textarea class="form-control" name="designation" id="designation" rows="3" placeholder="Entrer ..." required></textarea>
                                   @if ($errors->has('designation'))
                                     <span class="help-block ">
                                         <strong class="text-danger">{{ $errors->first('designation') }}</strong>
