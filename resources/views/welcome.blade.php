@@ -177,8 +177,9 @@
                   <br>   <br>   <br>   <br>
               <img src="{{ asset('img/contact.png') }}">
               <p>
-                  Lorem Ipsum is simply dummy  <br>text ofthe printing 
-                      and typesetting industry.
+                        Vous avez une question, une remarque ?<br>
+                        Vous souhaitez plus d’informations sur notre site <br> contactez-nous ici
+              
               </p>
           </div>
       </div>
