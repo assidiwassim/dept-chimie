@@ -208,7 +208,7 @@ width: 190px;
                                         @else
                                             <a href="/labo/mesannonces/demande/{{$notification->data['annonce_id']}}">
                                               <div class="pull-left">
-                                                  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                  <img src="/upload/logo/{{$notification->data['avatar']}}" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     {{DB::table('users')->select("name")->whereid($notification->data['user_id'])->value("name")}}
