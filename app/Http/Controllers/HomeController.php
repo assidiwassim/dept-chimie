@@ -216,7 +216,7 @@ class HomeController extends Controller
     public function MesAnnonces_labo()
     {
 
-        $annonces=Annonce::whereuser_id(Auth::user()->id)->orderBy('created_at', 'desc')->simplePaginate(8);
+        $annonces=Annonce::whereuser_id(Auth::user()->id)->orderBy('created_at', 'desc')->paginate(8);
         return view('user/MesAnnonces_labo')->with('annonces',$annonces);
         
     }
