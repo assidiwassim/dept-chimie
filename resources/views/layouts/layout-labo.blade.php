@@ -330,7 +330,7 @@ width: 190px;
         <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
         <li class=" tableaudebord_labo"><a href="{{ route('tableaudebord_labo') }}"><i class="fa fa-home"></i> <span>Tableau de bord</span></a></li>
-        <li class=" Annonces_labo"><a href="{{ route('Annonces_labo') }}"><i class="fa fa-shopping-basket"></i> <span>Annonce</span></a></li>
+        <li class=" Annonces_labo"><a href="{{ route('Annonces_labo') }}"><i class="fa fa-shopping-basket"></i> <span>Annonces</span></a></li>
  
         <li class="treeview MesAnnonces_laboratoire">
           <a href="">
