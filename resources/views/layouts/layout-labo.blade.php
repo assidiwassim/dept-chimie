@@ -175,7 +175,8 @@ width: 190px;
                                               </div>
                                               <h4>
                                                 {{DB::table('users')->select("name")->whereid($notification->data['user_id'])->value("name")}}
-                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                              <small class="time_date"> {{$notification->created_at}}</small>
+                                                
                                               </h4>
                                               <p> {{$notification->data['text']}}</p>
                                           </a>
@@ -186,7 +187,7 @@ width: 190px;
                                               </div>
                                               <h4>
                                                   {{DB::table('users')->select("name")->whereid($notification->data['user_id'])->value("name")}}
-                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                  <small class="time_date"> {{$notification->created_at}}</small>
                                               </h4>
                                               <p> {{$notification->data['text']}}</p>  
                                           </a>
@@ -200,7 +201,7 @@ width: 190px;
                                                 </div>
                                                 <h4>
                                                     {{DB::table('users')->select("name")->whereid($notification->data['user_id'])->value("name")}}
-                                                  <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                    <small class="time_date"> {{$notification->created_at}}</small>
                                                 </h4>
                                                 <p> {{$notification->data['text']}}</p>  
                                             </a>
@@ -211,12 +212,13 @@ width: 190px;
                                                 </div>
                                                 <h4>
                                                     {{DB::table('users')->select("name")->whereid($notification->data['user_id'])->value("name")}}
-                                                  <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                    <small class="time_date"> {{$notification->created_at}}</small>
                                                 </h4>
                                                 <p> {{$notification->data['text']}}</p>
                                             </a>
                                         @endif
                                   @endif
+                                  
                               @endforeach
       
                           </a>
@@ -372,7 +374,7 @@ width: 190px;
 <!-- REQUIRED JS SCRIPTS -->
 
 <script>
-  
+
   var url =window.location.href ;
   $('ul.active').removeClass("active");
 if (url.indexOf("/labo/annonces") >= 0){
