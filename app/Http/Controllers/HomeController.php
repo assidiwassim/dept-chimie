@@ -49,7 +49,7 @@ class HomeController extends Controller
         $Chat->text = $request->input('text');
         $Chat->save();
 
-       return response()->json( $response, 200);
+       return response()->json( );
     }
 
     
@@ -78,8 +78,10 @@ class HomeController extends Controller
 
 
     public function Annonces_labo()
+
     {    $annonces=Annonce::where('user_id','!=',Auth::user()->id)
                 ->orderBy('created_at', 'desc')->paginate(8);
+                
         return view('user/Annonces_labo')->with('annonces',$annonces);
     }
 
@@ -301,7 +303,6 @@ class HomeController extends Controller
        ->where('typeannonce','like','%'.$typeannonce.'%')
        ->where('natureannonce','like','%'.$natureannonce.'%')
        ->whereuser_id(Auth::user()->id)
-       ->orderBy('created_at', 'desc')
        ->paginate(8);
 
         return view('user/MesAnnonces_labo')->with('annonces',$annonces);

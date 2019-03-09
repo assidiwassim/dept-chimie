@@ -88,7 +88,7 @@
                       <div class="input_msg_write">
                          
                         <form id="form-chat">
-                         
+                        
                             <textarea type="text" class="test-emoji" rows="1" id="m" placeholder="Taper un message" ></textarea>
                            <button type="submit" class=" submit-msg"><img src="{{ asset("img/send.png")}}"/></button>
                         </form>
